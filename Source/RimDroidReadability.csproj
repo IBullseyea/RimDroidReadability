@@ -1,0 +1,16 @@
+<Project DefaultTargets="Build">
+  <!-- Offline build: mirrors RimDroid's existing Roslyn/game-reference build pattern.
+       No SDK implicit restore, copied game references, NuGet or bundled Harmony. -->
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <GameManagedDir Condition="'$(GameManagedDir)' == ''">$(MSBuildThisFileDirectory)../../../RimWorld/game/RimWorldLinux_Data/Managed</GameManagedDir>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
+  </PropertyGroup>
+  <Target Name="Restore" />
+  <Target Name="Build">
+    <Exec Command="python3 &quot;$(MSBuildThisFileDirectory)../tools/build.py&quot; --game-managed-dir &quot;$(GameManagedDir)&quot;" />
+  </Target>
+  <Target Name="Clean">
+    <Delete Files="$(MSBuildThisFileDirectory)../1.6/Assemblies/RimDroidReadability.dll" />
+  </Target>
+</Project>

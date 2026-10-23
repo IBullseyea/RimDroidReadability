@@ -1,0 +1,30 @@
+# Local build outputs and caches
+.build/
+bin/
+obj/
+__pycache__/
+*.py[cod]
+
+# Generated mod binaries and release archives
+/1.6/Assemblies/*.dll
+/dist/
+
+# Generated reports with local machine paths and historical diff
+/docs/validation.json
+/docs/static-validation.json
+/docs/review.diff
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>RimDroid Readability Prototype</name>
+  <author>Erenalp</author>
+  <packageId>erenalp.rimdroidreadability</packageId>
+  <supportedVersions><li>1.6</li></supportedVersions>
+  <loadAfter><li>Ludeon.RimWorld</li></loadAfter>
+  <description>Optional wide-view medicine, wood and colonist annotations for the verified RimWorld 1.6 build on RimDroid Native. Disabled by default. Android device compatibility and performance remain unverified. Uses the Harmony already provided by RimDroid Native.</description>
+</ModMetaData>
