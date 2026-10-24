@@ -9,6 +9,12 @@ Pre-release candidate · MIT License
 - Retains the bottom-right item filter shortcut from 0.2.3, collection-enumeration fix from 0.2.2 and Native Android detection fix from 0.2.1.
 - English/Turkish installation documentation and the MIT license are included in the ZIP.
 
+## Preview
+
+Current English UI screenshot supplied by the player on Samsung S25 FE / RimDroid 0.3.0v2, showing grouped resource labels and the bottom-right item filter shortcut.
+
+![Large map indicators and grouped stacks](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/docs/images/resource-filter.jpg)
+
 ## Install or update
 
 Download **RimDroidReadability-0.2.4.zip** from the release assets. Extract/update the entire `RimDroidReadability` folder, including `1.6/Languages`, in the instance's `Mods` directory. Enable it in the mod list and fully restart the game. Enable indicators in **Options → Mod Settings → RimDroid Readability**; the mod is off by default. See README.md / README.tr.md for details.

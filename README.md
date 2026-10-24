@@ -4,6 +4,25 @@
 
 Large map indicators and a touch-friendly target finder for **RimWorld 1.6 on RimDroid Native for Android**. Find colonists and item stacks without changing camera zoom.
 
+## Screenshots
+
+Current English UI screenshots supplied by the player on Samsung S25 FE / RimDroid 0.3.0v2: readable labels and the bottom-right item filter shortcut.
+
+![Resource filter with grouped stack totals and the Items shortcut](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/docs/images/resource-filter.jpg)
+
+<details>
+<summary>More examples: wood filter and colonist indicators</summary>
+
+**Wood filter** — only wood stacks are labeled; colonist markers stay visible.
+
+![Wood filter showing stack quantities](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/docs/images/wood-filter.jpg)
+
+**Colonist indicators** — item markers are disabled using Items: Off.
+
+![Colonist indicators with Items set to Off](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/docs/images/colonist-indicators.jpg)
+
+</details>
+
 ## Features
 
 - Independent text (18/22/26/32) and marker (8/16/24 UI units) sizes.
@@ -16,7 +35,7 @@ Only free colonists and loose items on the current map are included. Fogged targ
 
 ## Install
 
-1. Open this repository's **Releases** page and download **`RimDroidReadability-0.2.4.zip`**. GitHub's automatic **Source code** archives do not contain the compiled mod DLL.
+1. Open [Releases](https://github.com/IBullseyea/RimDroidReadability/releases) and download **`RimDroidReadability-0.2.4.zip`**. GitHub's automatic **Source code** archives do not contain the compiled mod DLL.
 2. Extract the `RimDroidReadability` folder into your RimDroid instance's `Mods` directory, or use RimDroid's mod import facility. Update the **whole folder**, including `1.6/Languages`.
 3. Enable the mod in the mod list and restart the game completely. It uses Harmony already loaded by RimDroid; no additional Harmony is bundled.
 4. Open **Options → Mod Settings → RimDroid Readability** and enable indicators. The mod is **off by default**.
@@ -53,3 +72,5 @@ The static audit needs an existing `ilspycmd` on PATH or in `~/.dotnet/tools`; s
 Bug reports should include mod/game/RimDroid versions, engine, device, UI scale and the exact Mod Settings status or relevant log. Translation corrections are welcome. In the source repository, see [CONTRIBUTING.md](CONTRIBUTING.md), [detailed Turkish usage](docs/user-guide.tr.md) and [device validation records](docs/device-validation.tr.md).
 
 Original mod code, translations and documentation are licensed under [MIT](LICENSE). RimWorld, RimDroid, Unity and Harmony remain governed by their respective owners and licenses. This is an unofficial mod; game files and third-party dependencies are not included.
+
+Gameplay screenshots include RimWorld artwork belonging to its respective owners; that artwork is outside the mod’s MIT license.
