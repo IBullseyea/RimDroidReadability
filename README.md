@@ -1,82 +1,100 @@
-# RimDroid Readability — 0.1.0 prototype
+# RimDroid Readability — 0.2.0
 
-Wide-view medicine/wood markers and colonist names for **RimWorld 1.6 on RimDroid Native Unity**. This is an original, optional game mod. The camera, touch selection and Android application sources are not modified. **Phone compatibility, screenshots/readability and performance have not been tested.**
+RimWorld 1.6’yı **RimDroid Native Unity** üzerinden telefonda oynamak için özgün, isteğe bağlı mod: kamera yakınlığından bağımsız büyük göstergeler, eşya gruplama ve dokunmatik hedef bulucu. **Gerçek telefon uyumluluğu, okunabilirlik, dokunma ve performans kabulü beklemededir.** Yerel derleme bu kabulün yerine geçmez.
 
-## Supported reference and startup gates
+## Kullanım ve ayarlar
 
-The prototype defaults **off**. It only installs its isolated Harmony postfix after checking Android Unity, `RIMDROID_IL2MONO_MANAGED`, RimWorld 1.6, the required API signatures, one active game assembly and an existing Harmony 2.x runtime.
+İlk kullanımda mod **kapalıdır**. Seçenekler → Mod Ayarları → **RimDroid Readability** içindeki başlangıç durumunu okuyup **İşaretleri aç** seçeneğini etkinleştirin.
 
-The initial prototype deliberately requires the audited game DLL identity:
+- Kolonist göstergeleri ayrı kapatılabilir. Kolonistler artı şekli ve **K**, eşyalar kare ve **E** ile ayrılır; yalnız renge bağlı değildir.
+- Yazı boyutu **18 / 22 / 26 / 32**, işaret boyutu **8 / 16 / 24** arayüz birimidir. İkisi bağımsızdır; kamera yakınlığı ve nesnelerin gerçek boyutu değişmez. Arayüz ölçeği fiziksel boyutu etkiler.
+- Varsayılan yazı **22**, işaret **16**, yakın yığınları gruplama **açık**, eşya filtresi **Kapalı**, kolonistler **açık** durumdadır.
+- Eski `enabled`, `colonists`, `itemFilter`, `fontSize` anahtarları ve Kapalı=0/İlaç=1/Odun=2 sayıları korunur. Eski Odun/26 tercihi değişmez. Eksik `markerSize`/`groupItems` alanları 16/açık olur; bozuk boyut veya filtre yalnız kendi varsayılanına döner. Oyun kayıtları dönüştürülmez.
 
-- Game-reported version: `1.6.4633 rev1254` (GOG package revision metadata is different).
+Haritada büyük **Bul** kontrolü görünür. **Kolonistler** sekmesinde ekran dışındaki uygun kolonisti de görebilir, **Git** ile seçip merkezleyebilirsiniz. Önceki yakınlık korunur; kamera daha sonra hedefi takip etmez. Başarılı Git pencereyi kapatır. Kaybolmuş/sisli/başka haritadaki hedefte kamera ve seçim değişmez; bilgi gösterilip liste yenilenir.
+
+**Eşyalar** sekmesinde kategori düğmesi ve tür adına arama birlikte çalışır. Örneğin **Odun** seçin → tür satırındaki **Aç** → miktarı, hücresi ve kimliği görünen yığındaki **Git**. Tür satırı toplam adet ve yığın sayısını ayırır. **20 + 30 = 50 adet / 2 yığın**. Bulucudaki tür toplamı mevcut haritanın tamamındaki uygun yığınları kapsar; ekrandaki işaret sayısıyla sınırlanmaz.
+
+**Temizle**, **Geri**, **Önceki/Sonraki** ve **Kapat** kontrolleri vardır. En fazla 12 satırlık sayfalar ekran yüksekliğine göre azalır. Eylem alanları en az **48 × 48 arayüz birimidir**; içerik kısa ekranlarda dikey, çok dar ekranlarda yatay kaydırılır. Uzun adlar satır yüksekliği artırılarak tam gösterilir. Arama, sekme, sayfa ve hedef başvuruları diske kaydedilmez. Arama pencere kapalıyken de harita filtresine uygulanır; **Temizle** ile kaldırılabilir. Harita/kayıt değişimi veya modun kapatılması aramayı temizler.
+
+## Kategori kapsamı
+
+Tek etkin kategori vardır; özellikleri örtüşen bir yığın sorguda yalnız bir kez sayılır.
+
+| Kategori | Dahil etme kuralı |
+| --- | --- |
+| Kapalı | Eşya işareti ve sonucu yok |
+| Tümü | Bütün uygun yerdeki taşınabilir eşyalar |
+| İlaç | `IsMedicine` |
+| Odun | `WoodLog` |
+| Silah | `IsWeapon` |
+| Yiyecek | `ingestible` ve `CachedNutrition > 0` |
+| Kaynak | `CountAsResource` veya odun |
+| Giysi | `IsApparel` |
+
+Arama oyun dilindeki tür adına, uç boşlukları temizlenerek `OrdinalIgnoreCase` alt metin eşlemesi uygular. Boş arama tüm kategoriyi gösterir. Türkçe ç/Ç eşleşir; **İ ile i aynı sayılmaz**. Noktalı İ içeren adlarda oyunun gösterdiği harfi kullanın. Tam uzun ad aranabilir.
+
+Yalnız mevcut haritada doğmuş, yok edilmemiş, sis dışında olan **serbest kolonistler ve yerdeki eşyalar** alınır. Serbest kolonist kapsamı oyunun `FreeColonistsSpawned` listesidir. Hayvan, düşman, bina, bitki, envanter, başka harita ve dünya hedefleri kapsam dışındadır. Sisli hedefler toplam ve sonuç sayılarına da katılmaz.
+
+## Harita gösterimi ve sınırlar
+
+Harita grupları aynı türün aynı **64 × 64 arayüz birimlik hücresindeki** ekran içi yığınlarını birleştirir. Hücre sınırı ayrı grup oluşturabilir. Farklı tür, ekran dışı veya sisli üyeler aynı görsel toplama katılmaz. Gruplama kapatılabilir.
+
+Seçilmiş uygun hedef, ardından kolonistler ve kararlı kimlik sırası önceliklidir. En fazla **120 işaret ve 40 metin** çizilir. İşaretlerin gerçek boyutu, diğer metinler, ekran sınırları ve Bul kontrolü yerleşimde hesaba katılır. Sığmayan metin atlanır; işareti kalabilir. **Bul (+N)** içindeki N, tam metin etiketi çizilemeyen görsel grup sayısıdır; ham yığın sayısı değildir. Bulucunun sonuçları bu çizim sınırıyla kesilmez.
+
+Katalog üyeliği **250 ms** arayla; harita, kayıt, kategori ve arama değişiminde hemen yenilenir. Sis, miktar ve hedef uygunluğu her çizim/eylem öncesinde tekrar okunur. Yeni doğan/keşfedilen hedefler en fazla 250 ms gecikebilir. Eşya filtresi Kapalı iken eşya taraması yapılmaz. **Tam tarama maliyeti eşya sayısına bağlıdır; 120 işaret sınırı tarama maliyetini sınırlamaz.** Yoğun depo performansı telefonda ölçülmelidir.
+
+Harita işaretleri girdi almaz. Bulucu oyun pencere sırasına katılır; öndeki oyun penceresi varken küçük Bul kontrolü etkinleşmez. Bulucu içindeki dokunuşun haritaya geçmemesi ve mevcut sürükleme/yakınlaştırma/uzun basma davranışları cihaz kabulünde kontrol edilmelidir.
+
+## Uyumluluk kapısı
+
+Başlangıçta Android Unity, `RIMDROID_IL2MONO_MANAGED`, RimWorld 1.6, tam API imzaları, tek oyun assembly’si ve **önceden yüklenmiş tek Harmony 2.x** denetlenir. Yalnız doğrulanmış referans kabul edilir:
+
+- Oyun bildirimi: `1.6.4633 rev1254` (kurulum paketi revizyonu farklı görünebilir).
 - `Assembly-CSharp.dll` SHA-256: `39c5532c8f9fd8b31cdc9450d3148bc2f372f03f030dc5cddd170c9a08774076`.
 - MVID: `c337411a-5cb6-49b6-8f4c-0609acf16d96`.
-- Unity reference: `2022.3.35f1`.
+- Unity referansı: `2022.3.35f1`.
 
-A different, unreadable or replaced runtime game DLL disables this overlay with one diagnostic. It is not silently accepted as compatible. A new game build needs API verification and a deliberate identity update/rebuild. Prepatcher, BepInEx, runtime assembly replacement, Box64 and Waylith are outside the first supported test configuration.
+Telefonun DLL kimliği ayrıca ölçülmelidir; PC referansıyla derlenmesi Android’de eşleştiği anlamına gelmez. Farklı build için kapı gevşetilmez, ayrı API/kimlik doğrulaması gerekir. Native dışı motorlar, Prepatcher/BepInEx ve oyun assembly’sini değiştiren kurulumlar bu kabul kapsamına alınmaz.
 
-RimDroid Native's source pins Harmony **2.4.1**, while the nearby downloaded Harmony mod is **2.4.3**. This build uses a small reflection adapter to the **already loaded** `HarmonyLib.Harmony` / `HarmonyMethod` / `Patch` APIs, following RimDroid's existing bridge pattern. Consequently there is no compile-time Harmony reference and no Harmony DLL in this distribution. Runtime must have exactly one loaded Harmony assembly, major version 2, and a matching patch signature. The actual phone version still needs checking; compatibility with any particular runtime Harmony has not been executed here.
+İki Harmony kancası tek kurulum olarak yönetilir. Kısmi hata bu modun kancalarını geri alır. Uyumsuzluk, assembly değişimi veya mod hatası bütün özellikleri kapatır; geçici pencereler/katalog temizlenir ve bir mod tanısı üretilir. Çizim yalnız Repaint kullanır; etkileşim ayrı `Verse.Window` yolundadır. Değiştirilen GUI durumu hata halinde de geri yüklenir. Kaynak depodaki `docs/api-adaptation.md` uyarlama notu erişim ve imza kararlarını açıklar.
 
-## Build without modifying the game
+RimDroid Native kaynak referansı Harmony 2.4.1, komşu indirilen Harmony modu 2.4.3 kullanmaktadır. Mod mevcut runtime’a reflection ile bağlanır; derleme bağımlılığı veya dağıtılan ikinci Harmony yoktur. Telefonun gerçek Harmony kimliği ve kanca çalışması henüz doğrulanmadı.
 
-Requires an installed .NET SDK and Python 3. No game is launched and no packages are downloaded. Framework/Unity/game references remain in the developer's own game directory; no references are copied.
+## Oyun dosyalarını değiştirmeden derleme
 
-From the workspace root:
+Kurulu .NET SDK, Python 3 ve statik denetim için mevcut `ilspycmd` gerekir. Araçlar bağımlılık kurmaz, NuGet restore yapmaz, oyunu veya APK’yı başlatmaz. Oyun/Unity/framework DLL’leri yalnız kullanıcının referans klasöründen okunur.
 
-```sh
-python3 mods/RimDroidReadability/tools/build.py
-```
-
-For another **identical audited** game location:
+Modun Git kökünden, aynı doğrulanmış referansla:
 
 ```sh
-python3 mods/RimDroidReadability/tools/build.py --game-managed-dir "/absolute/path/to/RimWorldLinux_Data/Managed"
+python3 tools/build.py --msbuild --game-managed-dir "/tam/yol/RimWorldLinux_Data/Managed"
+python3 tools/validate.py --game-managed-dir "/tam/yol/RimWorldLinux_Data/Managed"
 ```
 
-The offline builder mirrors the repository's controller-mod Roslyn pattern: `csc.dll` runs with `-nostdlib+`, read-only game framework references, AnyCPU and a .NET Framework 4.7.2 target attribute. This is not a modern .NET runtime mod. SDK/reference versions are compared numerically. Standalone tests select an already installed compatible .NET runtime; missing compatible runtime/reference packs produce an error and are never installed automatically. The script places its temporary files, .NET CLI settings/caches and test artifacts inside this mod's `.build/` directory. It verifies all referenced DLL hashes and modification times before/after compilation. No NuGet restore or SDK installation is performed.
-
-An MSBuild wrapper is also available. Invoke it through the Python launcher so .NET CLI caches **and named-mutex/runtime files** are confined before `dotnet build` starts:
+Doğrudan çevrimdışı Roslyn yolu:
 
 ```sh
-python3 mods/RimDroidReadability/tools/build.py --msbuild
+python3 tools/build.py --game-managed-dir "/tam/yol/RimWorldLinux_Data/Managed"
 ```
 
-This runs `dotnet build Source/RimDroidReadability.csproj -c Release` with the external `GameManagedDir` property. The SDK may print a workload-verification notice on its first isolated CLI run; no workload is needed or installed. Then audit actual PE/CLI references and game API metadata using an existing `ilspycmd`:
+`ILSPYCMD` ortam değişkeniyle kurulu `ilspycmd` dosyasının tam yolu verilebilir. Yerel çalışma alanında isteğe bağlı varsayılan, mod kökünün iki üstündeki `RimWorld/game/RimWorldLinux_Data/Managed` konumudur; bağımsız klonda **`--game-managed-dir` kullanın**.
 
-```sh
-python3 mods/RimDroidReadability/tools/validate.py
-```
+MSBuild’i Python başlatıcısıyla çalıştırın; CLI/runtime geçici dosyaları, önbellekler ve test çıktıları `.build/` altında kalır. C# 7.3, AnyCPU, .NET Framework 4.7.2 hedeflenir; modern .NET runtime mod DLL’sine bağlanmaz. Saf mantık testleri yalnız özgün mantığı ve kurulu uyumlu .NET runtime’ını kullanır; oyun/Unity kodu çalıştırmaz. Referans DLL hash ve değişiklik zamanları derleme öncesi/sonrası karşılaştırılır.
 
-Set `ILSPYCMD` to its absolute executable path if needed. Static auditing reads metadata only; it does not execute the game or write proprietary decompiled source/IL.
+Çıktılar:
 
-Outputs: `1.6/Assemblies/RimDroidReadability.dll`, `dist/RimDroidReadability-0.1.0.zip`, `docs/validation.json`, and after the audit, `docs/static-validation.json`. Release packaging is allowlisted: only About XML, LoadFolders XML, this README and the original mod DLL. Source, tests, caches, proprietary DLLs/assets and `0Harmony.dll` are excluded.
+- `1.6/Assemblies/RimDroidReadability.dll`
+- `dist/RimDroidReadability-0.2.0.zip`
+- Yerel kanıt: `docs/validation.json`, `docs/static-validation.json` (Git’e alınmaz).
 
-## Device installation and controls — not yet performed
+ZIP izin listesi: yalnız `About/About.xml`, `LoadFolders.xml`, özgün mod DLL’si, `README.md`, `RELEASE.md`. Oyun, Unity, Harmony DLL’leri, oyun görselleri, kaynak referanslar, önbellekler ve raporlar pakete konmaz. Kaynak/test/OpenSpec belgeleri Git deposundadır. Lisans seçilmediğinden açık kaynak lisansı varmış gibi dağıtım yapılmaz.
 
-1. Confirm the **actual** Android instance is the reference 1.6 build on RimDroid **Native Unity**, and its original DLL SHA/MVID match. Selecting “Native” in the menu alone is insufficient; runtime support checks, extra environment settings and overrides affect loading.
-2. Confirm the APK includes the Native module and the loaded game assembly is the expected file; check the existing Harmony identity and exclude assembly-replacing mods for this first test.
-3. Import the release ZIP using RimDroid's mod workflow, or place its single `RimDroidReadability` folder in that instance's `Mods` directory. Enable it for that instance. **Do not copy a second Harmony or game DLL.** Restart the game normally.
-4. Open Options → Mod Settings → **RimDroid Readability**. Read the startup status, then enable “İşaretleri aç”. “Kolonistleri göster” toggles colonists. The item button cycles **Kapalı → İlaç → Odun**. Font button cycles **18 → 22 → 26** GUI units (UI scale still applies).
-5. To disable, clear the master checkbox or disable this mod in the instance's mod list. Saves, camera settings and item definitions are not changed by the mod.
+## Kurulum, kapatma ve kalan kabul
 
-## Drawing behavior and limits
+1. Gerçek telefonun Native rotasını, APK ve oyun sürümünü, orijinal oyun DLL SHA/MVID’sini ve yüklü Harmony kimliğini doğrulayın.
+2. ZIP’i RimDroid’in mod içe aktarma yöntemiyle kurun veya tek `RimDroidReadability` klasörünü ilgili instance’ın `Mods` klasörüne yerleştirin. Modu etkinleştirip oyunu normal biçimde yeniden başlatın. İkinci Harmony veya oyun DLL’si kopyalamayın.
+3. Mod Ayarları’nda başarılı başlangıç durumunu okuyup modu açın; boyutları seçin ve Bul akışını deneyin.
+4. Kapatmak için **İşaretleri aç** seçeneğini kaldırın veya mod listesinden devre dışı bırakın. Mod göstergeleri ve pencereleri kaldırılır; tercihler korunur. Oyun kayıtları ve tanımları dönüştürülmez. Gerekirse önceki 0.1.0 paketine dönülebilir.
 
-- Registry queries use the current map's medicine group, `WoodLog` definition and `FreeColonistsSpawned`. Mental-state colonists are not intentionally excluded. This list has the game's own free-colonist/slave/subhuman semantics; prisoner markers are not added.
-- The GUI postfix runs on repaint only in map view. Destroyed, unspawned, different-map, fogged and out-of-view objects are rejected **before** projecting their position. A loaded/cached candidate is never sufficient to bypass visibility.
-- Candidate membership refreshes every 250 ms. The registry lists are scanned, but only currently visible, spawned, same-map, non-fogged candidates with a fully drawable GUI marker are retained; clipped edge objects cannot consume the candidate budget. Storage is bounded to 120, ordered by colonist priority and object ID. Visibility is checked again during drawing and positions/stack counts remain live. **Panning, revealing fog or adding a new object can delay its first marker by up to 250 ms.** Switching map or settings clears the cache.
-- Labels have their own cached GUI style and dark background, independent of camera zoom. Markers are collected and drawn first; labels are placed afterward, avoiding every visible marker rectangle and previously placed label. Four nearby placements are attempted; an unfittable label is omitted while its small category square may remain. At most **40 labels / 120 markers** are drawn; text allocation/measurement stops once the 40-label cap is reached. Dense depots intentionally do not show every label; the current prototype does not group stacks or enlarge selection hitboxes.
-- Labels are not interactive. Existing game UI can cover them. GUI color is restored after drawing, including errors. A rendering exception disables only this overlay and reports once. Assembly replacement notifications set a sticky volatile gate without touching rendering state on the loader thread; initialization cannot overwrite that gate, and the main-thread postfix handles it once before any drawing.
-
-## Validation and remaining device acceptance
-
-Automated local checks cover finite/edge/dense placement, pairwise label/marker exclusion, viewport containment, label/candidate/marker budgets, stable priority, all visibility input combinations, runtime/version gates and sticky assembly-gate interleavings. They test the layout reset and bounded-candidate helpers, **not actual game map/settings cache invalidation**. Tooling tests cover numeric version selection, missing runtime failure and negative ZIP/XML cases, including rejection under `python -O` / `PYTHONOPTIMIZE`. The standalone test assembly contains only original logic and does not reference or load game/Unity assemblies. Static checks inspect the output's AnyCPU flags, real game API metadata, exact XML routing, dependency references and all ZIP payload bytes against current sources. These checks **do not exercise Harmony patching or Unity GUI**.
-
-Before claiming device compatibility, record:
-
-- Actual APK build, Native route, instance full version, original DLL SHA/MVID, loaded assembly path and Harmony version. A matching PC DLL is not proof of matching Android files.
-- Successful patch initialization and working toggles at all three font sizes; negative initialization on unsupported/mismatched inputs remains a device/runtime test too.
-- Medicine/wood identification and amounts, moving/mental-state colonists, fog boundaries, offscreen edges, dense depots, despawns and map switches.
-- Settings persist and a disabled master draws nothing. Existing selection/long-press controls continue normally.
-- Repeat the same camera/save/speed with overlay off/on; record frame timing/FPS and allocation behavior. Phone readability, latency and performance are **pending**, not passed.
-
-No device deployment or game launch is part of this repository build.
+Yerel mantık/araç/API/paket testleri gerçek Harmony kancası, Unity kamera hareketi, dokunma veya FPS kabulü değildir. Cihaz senaryoları ve kanıt sınırları [RELEASE.md](RELEASE.md) içindedir. Lisans, GitHub depo adı ve kamuya yayın kararı kullanıcıya aittir; yayın henüz yapılmadı.

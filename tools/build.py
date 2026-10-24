@@ -16,6 +16,8 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 WORK = ROOT / '.build'
+VERSION = '0.2.0'
+PAYLOAD = ('About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll', 'README.md', 'RELEASE.md')
 EXPECTED_HASH = '39c5532c8f9fd8b31cdc9450d3148bc2f372f03f030dc5cddd170c9a08774076'
 
 
@@ -132,7 +134,7 @@ def logic_tests(csc, dotnet_root, env):
     args = ['-nologo', '-nostdlib+', '-target:exe', '-langversion:7.3',
             '-out:' + str(out)]
     args += ['-reference:' + str(p) for p in sorted(refs.glob('*.dll'))]
-    args += [str(ROOT / 'Source/LabelLayout.cs'), str(ROOT / 'Tests/LogicTests.cs')]
+    args += [str(ROOT / 'Source/LabelLayout.cs'), str(ROOT / 'Source/ReadabilityLogic.cs'), str(ROOT / 'Tests/LogicTests.cs')]
     rsp = WORK / 'logic-tests.rsp'
     response_file(rsp, args)
     run(['dotnet', csc, '-noconfig', '@' + str(rsp)], env)
@@ -145,8 +147,8 @@ def logic_tests(csc, dotnet_root, env):
 def package(output):
     release = ROOT / 'dist'
     release.mkdir(exist_ok=True)
-    target = release / 'RimDroidReadability-0.1.0.zip'
-    paths = ['About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll', 'README.md']
+    target = release / ('RimDroidReadability-' + VERSION + '.zip')
+    paths = PAYLOAD
     with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED) as archive:
         for rel in paths:
             info = zipfile.ZipInfo('RimDroidReadability/' + rel, (2026, 10, 23, 0, 0, 0))

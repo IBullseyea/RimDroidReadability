@@ -7,26 +7,28 @@ using UnityEngine;
 using Verse;
 
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7.2", FrameworkDisplayName = ".NET Framework 4.7.2")]
-[assembly: AssemblyVersion("0.1.0.0")]
+[assembly: AssemblyVersion("0.2.0.0")]
 
 namespace RimDroid.Readability
 {
-    internal enum ItemFilter { Off, Medicine, Wood }
-
     public sealed class ReadabilitySettings : ModSettings
     {
         internal bool Enabled;
         internal bool Colonists = true;
         internal ItemFilter Filter = ItemFilter.Off;
         internal int FontSize = 22;
+        internal int MarkerSize = 16;
+        internal bool GroupItems = true;
         public override void ExposeData()
         {
             Scribe_Values.Look(ref Enabled, "enabled", false);
             Scribe_Values.Look(ref Colonists, "colonists", true);
             Scribe_Values.Look(ref Filter, "itemFilter", ItemFilter.Off);
             Scribe_Values.Look(ref FontSize, "fontSize", 22);
-            if (!Enum.IsDefined(typeof(ItemFilter), Filter)) Filter = ItemFilter.Off;
-            if (FontSize != 18 && FontSize != 22 && FontSize != 26) FontSize = 22;
+            Scribe_Values.Look(ref MarkerSize, "markerSize", 16);
+            Scribe_Values.Look(ref GroupItems, "groupItems", true);
+            PreferenceValues values = SettingsRules.Load(Filter, FontSize, MarkerSize, GroupItems);
+            Filter = values.Filter; FontSize = values.Font; MarkerSize = values.Marker; GroupItems = values.Group;
         }
     }
 
@@ -41,6 +43,9 @@ namespace RimDroid.Readability
         private static bool reported;
         private static bool initializationAttempted;
         private static Assembly boundGame;
+        private static readonly HookLifecycle hooks = new HookLifecycle();
+        private static object harmonyInstance;
+        private static MethodInfo unpatch;
         private static string status = "Başlangıç kontrolü bekleniyor.";
 
         public ReadabilityMod(ModContentPack content) : base(content)
@@ -55,23 +60,32 @@ namespace RimDroid.Readability
         {
             bool oldEnabled = Settings.Enabled, oldColonists = Settings.Colonists;
             ItemFilter oldFilter = Settings.Filter;
+            int oldFont = Settings.FontSize, oldMarker = Settings.MarkerSize;
+            bool oldGroup = Settings.GroupItems;
             Listing_Standard list = new Listing_Standard();
             list.Begin(inRect);
-            list.Label("RimWorld 1.6 / RimDroid Native prototipi");
+            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.0");
             list.Label(status);
             list.Gap();
             list.CheckboxLabeled("İşaretleri aç", ref Settings.Enabled);
             list.CheckboxLabeled("Kolonistleri göster", ref Settings.Colonists);
-            string filter = Settings.Filter == ItemFilter.Medicine ? "İlaç" : Settings.Filter == ItemFilter.Wood ? "Odun" : "Kapalı";
-            if (list.ButtonText("Eşya filtresi: " + filter)) Settings.Filter = (ItemFilter)(((int)Settings.Filter + 1) % 3);
+            string filter = SettingsRules.FilterName(Settings.Filter);
+            if (list.ButtonText("Eşya filtresi: " + filter)) Settings.Filter = SettingsRules.NextFilter(Settings.Filter);
             if (list.ButtonText("Yazı boyutu: " + Settings.FontSize))
-                Settings.FontSize = Settings.FontSize == 18 ? 22 : Settings.FontSize == 22 ? 26 : 18;
+                Settings.FontSize = Settings.FontSize == 18 ? 22 : Settings.FontSize == 22 ? 26 : Settings.FontSize == 26 ? 32 : 18;
+            if (list.ButtonText("İşaret boyutu: " + Settings.MarkerSize))
+                Settings.MarkerSize = Settings.MarkerSize == 8 ? 16 : Settings.MarkerSize == 16 ? 24 : 8;
+            list.CheckboxLabeled("Yakın eşya yığınlarını grupla", ref Settings.GroupItems);
             list.Gap();
-            list.Label("Bir eşya kategorisi, en fazla 40 etiket ve 120 işaret. Çakışan metinler atlanır; kamera ve seçim davranışı değişmez.");
+            list.Label("Bir eşya kategorisi, en fazla 40 etiket ve 120 işaret. Bul ile kolonist veya yığına Git; yakınlık korunur. Kapatınca bütün mod kontrolleri kaldırılır.");
             list.Label("Telefon DLL eşleşmesi ve gerçek cihaz performansı henüz doğrulanmadı.");
             list.End();
-            if (oldEnabled != Settings.Enabled || oldColonists != Settings.Colonists || oldFilter != Settings.Filter)
-                OverlayRenderer.Invalidate();
+            if (oldEnabled != Settings.Enabled || oldColonists != Settings.Colonists || oldFilter != Settings.Filter
+                || oldFont != Settings.FontSize || oldMarker != Settings.MarkerSize || oldGroup != Settings.GroupItems)
+            {
+                if (!Settings.Enabled) FinderController.Reset();
+                else OverlayRenderer.Invalidate();
+            }
         }
 
         private static void Initialize()
@@ -84,7 +98,7 @@ namespace RimDroid.Readability
                     Environment.GetEnvironmentVariable("RIMDROID_IL2MONO_MANAGED")))
                 { Disable("Yalnız RimDroid Native Android motoru desteklenir."); return; }
                 if (!AnnotationRules.VersionAllowed(VersionControl.CurrentVersionString))
-                { Disable("Bu prototip yalnız RimWorld 1.6 içindir."); return; }
+                { Disable("Bu mod yalnız RimWorld 1.6 içindir."); return; }
                 boundGame = typeof(Find).Assembly;
                 // Subscribe before any snapshot. A load before subscription is covered by the snapshot;
                 // a load after it is covered by the sticky gate, which initialization cannot overwrite.
@@ -104,29 +118,19 @@ namespace RimDroid.Readability
                         gate.ObserveReplacement();
                 if (HandleAssemblyReplacement()) return;
 
-                MethodInfo target = typeof(ThingOverlays).GetMethod("ThingOverlaysOnGUI", BindingFlags.Public | BindingFlags.Instance,
-                    null, Type.EmptyTypes, null);
-                if (target == null || target.ReturnType != typeof(void)) throw new MissingMethodException("ThingOverlaysOnGUI()");
-                RequireMethod(typeof(ListerThings), "ThingsInGroup", typeof(ThingRequestGroup));
-                RequireMethod(typeof(ListerThings), "ThingsOfDef", typeof(ThingDef));
-                RequireMethod(typeof(GenMapUI), "LabelDrawPosFor", typeof(Thing), typeof(float));
-                if (typeof(Map).GetField("listerThings") == null || typeof(Map).GetField("mapPawns") == null
-                    || typeof(MapPawns).GetProperty("FreeColonistsSpawned") == null)
-                    throw new MissingMemberException("Map / MapPawns API");
-                InstallHarmony(target);
-                if (!gate.MarkInitialized()) { HandleAssemblyReplacement(); return; }
-                status = "API/DLL kontrolü geçti. İşaretler ayarlardan açılabilir; cihaz testi bekleniyor.";
-                Log.Message("[RimDroid Readability] Native 1.6 reference DLL verified; overlay patch installed, enabled="
+                ApiContract.Verify();
+                MethodInfo target = ApiContract.Method(typeof(ThingOverlays), "ThingOverlaysOnGUI", typeof(void), false);
+                InstallHarmony(new[] { target, ApiContract.Method(typeof(MapInterface), "MapInterfaceOnGUI_AfterMainTabs", typeof(void), false) });
+                if (!gate.MarkInitialized(hooks.Active)) { HandleAssemblyReplacement(); return; }
+                status = "API/DLL kontrolü geçti. Göstergeler ve Bul açılabilir; cihaz testi bekleniyor.";
+                Log.Message("[RimDroid Readability] Native 1.6 reference DLL verified; overlay and finder patches installed, enabled="
                     + Settings.Enabled + "; SHA256=" + actualHash + "; MVID=" + ReferenceMvid
                     + ". Android visual/performance acceptance still pending.");
             }
             catch (Exception error) { Disable("Başlatma kontrolü başarısız: " + error.GetType().Name + ": " + error.Message); }
         }
 
-        private static void RequireMethod(Type owner, string name, params Type[] args)
-        { if (owner.GetMethod(name, args) == null) throw new MissingMethodException(owner.FullName, name); }
-
-        private static void InstallHarmony(MethodInfo original)
+        private static void InstallHarmony(MethodInfo[] originals)
         {
             // No 0Harmony is loaded from disk or distributed. Bind the existing runtime like RimDroid's bridge.
             Assembly runtime = null;
@@ -150,14 +154,26 @@ namespace RimDroid.Readability
                 { patch = method; break; }
             }
             if (patch == null) throw new MissingMethodException("Harmony.Patch postfix signature");
-            object instance = Activator.CreateInstance(harmony, new object[] { HarmonyId });
-            object postfix = Activator.CreateInstance(harmonyMethod,
-                new object[] { typeof(OverlayRenderer).GetMethod("Postfix", BindingFlags.Public | BindingFlags.Static) });
-            object[] parameters = new object[patch.GetParameters().Length];
-            parameters[0] = original;
-            parameters[2] = postfix;
-            patch.Invoke(instance, parameters);
+            unpatch = harmony.GetMethod("UnpatchAll", BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static,
+                null, new[] { typeof(string) }, null);
+            if (unpatch == null || unpatch.ReturnType != typeof(void)) throw new MissingMethodException("Harmony.UnpatchAll(string)");
+            harmonyInstance = Activator.CreateInstance(harmony, new object[] { HarmonyId });
+            Type[] callbacks = { typeof(OverlayRenderer), typeof(FinderController) };
+            hooks.Install(originals.Length, delegate(int i)
+            {
+                object postfix = Activator.CreateInstance(harmonyMethod,
+                    new object[] { callbacks[i].GetMethod("Postfix", BindingFlags.Public | BindingFlags.Static) });
+                object[] parameters = new object[patch.GetParameters().Length];
+                parameters[0] = originals[i]; parameters[2] = postfix;
+                patch.Invoke(harmonyInstance, parameters);
+            }, RollbackHarmony);
             Log.Message("[RimDroid Readability] Existing Harmony " + version + " used through runtime reflection; no bundled Harmony.");
+        }
+
+        private static void RollbackHarmony()
+        {
+            if (unpatch != null && harmonyInstance != null)
+                unpatch.Invoke(unpatch.IsStatic ? null : harmonyInstance, new object[] { HarmonyId });
         }
 
         private static void OnAssemblyLoad(object sender, AssemblyLoadEventArgs args)
@@ -176,8 +192,11 @@ namespace RimDroid.Readability
         internal static void Disable(string reason)
         {
             gate.Disable();
+            try { FinderController.Reset(); }
+            catch (Exception error) { reason += "; pencere temizliği: " + error.GetType().Name; }
+            try { hooks.Remove(RollbackHarmony); }
+            catch (Exception error) { reason += "; kanca temizliği: " + error.GetType().Name; }
             status = reason;
-            OverlayRenderer.Invalidate();
             if (reported) return;
             reported = true;
             Log.Warning("[RimDroid Readability] Disabled: " + reason);

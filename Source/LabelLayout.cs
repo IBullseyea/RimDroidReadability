@@ -29,9 +29,11 @@ namespace RimDroid.Readability
         private readonly List<LabelRect> occupied = new List<LabelRect>(MaximumLabels);
         private readonly List<LabelRect> obstacles = new List<LabelRect>(AnnotationRules.MaximumMarkers);
         private LabelRect viewport;
+        private LabelRect control;
         internal int Count { get { return occupied.Count; } }
         internal int ObstacleCount { get { return obstacles.Count; } }
-        internal void Reset(LabelRect bounds) { viewport = bounds; occupied.Clear(); obstacles.Clear(); }
+        internal void Reset(LabelRect bounds) { viewport = bounds; control = default(LabelRect); occupied.Clear(); obstacles.Clear(); }
+        internal void SetControl(LabelRect bounds) { control = bounds; }
         internal bool AddObstacle(LabelRect marker)
         {
             if (obstacles.Count >= AnnotationRules.MaximumMarkers || !viewport.IsFinite || !marker.IsFinite || !viewport.Contains(marker))
@@ -39,7 +41,7 @@ namespace RimDroid.Readability
             obstacles.Add(marker);
             return true;
         }
-        internal bool TryPlace(float x, float y, float width, float height, out LabelRect placed)
+        internal bool TryPlace(float x, float y, float width, float height, out LabelRect placed, int markerSize = 8)
         {
             placed = default(LabelRect);
             if (!viewport.IsFinite || !LabelRect.Finite(x) || !LabelRect.Finite(y)
@@ -48,11 +50,12 @@ namespace RimDroid.Readability
             // Fixed ordering and short offsets keep annotations attached to their anchor.
             for (int i = 0; i < 4; i++)
             {
-                float px = i == 1 ? x + 10 : i == 2 ? x - width - 10 : x - width / 2;
-                float py = i == 0 ? y - height - 10 : i == 3 ? y + 10 : y - height / 2;
+                float offset = markerSize / 2f + 6;
+                float px = i == 1 ? x + offset : i == 2 ? x - width - offset : x - width / 2;
+                float py = i == 0 ? y - height - offset : i == 3 ? y + offset : y - height / 2;
                 LabelRect candidate = new LabelRect(px, py, width, height);
                 if (!candidate.IsFinite || !viewport.Contains(candidate)) continue;
-                bool collision = false;
+                bool collision = control.IsFinite && candidate.Overlaps(control, 3);
                 for (int j = 0; j < occupied.Count; j++)
                     if (candidate.Overlaps(occupied[j], 3)) { collision = true; break; }
                 for (int j = 0; !collision && j < obstacles.Count; j++)
@@ -102,7 +105,8 @@ namespace RimDroid.Readability
         internal bool Ready { get { return initialized && !replaced; } }
         internal bool ReplacementObserved { get { return replaced; } }
         internal void ObserveReplacement() { replaced = true; }
-        internal bool MarkInitialized() { initialized = true; return Ready; }
+        internal bool MarkInitialized() { return MarkInitialized(true); }
+        internal bool MarkInitialized(bool apiVerified) { initialized = apiVerified; return Ready; }
         internal void Disable() { initialized = false; }
         // Called only on the Unity/main thread. The loader callback only sets the sticky volatile flag.
         internal bool ConsumeReplacement()
@@ -123,10 +127,13 @@ namespace RimDroid.Readability
         internal static bool Visible(bool destroyed, bool spawned, bool sameMap, bool inView, bool fogged)
         { return !destroyed && spawned && sameMap && inView && !fogged; }
         internal static bool TryMarker(float x, float y, LabelRect bounds, out LabelRect marker)
+        { return TryMarker(x, y, bounds, 8, out marker); }
+        internal static bool TryMarker(float x, float y, LabelRect bounds, int size, out LabelRect marker)
         {
             marker = default(LabelRect);
             if (!bounds.IsFinite || !LabelRect.Finite(x) || !LabelRect.Finite(y)) return false;
-            marker = new LabelRect(x - 4, y - 4, 8, 8);
+            if (size != 8 && size != 16 && size != 24) return false;
+            marker = new LabelRect(x - size / 2f, y - size / 2f, size, size);
             return marker.IsFinite && bounds.Contains(marker);
         }
         internal static int Compare(bool leftColonist, int leftId, bool rightColonist, int rightId)

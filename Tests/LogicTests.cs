@@ -9,9 +9,169 @@ internal static class LogicTests
     { assertions++; if (!condition) throw new Exception("FAILED: " + name); }
     private static void Main()
     {
+        Check((int)ItemFilter.Off == 0 && (int)ItemFilter.Medicine == 1 && (int)ItemFilter.Wood == 2, "legacy filter numeric values");
+        Check(SettingsRules.Filter(ItemFilter.Wood) == ItemFilter.Wood && SettingsRules.Font(26) == 26, "legacy Wood/26 unchanged");
+        Check(SettingsRules.Marker(16) == 16 && SettingsRules.Font(32) == 32, "new defaults and largest font");
+        Check(SettingsRules.Font(-1) == 22 && SettingsRules.Marker(100) == 16 && SettingsRules.Filter((ItemFilter)90) == ItemFilter.Off,
+            "corrupt values independently normalize");
+        PreferenceValues migrated = SettingsRules.Load(ItemFilter.Wood, 26);
+        Check(migrated.Filter == ItemFilter.Wood && migrated.Font == 26 && migrated.Marker == 16 && migrated.Group,
+            "old Wood/26 fixture with missing new fields migrates to marker16/group true");
+        migrated = SettingsRules.Load((ItemFilter)99, 26, -30, false);
+        Check(migrated.Filter == ItemFilter.Off && migrated.Font == 26 && migrated.Marker == 16 && !migrated.Group,
+            "corrupt fields do not overwrite independent valid preferences");
+        for (int mask = 0; mask < 512; mask++)
+        {
+            TargetFacts f = new TargetFacts { PlayingMap = (mask & 1) != 0, Destroyed = (mask & 2) != 0,
+                Spawned = (mask & 4) != 0, SameMap = (mask & 8) != 0, Fogged = (mask & 16) != 0,
+                Colonist = (mask & 32) != 0, Item = (mask & 64) != 0, Haulable = (mask & 128) != 0, InView = (mask & 256) != 0 };
+            bool expected = (mask & 31) == 13 && ((mask & 32) != 0 || (mask & 192) == 192);
+            Check(TargetRules.Eligible(f) == expected, "catalogue eligibility combinations " + mask);
+        }
+        Check(!TargetRules.Eligible(new TargetFacts { PlayingMap = true, Spawned = true, SameMap = true }), "animal enemy building excluded");
+        Check(!TargetRules.Eligible(new TargetFacts { PlayingMap = true, SameMap = true, Item = true, Haulable = true }), "inventory item excluded");
+        TargetFacts navigation = new TargetFacts { PlayingMap = true, Spawned = true, SameMap = true, Colonist = true, InView = false };
+        Check(TargetRules.Eligible(navigation), "Go accepts offscreen valid colonist");
+        navigation.Destroyed = true; Check(!TargetRules.Eligible(navigation), "Go rejects destroyed target");
+        navigation.Destroyed = false; navigation.Fogged = true; Check(!TargetRules.Eligible(navigation), "Go rejects newly fogged target");
+        navigation.Fogged = false; navigation.SameMap = false; Check(!TargetRules.Eligible(navigation), "Go rejects target on another map");
+        ItemFacts wood = new ItemFacts { Wood = true };
+        Check(ItemRules.Matches(ItemFilter.Wood, wood, "Odun", " oDu "), "trimmed ordinal case insensitive search");
+        Check(ItemRules.Matches(ItemFilter.Resource, wood, "Odun", ""), "wood also resource");
+        Check(!ItemRules.Matches(ItemFilter.Off, wood, "Odun", ""), "off suppresses all items");
+        Check(!ItemRules.Matches(ItemFilter.Medicine, wood, "Odun", ""), "wrong category excluded");
+        Check(ItemRules.Matches(ItemFilter.All, wood, "çelik", "ÇEL"), "Turkish accented letters ordinal case matching");
+        Check(!ItemRules.Matches(ItemFilter.All, wood, "İlaç", "ilaç"), "ordinal comparison preserves dotted I distinction");
+        Check(ItemRules.Matches(ItemFilter.All, wood, "İlaç", "İLAÇ"), "Turkish name with identical dotted I matches");
+        Check(ItemRules.Matches(ItemFilter.All, wood, new string('a', 600) + "eşya", "EŞYA"), "long names searchable in full");
+        Check(!ItemRules.Matches(ItemFilter.All, wood, "Odun", "yok"), "no search match");
+        ItemFacts allKinds = new ItemFacts { Medicine = true, Weapon = true, Food = true, Resource = true, Apparel = true };
+        foreach (ItemFilter category in SettingsRules.FilterOrder)
+            Check(ItemRules.Matches(category, allKinds, "Tür", null) == (category != ItemFilter.Off && category != ItemFilter.Wood), "category fixture " + category);
+        List<TargetData> stacks = new List<TargetData> {
+            new TargetData { Id = 2, TypeKey = "Wood", Name = "Odun", Amount = 30, OnScreen = true, X = 20, Y = 20 },
+            new TargetData { Id = 1, TypeKey = "Wood", Name = "Odun", Amount = 20, OnScreen = true, X = 30, Y = 30 },
+            new TargetData { Id = 3, TypeKey = "Wood", Name = "Odun", Amount = 7, OnScreen = false },
+            new TargetData { Id = 4, TypeKey = "Med", Name = "İlaç", Amount = 5, OnScreen = true, X = 20, Y = 20 }
+        };
+        List<TargetGroup> groups = GroupRules.Visual(stacks, true);
+        Check(groups.Count == 2 && groups[0].Amount == 50 && groups[0].Members.Count == 2, "20+30 is 50 items and two stacks; other types separate");
+        Check(groups[0].Id == 1 && groups[0].X == 25 && groups[0].Y == 25, "stable minimum identifier and average anchor");
+        Check(GroupRules.Visual(stacks, false).Count == 3, "ungrouped stacks exclude offscreen");
+        groups = GroupRules.Types(stacks);
+        Check(groups.Count == 2 && groups[0].Amount == 57 && groups[0].Members.Count == 3, "finder totals include offscreen, not marker budget");
+        stacks[0].X = 64; stacks[1].X = 63;
+        Check(GroupRules.Visual(stacks, true).Count == 3, "cell boundary splits groups");
+        stacks.RemoveAt(2); // adapter removes fogged/destroyed members before pure grouping
+        Check(GroupRules.Types(stacks)[0].Amount == 50, "ineligible member removed from total");
+        QueryClock clock = new QueryClock(); object mapKey = new object(), gameKey = new object();
+        Check(clock.Refresh(mapKey, gameKey, "wood", 1), "first query refresh");
+        Check(!clock.Refresh(mapKey, gameKey, "wood", 1.24f), "query cached below 250ms");
+        Check(clock.Refresh(mapKey, gameKey, "wood", 1.25f), "query refreshes at 250ms");
+        Check(clock.Refresh(mapKey, gameKey, "search", 1.26f), "search/category change refreshes immediately");
+        Check(clock.Refresh(new object(), gameKey, "search", 1.27f), "map switch invalidates");
+        Check(clock.Refresh(mapKey, new object(), "search", 1.28f), "save change invalidates even with same map");
+        Check(!clock.Refresh(null, null, "search", 1.29f), "world/no map clears cache");
+        Check(clock.Refresh(mapKey, gameKey, "search", 1.30f), "map return refreshes");
+        clock.Clear(); Check(clock.Refresh(mapKey, gameKey, "search", 1.31f), "explicit disable/settings reset refreshes");
+        List<int> manyTargets = new List<int>(); for (int i = 0; i < 153; i++) manyTargets.Add(i);
+        HashSet<int> reachable = new HashSet<int>();
+        for (int pageIndex = 0; pageIndex < PageRules.Count(manyTargets.Count, 12); pageIndex++)
+        {
+            int p = pageIndex;
+            foreach (int id in PageRules.Slice(manyTargets, ref p, 12)) Check(reachable.Add(id), "pages never duplicate a target");
+        }
+        Check(reachable.Count == 153, "finder reaches more than 120 targets without truncation");
+        int stalePage = 50; manyTargets.RemoveRange(3, 150);
+        Check(PageRules.Slice(manyTargets, ref stalePage, 12).Count == 3 && stalePage == 0, "deleted results clamp stale page");
+        List<TargetData> denseTargets = new List<TargetData>();
+        for (int i = 0; i < 200; i++) denseTargets.Add(new TargetData {
+            Id = i, TypeKey = "Wood", Name = "Odun", Amount = 1, X = 100 + i % 20 * 80, Y = 100 + i / 20 * 80,
+            OnScreen = true, Selected = i == 199, Colonist = i == 198 });
+        LabelRect largeView = new LabelRect(0, 0, 2000, 2000);
+        List<TargetGroup> denseGroups = GroupRules.Visual(denseTargets, false);
+        List<PlannedMarker> budgeted = OverlayBudget.Select(denseGroups, largeView, default(LabelRect), 24);
+        Check(budgeted.Count == 120 && budgeted[0].Group.Id == 199 && budgeted[1].Group.Id == 198, "marker budget prioritizes selected target then colonist");
+        denseTargets.Reverse();
+        List<PlannedMarker> reordered = OverlayBudget.Select(GroupRules.Visual(denseTargets, false), largeView, default(LabelRect), 24);
+        for (int i = 0; i < budgeted.Count; i++) Check(budgeted[i].Group.Id == reordered[i].Group.Id, "input reordering preserves dense output " + i);
+        Check(OverlayBudget.Omitted(200, 40) == 160 && OverlayBudget.Omitted(3, 1) == 2, "omitted groups count each missing label once");
+        TargetGroup selectedGroup = denseGroups[0];
+        LabelRect blockedControl = new LabelRect(selectedGroup.X - 30, selectedGroup.Y - 30, 60, 60);
+        List<PlannedMarker> withControl = OverlayBudget.Select(denseGroups, largeView, blockedControl, 24);
+        Check(withControl.Count == 120 && withControl[0].Group.Id == 198, "control obstruction does not consume marker budget");
+        foreach (PlannedMarker marker in withControl) Check(!marker.Rect.Overlaps(blockedControl, 0), "no marker overlaps actual control");
+        foreach (LabelRect screen in new[] { new LabelRect(0, 0, 640, 360), new LabelRect(0, 0, 360, 640),
+            new LabelRect(0, 0, 1280, 720), new LabelRect(0, 0, 1920, 1080) })
+        {
+            LabelRect window = FinderGeometry.Window(screen.Width, screen.Height);
+            LabelRect control = FinderGeometry.Control(screen.Width, screen.Height);
+            Check(screen.Contains(window) && screen.Contains(control), "finder/control fit screen " + screen.Width);
+            Check(control.Width >= 48 && control.Height >= 48, "finder control touch area minimum");
+            int rows = FinderGeometry.Rows(window.Height - 36, true);
+            Check(rows >= 1 && rows <= 12, "responsive page size bounded");
+        }
+        Check(FinderGeometry.Rows(300, true) < FinderGeometry.Rows(1000, true), "short screens reduce rows without reducing touch size");
+        FinderState finderState = new FinderState(); finderState.SetTab(true);
+        List<FinderRow> finderRows = FinderRows.Build(stacks, finderState);
+        Check(finderRows.Count == 2 && finderRows[0].Group, "finder starts with type groups");
+        finderState.OpenGroup("Wood"); finderRows = FinderRows.Build(stacks, finderState);
+        Check(finderRows.Count == 2 && !finderRows[0].Group && finderRows[0].Id == 1 && finderRows[1].Id == 2,
+            "type opens every concrete stack with stable identifiers");
+        Check(finderRows[0].Detail.Contains("20 adet") && finderRows[0].Detail.Contains("#1"), "stack amount/coordinate/id disambiguation");
+        finderState.Page = 4; finderState.ResetNavigation();
+        Check(finderState.Page == 0 && finderState.TypeKey == null, "filter/search clear resets group and page");
+        finderState.OpenGroup("deleted");
+        Check(FinderRows.Build(stacks, finderState).Count == 0, "removed group becomes empty instead of stale target");
+        finderState.SetTab(false);
+        Check(finderState.TypeKey == null && FinderRows.Build(stacks, finderState).Count == 0, "tab reset and empty colonist state");
+        finderState.SetTab(true); finderState.OpenGroup("Wood");
+        List<TargetData> largeGroup = new List<TargetData>();
+        for (int i = 0; i < 153; i++) largeGroup.Add(new TargetData { Id = i, Name = "Odun", TypeKey = "Wood", Amount = 2 });
+        finderRows = FinderRows.Build(largeGroup, finderState); reachable.Clear();
+        for (int pageIndex = 0; pageIndex < PageRules.Count(finderRows.Count, 3); pageIndex++)
+        {
+            int p = pageIndex;
+            foreach (FinderRow row in PageRules.Slice(finderRows, ref p, 3)) reachable.Add(row.Id);
+        }
+        Check(reachable.Count == 153, "small-screen type details reach every stack");
+        HookLifecycle hookSet = new HookLifecycle(); List<int> installedHooks = new List<int>(); int rollbacks = 0;
+        bool partialFailed = false;
+        try
+        {
+            hookSet.Install(2, delegate(int index) { if (index == 1) throw new MissingMethodException(); installedHooks.Add(index); },
+                delegate { installedHooks.Clear(); rollbacks++; });
+        }
+        catch (MissingMethodException) { partialFailed = true; }
+        Check(partialFailed && !hookSet.Active && installedHooks.Count == 0 && rollbacks == 1, "second hook failure rolls back partial install");
+        hookSet.Remove(delegate { rollbacks++; });
+        Check(rollbacks == 1, "cleanup is idempotent after failed install");
+        hookSet.Install(2, installedHooks.Add, delegate { installedHooks.Clear(); });
+        Check(hookSet.Active && installedHooks.Count == 2, "both hooks needed before feature readiness");
+        hookSet.Remove(delegate { installedHooks.Clear(); rollbacks++; });
+        Check(!hookSet.Active && installedHooks.Count == 0 && rollbacks == 2, "runtime failure removes owned hooks");
+        SessionScope session = new SessionScope(); session.Bind(mapKey, gameKey);
+        Check(session.Matches(mapKey, gameKey), "active window binds current map and game");
+        Check(!session.Matches(new object(), gameKey) && !session.Matches(mapKey, new object()), "window rejects changed map/save before input");
+        session.Clear(); Check(!session.Matches(mapKey, gameKey), "disabled/reset window loses stale scope");
         LabelRect placed;
         LabelLayout layout = new LabelLayout();
         LabelRect viewport = new LabelRect(8, 8, 500, 400);
+        layout.Reset(viewport);
+        LabelRect blockingControl = new LabelRect(150, 110, 200, 60); layout.SetControl(blockingControl);
+        Check(layout.TryPlace(250, 200, 100, 40, out placed, 24) && !placed.Overlaps(blockingControl, 0), "label switches placement when preferred position hits control");
+        foreach (int size in new[] { 8, 16, 24 })
+        {
+            layout.Reset(viewport);
+            LabelRect bigMarker;
+            Check(AnnotationRules.TryMarker(250, 200, viewport, size, out bigMarker) && bigMarker.Width == size, "independent marker dimension " + size);
+            layout.AddObstacle(bigMarker);
+            LabelRect control = new LabelRect(8, 250, 200, 56); layout.SetControl(control);
+            Check(layout.TryPlace(250, 200, 210, 44, out placed, size), "large font label can fit near marker " + size);
+            Check(!placed.Overlaps(bigMarker, 0) && !placed.Overlaps(control, 0), "label avoids real marker and control " + size);
+            Check(!AnnotationRules.TryMarker(8, 8, viewport, size, out bigMarker), "partly clipped enlarged marker rejected " + size);
+            Check(!layout.TryPlace(100, 300, 2000, 44, out placed, size), "long label rejected without overflowing " + size);
+        }
         layout.Reset(viewport);
         Check(layout.TryPlace(100, 100, 80, 24, out placed), "normal placement");
         LabelRect first = placed;
@@ -103,6 +263,7 @@ internal static class LogicTests
 
         AssemblyGate gate = new AssemblyGate();
         Check(!gate.Ready, "assembly gate starts closed");
+        Check(!gate.MarkInitialized(false) && !gate.Ready, "missing API keeps runtime gate closed");
         gate.ObserveReplacement();
         Check(!gate.MarkInitialized() && !gate.Ready, "replacement before initialization cannot be overwritten");
         Check(gate.ConsumeReplacement() && !gate.ConsumeReplacement(), "replacement handled once on main thread");

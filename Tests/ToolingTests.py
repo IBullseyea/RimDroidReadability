@@ -9,6 +9,7 @@ from pathlib import Path
 import subprocess
 import sys
 import unittest
+import warnings
 import zipfile
 
 sys.dont_write_bytecode = True
@@ -63,6 +64,16 @@ class ToolingTests(unittest.TestCase):
     def test_current_payload_passes(self):
         audit.audit_release(archive(self.payload), self.payload)
 
+    def test_api_signature_requires_public_exact_overload(self):
+        declarations = {owner: '\n'.join(signatures) for owner, signatures in audit.API_SIGNATURES.items()}
+        self.assertTrue(audit.audit_api_declarations(declarations))
+        for changed in ('private void MapInterfaceOnGUI_AfterMainTabs()',
+                        'public void MapInterfaceOnGUI_AfterMainTabs(int extra)'):
+            invalid = dict(declarations)
+            invalid['RimWorld.MapInterface'] = changed
+            with self.assertRaisesRegex(RuntimeError, 'exact public API'):
+                audit.audit_api_declarations(invalid)
+
     def test_every_stale_payload_file_is_rejected(self):
         for rel in audit.PAYLOAD:
             with self.subTest(rel=rel):
@@ -86,6 +97,30 @@ class ToolingTests(unittest.TestCase):
     def test_extra_dependency_rejected(self):
         with self.assertRaisesRegex(RuntimeError, 'allowlist'):
             audit.audit_release(archive(self.payload, 'RimDroidReadability/1.6/Assemblies/0Harmony.dll'), self.payload)
+
+    def test_duplicate_payload_rejected(self):
+        buffer = io.BytesIO(archive(self.payload))
+        with warnings.catch_warnings():
+            warnings.simplefilter('ignore', UserWarning)
+            with zipfile.ZipFile(buffer, 'a') as packaged:
+                packaged.writestr('RimDroidReadability/README.md', self.payload['README.md'])
+        with self.assertRaisesRegex(RuntimeError, 'duplicate'):
+            audit.audit_release(buffer.getvalue(), self.payload)
+
+    def test_missing_payload_and_foreign_dll_rejected(self):
+        missing = dict(self.payload)
+        missing.pop('RELEASE.md')
+        with self.assertRaisesRegex(RuntimeError, 'allowlist'):
+            audit.audit_release(archive(missing), self.payload)
+        with self.assertRaisesRegex(RuntimeError, 'allowlist'):
+            audit.audit_release(archive(self.payload, 'RimDroidReadability/1.6/Assemblies/Assembly-CSharp.dll'), self.payload)
+
+    def test_old_release_version_rejected_even_with_matching_archive(self):
+        for rel in ('About/About.xml', 'README.md'):
+            changed = dict(self.payload)
+            changed[rel] = changed[rel].replace(b'0.2.0', b'0.1.0')
+            with self.assertRaisesRegex(RuntimeError, 'version'):
+                audit.audit_release(archive(changed), changed)
 
     def test_optimized_python_still_rejects_bad_release(self):
         child = '''from pathlib import Path

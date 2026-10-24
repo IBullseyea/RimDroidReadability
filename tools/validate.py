@@ -5,6 +5,7 @@ import importlib.util
 import io
 import json
 import os
+import re
 from pathlib import Path
 import struct
 import sys
@@ -16,7 +17,40 @@ ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('readability_build', ROOT / 'tools/build.py')
 build = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(build)
-PAYLOAD = ('About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll', 'README.md')
+PAYLOAD = build.PAYLOAD
+
+# Public declarations, read in memory only; no game source/IL is written or packaged.
+API_SIGNATURES = {
+    'Verse.ThingOverlays': ['public void ThingOverlaysOnGUI()'],
+    'RimWorld.MapInterface': ['public void MapInterfaceOnGUI_AfterMainTabs()'],
+    'Verse.CameraJumper': ['public static void TryJumpAndSelect(GlobalTargetInfo target, MovementMode mode = MovementMode.Pan)'],
+    'Verse.CameraDriver': ['public float RootSize', 'public IntVec3 MapPosition',
+                          'public void SetRootSize(float size)', 'public void JumpToCurrentMapLoc(IntVec3 cell)',
+                          'public void JumpToCurrentMapLoc(Vector3 loc)', 'private Vector3 CurrentRealPosition'],
+    'Verse.Window': ['public virtual Vector2 InitialSize', 'public abstract void DoWindowContents(Rect inRect);',
+                     'public bool absorbInputAroundWindow;', 'public bool preventCameraMotion = true;',
+                     'public Rect windowRect;'],
+    'Verse.WindowStack': ['public void Add(Window window)', 'public bool TryRemove(Window window, bool doCloseSound = true)'],
+    'Verse.Widgets': ['public static bool ButtonText(Rect rect, string label, bool drawBackground = true, bool doMouseoverSound = true, bool active = true, TextAnchor? overrideTextAnchor = null)',
+                      'public static string TextField(Rect rect, string text)'],
+    'Verse.ListerThings': ['public List<Thing> ThingsInGroup(ThingRequestGroup group)'],
+    'Verse.GenMapUI': ['public static Vector2 LabelDrawPosFor(Thing thing, float worldOffsetZ)'],
+    'Verse.MapPawns': ['public List<Pawn> FreeColonistsSpawned'],
+    'Verse.ThingDef': ['public ThingCategory category;', 'public IngestibleProperties ingestible;',
+                       'public bool IsMedicine', 'public bool IsWeapon', 'public bool IsApparel', 'public bool CountAsResource'],
+    'RimWorld.IngestibleProperties': ['public float CachedNutrition'],
+}
+
+
+def audit_api_declarations(declarations):
+    verified = []
+    for owner, signatures in API_SIGNATURES.items():
+        # Strip expression bodies only. Signature and public access must still match exactly.
+        lines = {re.split(r'\s*=>', line.strip())[0] for line in declarations.get(owner, '').splitlines()}
+        for signature in signatures:
+            require(signature in lines, 'exact public API signature: ' + owner + ' / ' + signature)
+            verified.append(owner + ' / ' + signature)
+    return verified
 
 
 def require(condition, message):
@@ -28,7 +62,8 @@ def audit_payload_metadata(payload):
     metadata = ET.fromstring(payload['About/About.xml'])
     require(metadata.tag == 'ModMetaData', 'ModMetaData root')
     require(metadata.findtext('packageId') == 'erenalp.rimdroidreadability', 'mod package identity')
-    require(bool(metadata.findtext('name')) and bool(metadata.findtext('author')), 'mod name and author')
+    require(metadata.findtext('name') == 'RimDroid Readability ' + build.VERSION and bool(metadata.findtext('author')), 'mod version/name and author')
+    require(payload['README.md'].decode('utf-8').splitlines()[0] == '# RimDroid Readability — ' + build.VERSION, 'README release version')
     require([x.text for x in metadata.findall('./supportedVersions/li')] == ['1.6'], '1.6-only supported versions')
     folders = ET.fromstring(payload['LoadFolders.xml'])
     require(folders.tag == 'loadFolders' and [x.tag for x in folders] == ['v1.6'], '1.6-only load folder version')
@@ -87,9 +122,12 @@ def main():
 
     own = ROOT / '1.6/Assemblies/RimDroidReadability.dll'
     game = options.game_managed_dir.resolve() / 'Assembly-CSharp.dll'
+    before_mtime = game.stat().st_mtime_ns
     before = build.sha(game)
     require(before == build.EXPECTED_HASH, 'reference game SHA')
     flags = managed_flags(own)
+    identity = table(own, 'Assembly')[0]
+    require(identity['Version'] == build.VERSION + '.0', 'compiled assembly release version')
     refs = table(own, 'AssemblyRef')
     names = {r['Name'] for r in refs}
     require('Assembly-CSharp' in names and 'UnityEngine.CoreModule' in names, 'real game/Unity compile refs')
@@ -112,9 +150,12 @@ def main():
             found = any(m['Name'] == method_name and start <= m['RID'] < end for m in methods)
         require(found, type_name + '.' + method_name)
         verified.append(type_name + '.' + method_name)
-    archive = ROOT / 'dist/RimDroidReadability-0.1.0.zip'
+    declarations = {owner: build.run([ilspy, '--disable-updatecheck', '-t', owner, game], env)
+                    for owner in API_SIGNATURES}
+    verified.extend(audit_api_declarations(declarations))
+    archive = ROOT / ('dist/RimDroidReadability-' + build.VERSION + '.zip')
     audit_release(archive.read_bytes(), {rel: (ROOT / rel).read_bytes() for rel in PAYLOAD})
-    require(build.sha(game) == before, 'game unchanged by metadata audit')
+    require(build.sha(game) == before and game.stat().st_mtime_ns == before_mtime, 'game hash/mtime unchanged by metadata audit')
     report = {'status': 'passed', 'checks': ['AnyCPU IL-only framework DLL', 'actual game API metadata present',
               'no 0Harmony assembly reference', 'exact 1.6 metadata/routing', 'all ZIP payload bytes match current sources',
               'exact ZIP allowlist, duplicate rejection and integrity',
