@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7.2", FrameworkDisplayName = ".NET Framework 4.7.2")]
-[assembly: AssemblyVersion("0.2.0.0")]
+[assembly: AssemblyVersion("0.2.1.0")]
 
 namespace RimDroid.Readability
 {
@@ -64,7 +64,7 @@ namespace RimDroid.Readability
             bool oldGroup = Settings.GroupItems;
             Listing_Standard list = new Listing_Standard();
             list.Begin(inRect);
-            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.0");
+            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.1");
             list.Label(status);
             list.Gap();
             list.CheckboxLabeled("İşaretleri aç", ref Settings.Enabled);
@@ -94,9 +94,18 @@ namespace RimDroid.Readability
             initializationAttempted = true;
             try
             {
-                if (!AnnotationRules.NativeAllowed(Application.platform == RuntimePlatform.Android,
-                    Environment.GetEnvironmentVariable("RIMDROID_IL2MONO_MANAGED")))
-                { Disable("Yalnız RimDroid Native Android motoru desteklenir."); return; }
+                RuntimePlatform platform = Application.platform;
+                ApiContract.Method(typeof(SystemInfo), "get_operatingSystem", typeof(string), true);
+                string operatingSystem = SystemInfo.operatingSystem;
+                string nativeMarker = Environment.GetEnvironmentVariable("RIMDROID_IL2MONO_MANAGED");
+                if (!AnnotationRules.NativeAllowed(platform == RuntimePlatform.Android,
+                    platform == RuntimePlatform.LinuxPlayer, operatingSystem, nativeMarker))
+                {
+                    Disable("Native Android ortamı doğrulanamadı: platform=" + platform + "; işletim sistemi="
+                        + operatingSystem + "; Native işareti=" + (string.IsNullOrWhiteSpace(nativeMarker) ? "yok" : "var")
+                        + ". RimDroid instance ayarlarında Native motorunu kontrol edin; box64 + native Mono farklıdır.");
+                    return;
+                }
                 if (!AnnotationRules.VersionAllowed(VersionControl.CurrentVersionString))
                 { Disable("Bu mod yalnız RimWorld 1.6 içindir."); return; }
                 boundGame = typeof(Find).Assembly;
@@ -124,7 +133,8 @@ namespace RimDroid.Readability
                 if (!gate.MarkInitialized(hooks.Active)) { HandleAssemblyReplacement(); return; }
                 status = "API/DLL kontrolü geçti. Göstergeler ve Bul açılabilir; cihaz testi bekleniyor.";
                 Log.Message("[RimDroid Readability] Native 1.6 reference DLL verified; overlay and finder patches installed, enabled="
-                    + Settings.Enabled + "; SHA256=" + actualHash + "; MVID=" + ReferenceMvid
+                    + Settings.Enabled + "; reportedPlatform=" + platform + "; operatingSystem=" + operatingSystem
+                    + "; SHA256=" + actualHash + "; MVID=" + ReferenceMvid
                     + ". Android visual/performance acceptance still pending.");
             }
             catch (Exception error) { Disable("Başlatma kontrolü başarısız: " + error.GetType().Name + ": " + error.Message); }

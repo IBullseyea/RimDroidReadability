@@ -16,7 +16,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 WORK = ROOT / '.build'
-VERSION = '0.2.0'
+VERSION = '0.2.1'
 PAYLOAD = ('About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll', 'README.md', 'RELEASE.md')
 EXPECTED_HASH = '39c5532c8f9fd8b31cdc9450d3148bc2f372f03f030dc5cddd170c9a08774076'
 

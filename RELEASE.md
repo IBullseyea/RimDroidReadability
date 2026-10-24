@@ -1,6 +1,12 @@
-# 0.2.0 yayın hazırlığı
+# 0.2.1 yayın hazırlığı
 
 24 Ekim 2026. Bu paket yerel geliştirme çıktısıdır. **Gerçek telefon kabulü, lisans ve GitHub depo kararı beklemededir.** Kamuya yayın yapılmadı; yayına hazır olduğu iddia edilmez.
+
+## 0.2.1 başlangıç düzeltmesi
+
+Samsung S25 FE / RimDroid 0.3.0v2 ile paylaşılan ayar görüntüsünde 0.2.0’ın ilk runtime kapısında durduğu görüldü. RimDroid 0.3.0 kaynak referansı, Native köprünün Android’de kasıtlı olarak `LinuxPlayer` döndürdüğünü doğruluyor. 0.2.0’ın Android enum’una bağlı kontrolü bu yolu hatalı reddediyordu.
+
+0.2.1, Native işaretine ek olarak gerçek Android oyuncusunu veya LinuxPlayer + Android işletim sistemi bilgisini kabul eder. Diğer platformlar, eksik Native işareti ve masaüstü Linux reddedilir. Runtime hatasında platform/işletim sistemi/Native işareti tanısı görünür. Sürüm/DLL/MVID/API/Harmony kapıları korunur. Yeni paketin telefonda başarılı başlatılması henüz doğrulanmadı; eski görüntüler göstergelerin kabul kanıtı değildir.
 
 ## Değişiklikler
 
@@ -32,7 +38,7 @@ Makineye özel kanıt dosyaları `docs/validation.json`, `docs/static-validation
 
 ## Telefon kabulü — yapılmadı
 
-OpenSpec görevleri **6.3, 6.4, 6.5 açık** kalır. Bu oturumda hazır kullanıcı telefonu ve cihaz kimlik kanıtı yoktur; oyun/APK başlatma veya cihaza dağıtım yapılmadı.
+OpenSpec görevleri **6.3, 6.4, 6.5 açık** kalır. Telefon modeli S25 FE ve RimDroid sürümü 0.3.0v2 kullanıcı tarafından bildirildi; gerçek oyun sürümü, motor, UI ölçeği ve DLL/Harmony kimliği henüz doğrulanmadı; oyun/APK başlatma veya cihaza dağıtım yapılmadı.
 
 1. Model, çözünürlük, UI ölçeği, APK sürümü/Native rotası, oyun tam sürümü, DLL SHA/MVID ve yüklü Harmony kimliğini kaydedin. Başarılı mod başlatma logunu alın. Uyuşmazlıkta kapıyı gevşetmeyin; build ayrı doğrulanmalıdır.
 2. Aynı sahnede iki kamera uzaklığında boyutları, ekran dışı koloniste Git ve yakınlığın korunmasını; kategorileri/arama/temizlemeyi; yoğun depoda adet/yığın ve tek yığına Git akışını kontrol edin. Ekran görüntülerini ve sonuçları kaydedin.
@@ -41,7 +47,7 @@ OpenSpec görevleri **6.3, 6.4, 6.5 açık** kalır. Bu oturumda hazır kullanı
 
 ## Kurulum ve geri dönüş
 
-README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.0.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
+README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.1.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
 
 Kapatmak için **İşaretleri aç** seçeneğini kaldırın veya mod listesinden devre dışı bırakın. Göstergeler ve mod pencereleri kaldırılır; tercihler korunur. Gerekirse eski 0.1.0 paketine dönülebilir. Oyun dosyaları ve kayıtları dönüştürülmez.
 

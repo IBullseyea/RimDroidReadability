@@ -120,8 +120,15 @@ namespace RimDroid.Readability
     internal static class AnnotationRules
     {
         internal const int MaximumMarkers = 120;
-        internal static bool NativeAllowed(bool android, string marker)
-        { return android && !string.IsNullOrEmpty(marker); }
+        internal static bool NativeAllowed(bool androidPlayer, bool linuxPlayer, string operatingSystem, string nativeMarker)
+        {
+            // RimDroid's Android Native bridge deliberately reports LinuxPlayer to desktop game code.
+            // The alternate route still requires an Android host and the Native engine's own marker.
+            string os = (operatingSystem ?? "").Trim();
+            bool androidHost = os.Equals("Android", StringComparison.OrdinalIgnoreCase)
+                || os.StartsWith("Android ", StringComparison.OrdinalIgnoreCase);
+            return !string.IsNullOrWhiteSpace(nativeMarker) && (androidPlayer || (linuxPlayer && androidHost));
+        }
         internal static bool VersionAllowed(string version)
         { return version != null && version.StartsWith("1.6.", StringComparison.Ordinal); }
         internal static bool Visible(bool destroyed, bool spawned, bool sameMap, bool inView, bool fogged)

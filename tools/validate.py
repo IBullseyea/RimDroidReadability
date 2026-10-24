@@ -21,6 +21,7 @@ PAYLOAD = build.PAYLOAD
 
 # Public declarations, read in memory only; no game source/IL is written or packaged.
 API_SIGNATURES = {
+    'UnityEngine.SystemInfo': ['public static string operatingSystem'],
     'Verse.ThingOverlays': ['public void ThingOverlaysOnGUI()'],
     'RimWorld.MapInterface': ['public void MapInterfaceOnGUI_AfterMainTabs()'],
     'Verse.CameraJumper': ['public static void TryJumpAndSelect(GlobalTargetInfo target, MovementMode mode = MovementMode.Pan)'],
@@ -150,7 +151,8 @@ def main():
             found = any(m['Name'] == method_name and start <= m['RID'] < end for m in methods)
         require(found, type_name + '.' + method_name)
         verified.append(type_name + '.' + method_name)
-    declarations = {owner: build.run([ilspy, '--disable-updatecheck', '-t', owner, game], env)
+    declarations = {owner: build.run([ilspy, '--disable-updatecheck', '-t', owner,
+                    game.parent / 'UnityEngine.CoreModule.dll' if owner == 'UnityEngine.SystemInfo' else game], env)
                     for owner in API_SIGNATURES}
     verified.extend(audit_api_declarations(declarations))
     archive = ROOT / ('dist/RimDroidReadability-' + build.VERSION + '.zip')

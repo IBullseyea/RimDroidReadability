@@ -207,10 +207,20 @@ internal static class LogicTests
         Check(AnnotationRules.Compare(true, 99, false, 1) < 0, "colonists take priority over items");
         Check(AnnotationRules.Compare(false, 1, false, 2) < 0, "stable item identifiers");
         Check(AnnotationRules.Compare(true, 1, true, 1) == 0, "same identifier stable");
-        Check(!AnnotationRules.NativeAllowed(false, "/managed"), "desktop rejected");
-        Check(!AnnotationRules.NativeAllowed(true, null), "Android without Native marker rejected");
-        Check(!AnnotationRules.NativeAllowed(true, ""), "empty Native marker rejected");
-        Check(AnnotationRules.NativeAllowed(true, "/managed"), "Native Android gate admitted");
+        Check(!AnnotationRules.NativeAllowed(false, true, "Linux 6.8", "/managed"), "desktop Linux rejected even with Native marker");
+        Check(!AnnotationRules.NativeAllowed(true, false, "Android OS 16", null), "Android without Native marker rejected");
+        Check(!AnnotationRules.NativeAllowed(true, false, "Android OS 16", ""), "empty Native marker rejected");
+        Check(AnnotationRules.NativeAllowed(true, false, "Android OS 16", "/managed"), "ordinary Android Native route admitted");
+        Check(AnnotationRules.NativeAllowed(false, true, "Android OS 16 / API-36", "/overrides:/game/Managed"),
+            "regression: RimDroid 0.3.0 Native LinuxPlayer on Android is admitted");
+        Check(!AnnotationRules.NativeAllowed(false, true, "Android OS 16", null), "Box64/native Mono cannot pass without Native engine marker");
+        Check(!AnnotationRules.NativeAllowed(false, true, "Linux", null), "emulated Linux player rejected");
+        Check(!AnnotationRules.NativeAllowed(false, false, "Android OS 16", "/managed"), "unrelated platform rejected even with Android text and marker");
+        Check(!AnnotationRules.NativeAllowed(false, true, null, "/managed"), "missing Android host evidence fails closed on LinuxPlayer");
+        Check(!AnnotationRules.NativeAllowed(false, true, "Androidish", "/managed"), "OS name lookalike rejected");
+        Check(!AnnotationRules.NativeAllowed(false, true, "Android OS 16", "  "), "blank Native marker rejected");
+        Check(AnnotationRules.NativeAllowed(true, false, null, "/managed"), "genuine Android player remains supported without OS fallback");
+        Check(AnnotationRules.NativeAllowed(false, true, " android OS 16 ", "/managed"), "Android OS case and surrounding whitespace normalized");
         Check(AnnotationRules.VersionAllowed("1.6.4633 rev1254"), "reference version admitted");
         Check(!AnnotationRules.VersionAllowed("1.7.1"), "1.7 rejected");
         Check(!AnnotationRules.VersionAllowed("1.60.1"), "lookalike version rejected");

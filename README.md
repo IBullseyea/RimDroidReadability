@@ -1,4 +1,4 @@
-# RimDroid Readability — 0.2.0
+# RimDroid Readability — 0.2.1
 
 RimWorld 1.6’yı **RimDroid Native Unity** üzerinden telefonda oynamak için özgün, isteğe bağlı mod: kamera yakınlığından bağımsız büyük göstergeler, eşya gruplama ve dokunmatik hedef bulucu. **Gerçek telefon uyumluluğu, okunabilirlik, dokunma ve performans kabulü beklemededir.** Yerel derleme bu kabulün yerine geçmez.
 
@@ -48,7 +48,10 @@ Harita işaretleri girdi almaz. Bulucu oyun pencere sırasına katılır; öndek
 
 ## Uyumluluk kapısı
 
-Başlangıçta Android Unity, `RIMDROID_IL2MONO_MANAGED`, RimWorld 1.6, tam API imzaları, tek oyun assembly’si ve **önceden yüklenmiş tek Harmony 2.x** denetlenir. Yalnız doğrulanmış referans kabul edilir:
+Başlangıçta Android üzerinde Native Unity, `RIMDROID_IL2MONO_MANAGED`, RimWorld 1.6, tam API imzaları, tek oyun assembly’si ve **önceden yüklenmiş tek Harmony 2.x** denetlenir. Yalnız doğrulanmış referans kabul edilir:
+
+**0.2.1 başlangıç düzeltmesi:** RimDroid 0.3.0 Native köprüsü Android’de `Application.platform` değerini `LinuxPlayer` olarak bildirir. Bu nedenle AndroidPlayer veya **LinuxPlayer + Android işletim sistemi bilgisi** kabul edilir; her iki yolda da Native motorunun `RIMDROID_IL2MONO_MANAGED` işareti zorunludur. Salt Linux/Box64 veya `box64 + native Mono` desteği eklenmez. Başarısızlık mesajı platformu, işletim sistemini ve Native işaretinin var/yok durumunu gösterir. DLL/MVID, RimWorld 1.6, API ve tek Harmony denetimleri aynen devam eder.
+
 
 - Oyun bildirimi: `1.6.4633 rev1254` (kurulum paketi revizyonu farklı görünebilir).
 - `Assembly-CSharp.dll` SHA-256: `39c5532c8f9fd8b31cdc9450d3148bc2f372f03f030dc5cddd170c9a08774076`.
@@ -85,7 +88,7 @@ MSBuild’i Python başlatıcısıyla çalıştırın; CLI/runtime geçici dosya
 Çıktılar:
 
 - `1.6/Assemblies/RimDroidReadability.dll`
-- `dist/RimDroidReadability-0.2.0.zip`
+- `dist/RimDroidReadability-0.2.1.zip`
 - Yerel kanıt: `docs/validation.json`, `docs/static-validation.json` (Git’e alınmaz).
 
 ZIP izin listesi: yalnız `About/About.xml`, `LoadFolders.xml`, özgün mod DLL’si, `README.md`, `RELEASE.md`. Oyun, Unity, Harmony DLL’leri, oyun görselleri, kaynak referanslar, önbellekler ve raporlar pakete konmaz. Kaynak/test/OpenSpec belgeleri Git deposundadır. Lisans seçilmediğinden açık kaynak lisansı varmış gibi dağıtım yapılmaz.
