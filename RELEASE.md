@@ -1,88 +1,31 @@
-# 0.2.4 yayın hazırlığı
+# RimDroid Readability 0.2.4 — Game language support
 
-24 Ekim 2026. Bu paket yerel geliştirme çıktısıdır. **Gerçek telefon kabulü, lisans ve GitHub depo kararı beklemededir.** Kamuya yayın yapılmadı; yayına hazır olduğu iddia edilmez.
+Pre-release candidate · MIT License
 
-## 0.2.4 oyun dili desteği
+## What's included
 
-Kullanıcı 0.2.3’ün istediği gibi çalıştığını bildirdi ve oyun dili İngilizce/Çince gibi değiştiğinde bütün oyun içi mod metinlerinin aynı dili izlemesini istedi. Yeni sürüm oyunun Keyed sistemini kullanır; ayrı dil ayarı yoktur. 29 dilde 78’er özgün anahtar; düğme/filtre/ayar/tooltip/sonuç/tür kısaltması ve mod durum/hata bağlamları için sağlandı. Desteklenmeyen topluluk dilinde standart İngilizce fallback’i kullanılır.
+- All in-game mod text follows the game language, with 29 original translations and English fallback for other languages.
+- Localized settings, item shortcut, finder, tooltips, quantities and mod status messages. Colonist names and item labels remain supplied by the game.
+- Retains the bottom-right item filter shortcut from 0.2.3, collection-enumeration fix from 0.2.2 and Native Android detection fix from 0.2.1.
+- English/Turkish installation documentation and the MIT license are included in the ZIP.
 
-Dil değişince durum mesajı güncel dilde çözülür, katalog ve etiket yazı stili yenilenir. Eşya türü ve kolonist özel adları oyun verisi olarak korunur. Teknik API/exception kimlikleri ve sabit paket belgeleri çevrilmez. Çeviri dosyaları izin listesine eklendi; oyun çeviri dosyaları veya görselleri kopyalanmadı. Native/DLL/Harmony kapıları ve mevcut ayarlar korunur.
+## Install or update
 
-Eksik/tekrarlı/boş anahtar, bozuk format yer tutucusu ve eksik/ek dil payload’u denetimleri eklendi. Gerçek telefon fontu/uzun metin/dil değişimi kabulü için OpenSpec 8.2 açıktır; yerel test sonucu cihaz kabulü değildir.
+Download **RimDroidReadability-0.2.4.zip** from the release assets. Extract/update the entire `RimDroidReadability` folder, including `1.6/Languages`, in the instance's `Mods` directory. Enable it in the mod list and fully restart the game. Enable indicators in **Options → Mod Settings → RimDroid Readability**; the mod is off by default. See README.md / README.tr.md for details.
 
-## 0.2.3 eşya filtresi kısayolu
+GitHub's automatic Source code archives contain source only and cannot be installed directly as the compiled mod.
 
-Kullanıcı 0.2.2 için “sorun yok çalışıyor” bildirdi; görüntülerde büyük göstergeler ve başarılı API/DLL durum satırı görülüyor. Bu, ilk çalıştırma/çizim sorunlarının kullanıcı tarafında düzeldiğine dair kanıttır; bütün cihaz senaryoları veya performans ölçümü tamamlandı sayılmaz.
+## Compatibility and validation
 
-Kullanıcının yeni isteğiyle sağ alt zaman durdurma/hız kontrollerinin alt bölgesindeki boşluğa **Eşya: <kategori>** düğmesi eklendi. 192 × 48 birimlik düğme görünüm simgelerini ve alt menü çubuğunu kapatmaz. Her dokunuş mevcut filtre sırasını bir adım ilerletir; aynı ayar kaydedilir ve harita/bulucu sonuçları yenilenir. Mevcut arama ve kolonist tercihi korunur. Kamera/oyun zamanı değiştirilmez. Öğretici/tooltip HUD açıkken kısayol görünür; gerçek diyalog, dünya görünümü, kapatma ve hata halinde kaldırılır; etiket/işaret yerleşimi alanını dışlar.
+Requires RimDroid Native Unity on Android, the audited RimWorld 1.6.4633 rev1254 DLL identity documented in README.md, and a single already loaded Harmony 2.x. Other DLL builds and non-Native routes are not supported by this package.
 
-Yerel doğrulama filtre döngüsünü, ekran/UI ölçülerini ve iki kontrolün engel alanını kapsar. Kısayolun gerçek telefon konumu/dokunuşu ve kalıcılığı için yeni OpenSpec 7.2 görevi açık kalır. Mevcut 6.3–6.5 cihaz görevlerinin tümü için gereken kanıtlar da tamamlanmadı.
+Local compilation, standalone logic/translation/tooling tests, exact API signatures and ZIP contents passed. A user reported 0.2.2 and 0.2.3 working on Samsung S25 FE / RimDroid 0.3.0v2. Version 0.2.4 language/font behavior and comprehensive device/performance checks remain pending.
 
-## 0.2.2 koleksiyon dolaşımı düzeltmesi
+## Known limits
 
-Kullanıcı 0.2.1’in 5–10 saniye sonra yalnız göstergeler/Bul kaybolacak şekilde kapandığını bildirdi. Ayar görüntüsünde `Çizim hatası: InvalidOperationException: Collection was modified; enumeration operation may not execute.` doğrulandı. Katalog kolonistlerin oyuna ait geçici listesini dolaşırken uygunluk denetiminde aynı listeyi yeniden dolduruyordu.
+- At most 120 markers and 40 labels are drawn; the finder still lists all eligible targets.
+- Item scan cost depends on map item count, with a 250 ms refresh interval.
+- Search uses OrdinalIgnoreCase; Turkish dotted İ and i differ.
+- Font coverage, long translations, touch behavior and performance need validation on the target device.
 
-Yenileme artık kolonist/eşya sorgularının dizi kopyaları üzerinde çalışır. Sis/doğma/yok olma/harita koşulları ve miktarlar çizim/eylem öncesinde tekrar denetlenir. Aynı özgün katalog kaynak kodu, oyun/Unity içermeyen yeniden kullanılan liste fikstürüyle düzeltme öncesinde aynı exception’ı üretti; düzeltme sonrasında çoklu kolonist, 120 tekrar, periyodik yenileme, güncel miktar/sis/silinme ve hedefe gitme uygunluğu kontrollerinden geçti. Runtime hata loguna tek seferlik tam çağrı izi eklendi. 0.2.1 Native tespit düzeltmesi ve tüm uyumluluk kapıları korunur.
-
-Gerçek telefonda 0.2.2’nin sürekli çalışması henüz doğrulanmadı; cihaz kabul görevleri açık kalır.
-
-## 0.2.1 başlangıç düzeltmesi
-
-Samsung S25 FE / RimDroid 0.3.0v2 ile paylaşılan ayar görüntüsünde 0.2.0’ın ilk runtime kapısında durduğu görüldü. RimDroid 0.3.0 kaynak referansı, Native köprünün Android’de kasıtlı olarak `LinuxPlayer` döndürdüğünü doğruluyor. 0.2.0’ın Android enum’una bağlı kontrolü bu yolu hatalı reddediyordu.
-
-0.2.1, Native işaretine ek olarak gerçek Android oyuncusunu veya LinuxPlayer + Android işletim sistemi bilgisini kabul eder. Diğer platformlar, eksik Native işareti ve masaüstü Linux reddedilir. Runtime hatasında platform/işletim sistemi/Native işareti tanısı görünür. Sürüm/DLL/MVID/API/Harmony kapıları korunur. Bu düzeltmeden sonra kullanıcı kısa süre çalışıp çizim hatasıyla kapandığını bildirdi; ayrıntısı 0.2.2 bölümündedir. İlk kapının aşılması tek başına cihaz kabulü değildir.
-
-## Değişiklikler
-
-- Kameradan bağımsız 18/22/26/32 yazı ve 8/16/24 işaret; karşıt arka plan, K/artı ve E/kare tür ayrımı.
-- Büyük Bul kontrolü, Kolonistler/Eşyalar bölümleri, kategori ve tür adına arama.
-- Haritada 64 birim hücre grupları; bulucuda harita çapında tür toplamı ve ayrı yığınlar. Adet/yığın ayrımı, kimlik ve konum gösterimi.
-- Git ile tek seferlik seçim/merkezleme ve yakınlığı koruma; eylem anında hedef denetimi. Otomatik takip yok.
-- Eski ayar anahtarları ve 0/1/2 filtre değerlerinin korunması; eksik yeni alanlara 16/açık varsayılanı.
-- İki kancanın tek uyumluluk kapısıyla kurulması, kısmi kurulum geri alma, hata/assembly değişiminde kapanma ve eski pencere/katalog temizliği.
-
-Kapsam yalnız mevcut haritadaki serbest kolonistler ve yerdeki eşyalardır. Hayvan, düşman, bina, envanter ve dünya hedefleri eklenmedi. Oyun, APK veya Unity dosyaları değiştirilmedi.
-
-## Yerel kanıt ve sınırı
-
-Yerel Roslyn derlemesi, saf C# mantık kontrolleri, Python araç/negatif paket testleri ve statik API/paket denetimi geçti. Kontroller; ayar geçişi, görünürlük/uygunluk kombinasyonları, kategori/arama, gruplama/toplamlar, 120’den fazla hedefe eksiksiz sayfalama, boyut/yerleşim, öncelik/bütçe ve yaşam döngüsü mantığını kapsar. Negatif paket denetimleri eski/ek/eksik/tekrarlı içerik, yanlış sürüm yönlendirmesi, yabancı DLL ve optimize Python altında reddi sınar.
-
-Komşu oyun klasörü olmayan `/tmp` altındaki bağımsız kaynak kopyasında `--msbuild --game-managed-dir` ve `validate.py --game-managed-dir` geçti; aynı kaynaklar aynı DLL’yi üretti. Referans DLL’ler kopyalanmadı. Derleme 102 salt okunur referansın hash ve zaman damgalarının değişmediğini denetler. Statik denetim gerçek API imzalarını, assembly sürümünü, AnyCPU/framework referanslarını ve ZIP’in her payload baytını doğrular.
-
-Son entegrasyon komutları:
-
-```sh
-python3 tools/build.py --msbuild
-python3 tools/validate.py
-openspec validate improve-mobile-map-readability --strict
-git diff --check
-```
-
-Makineye özel kanıt dosyaları `docs/validation.json`, `docs/static-validation.json` ve `.build/portable-check.json` içindedir; Git/paket dışında tutulur. **Bu testler gerçek Harmony kurulumu, Unity GUI/kamera, Android dokunma, okunabilirlik veya FPS kabulü değildir.**
-
-## Telefon kabulü — yapılmadı
-
-OpenSpec görevleri **6.3, 6.4, 6.5 açık** kalır. Telefon modeli S25 FE ve RimDroid sürümü 0.3.0v2 kullanıcı tarafından bildirildi; gerçek oyun sürümü, motor, UI ölçeği ve DLL/Harmony kimliği henüz doğrulanmadı; oyun/APK başlatma veya cihaza dağıtım yapılmadı.
-
-1. Model, çözünürlük, UI ölçeği, APK sürümü/Native rotası, oyun tam sürümü, DLL SHA/MVID ve yüklü Harmony kimliğini kaydedin. Başarılı mod başlatma logunu alın. Uyuşmazlıkta kapıyı gevşetmeyin; build ayrı doğrulanmalıdır.
-2. Aynı sahnede iki kamera uzaklığında boyutları, ekran dışı koloniste Git ve yakınlığın korunmasını; kategorileri/arama/temizlemeyi; yoğun depoda adet/yığın ve tek yığına Git akışını kontrol edin. Ekran görüntülerini ve sonuçları kaydedin.
-3. Sis, yok edilmiş hedef, harita/kayıt değişimi, kapatma/tekrar açma ve tercihlerin korunmasını kontrol edin. Bulucu içindeki dokunuşların haritaya geçmediğini, öndeki oyun pencerelerinin önceliğini; normal sürükleme/yakınlaştırma/seçim/uzun basmayı deneyin.
-4. Aynı kayıt, kamera, oyun hızı ve cihaz ayarlarında mod kapalı/açık, bulucu kapalı/açık ve yoğun depo koşullarını karşılaştırın. Süre, kare süresi/FPS ve dokunma gecikmesini kaydedin; okunabilirlik ve hedef bulma kabulünü kullanıcı ayrıca değerlendirsin.
-
-## Kurulum ve geri dönüş
-
-README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.4.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
-
-Kapatmak için **İşaretleri aç** seçeneğini kaldırın veya mod listesinden devre dışı bırakın. Göstergeler ve mod pencereleri kaldırılır; tercihler korunur. Gerekirse eski 0.1.0 paketine dönülebilir. Oyun dosyaları ve kayıtları dönüştürülmez.
-
-## Bilinen sınırlar ve yayın kararları
-
-- Referans SHA/MVID farklıysa mod devreye girmez; telefon build’i henüz doğrulanmadı.
-- 48 arayüz birimi fiziksel Android dp değildir; gerçek UI ölçeğinde denenmelidir.
-- Eşya tarama maliyeti çizim bütçesiyle sınırlanmaz; yoğun depo performansı ölçülmedi. Üyelik yenilemesi 250 ms gecikebilir.
-- Harita hücre sınırında aynı tür iki grup kalabilir. Çizim sınırı 120 işaret/40 metindir; Bul (+N) tam etiketi çizilemeyen görsel grupları sayar.
-- Arama `OrdinalIgnoreCase` kullanır; noktalı İ ve i farklıdır. Uzun adın tamamı bulucuda kaydırılarak okunabilir.
-- Lisans **seçilmedi**. Lisans dosyası eklenmedi ve açık kaynak lisansı iddiası yoktur.
-- GitHub depo adı/hesabı **seçilmedi**. Remote/push/yayın yapılmadı. Bunlar cihaz kanıtıyla birlikte son yayın kararlarıdır.
-
-Paket izin listesi yalnız özgün mod DLL’si, About/LoadFolders XML, README, bu belge ve 29 özgün Keyed çeviri XML’idir. Kaynak/test/OpenSpec planı Git deposundadır; oyun/Unity/Harmony DLL’leri, görseller, kimlik bilgileri, üretilmiş raporlar ve önbellekler dağıtılmaz.
+Original mod code, translations and documentation are MIT licensed. Game, Unity and Harmony binaries are not included. Detailed development and device acceptance records are in `docs/device-validation.tr.md` in the source repository.

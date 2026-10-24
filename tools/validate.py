@@ -7,6 +7,7 @@ import io
 import json
 import os
 import re
+import shutil
 from pathlib import Path
 import struct
 import string
@@ -161,7 +162,7 @@ def main():
                         default=ROOT.parents[1] / 'RimWorld/game/RimWorldLinux_Data/Managed')
     options = parser.parse_args()
     env = build.environment()
-    ilspy = os.environ.get('ILSPYCMD', str(Path.home() / '.dotnet/tools/ilspycmd'))
+    ilspy = os.environ.get('ILSPYCMD') or shutil.which('ilspycmd') or str(Path.home() / '.dotnet/tools/ilspycmd')
     if not Path(ilspy).is_file():
         raise RuntimeError('Static audit needs an existing ilspycmd; set ILSPYCMD. This script installs nothing.')
 

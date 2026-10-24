@@ -22,7 +22,8 @@ LANGUAGES = ('Catalan', 'ChineseSimplified', 'ChineseTraditional', 'Czech', 'Dan
              'Norwegian', 'Polish', 'Portuguese', 'PortugueseBrazilian', 'Romanian', 'Russian', 'Slovak',
              'Spanish', 'SpanishLatin', 'Swedish', 'Turkish', 'Ukrainian', 'Vietnamese')
 LANGUAGE_PAYLOAD = tuple('1.6/Languages/' + language + '/Keyed/Readability.xml' for language in LANGUAGES)
-PAYLOAD = ('About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll', 'README.md', 'RELEASE.md') + LANGUAGE_PAYLOAD
+PAYLOAD = ('About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll',
+           'README.md', 'README.tr.md', 'RELEASE.md', 'LICENSE') + LANGUAGE_PAYLOAD
 EXPECTED_HASH = '39c5532c8f9fd8b31cdc9450d3148bc2f372f03f030dc5cddd170c9a08774076'
 
 
@@ -169,6 +170,7 @@ def package(output):
         dlls = [p for p in actual if p.lower().endswith('.dll')]
         if dlls != ['RimDroidReadability/1.6/Assemblies/RimDroidReadability.dll']:
             raise RuntimeError('Unexpected dependency DLL in package')
+    target.with_suffix(target.suffix + '.sha256').write_text(sha(target) + '  ' + target.name + '\n', encoding='utf-8')
     return target
 
 
