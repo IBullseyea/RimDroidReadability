@@ -1,6 +1,12 @@
-# RimDroid Readability — 0.2.2
+# RimDroid Readability — 0.2.3
 
 RimWorld 1.6’yı **RimDroid Native Unity** üzerinden telefonda oynamak için özgün, isteğe bağlı mod: kamera yakınlığından bağımsız büyük göstergeler, eşya gruplama ve dokunmatik hedef bulucu. **Gerçek telefon uyumluluğu, okunabilirlik, dokunma ve performans kabulü beklemededir.** Yerel derleme bu kabulün yerine geçmez.
+
+## 0.2.3 — Haritada eşya filtresi kısayolu
+
+Sağ altta, zaman durdurma/hız kontrollerinin alt bölgesinde **Eşya: <kategori>** düğmesi vardır. Mevcut görünüm simgelerinin solundaki boşlukta, alt menü çubuğunun hemen üstündedir. Her dokunuş **Kapalı → Tümü → İlaç → Odun → Silah → Yiyecek → Kaynak → Giysi → Kapalı** sırasını bir adım ilerletir. Seçim kaydedilir; harita, Bul ve mod ayarları aynı filtreyi kullanır. Bulucuda arama varsa kategoriyle birlikte uygulanmaya devam eder. Oyun zamanı veya kamera bu düğmeyle değişmez.
+
+Düğme 192 × 48 arayüz birimidir. Öğretici/tooltip HUD öğeleri erişimi kapatmaz; ayarlar gibi oyun diyalogları öndeyken, mod kapalıyken ve dünya görünümünde gizlenir. UI ölçeği/ekran değişiminde konumu yenilenir; sığmayan ölçüde mevcut kontrollere binmek yerine gizlenir. Etiket ve işaretler iki mod düğmesinin alanından da kaçınır. Gerçek Android kontrol katmanıyla konumu ve tek dokunuş davranışı yeni telefon testinde doğrulanmalıdır.
 
 ## 0.2.2 düzeltmesi
 
@@ -92,7 +98,7 @@ MSBuild’i Python başlatıcısıyla çalıştırın; CLI/runtime geçici dosya
 Çıktılar:
 
 - `1.6/Assemblies/RimDroidReadability.dll`
-- `dist/RimDroidReadability-0.2.2.zip`
+- `dist/RimDroidReadability-0.2.3.zip`
 - Yerel kanıt: `docs/validation.json`, `docs/static-validation.json` (Git’e alınmaz).
 
 ZIP izin listesi: yalnız `About/About.xml`, `LoadFolders.xml`, özgün mod DLL’si, `README.md`, `RELEASE.md`. Oyun, Unity, Harmony DLL’leri, oyun görselleri, kaynak referanslar, önbellekler ve raporlar pakete konmaz. Kaynak/test/OpenSpec belgeleri Git deposundadır. Lisans seçilmediğinden açık kaynak lisansı varmış gibi dağıtım yapılmaz.

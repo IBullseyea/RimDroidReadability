@@ -1,6 +1,14 @@
-# 0.2.2 yayın hazırlığı
+# 0.2.3 yayın hazırlığı
 
 24 Ekim 2026. Bu paket yerel geliştirme çıktısıdır. **Gerçek telefon kabulü, lisans ve GitHub depo kararı beklemededir.** Kamuya yayın yapılmadı; yayına hazır olduğu iddia edilmez.
+
+## 0.2.3 eşya filtresi kısayolu
+
+Kullanıcı 0.2.2 için “sorun yok çalışıyor” bildirdi; görüntülerde büyük göstergeler ve başarılı API/DLL durum satırı görülüyor. Bu, ilk çalıştırma/çizim sorunlarının kullanıcı tarafında düzeldiğine dair kanıttır; bütün cihaz senaryoları veya performans ölçümü tamamlandı sayılmaz.
+
+Kullanıcının yeni isteğiyle sağ alt zaman durdurma/hız kontrollerinin alt bölgesindeki boşluğa **Eşya: <kategori>** düğmesi eklendi. 192 × 48 birimlik düğme görünüm simgelerini ve alt menü çubuğunu kapatmaz. Her dokunuş mevcut filtre sırasını bir adım ilerletir; aynı ayar kaydedilir ve harita/bulucu sonuçları yenilenir. Mevcut arama ve kolonist tercihi korunur. Kamera/oyun zamanı değiştirilmez. Öğretici/tooltip HUD açıkken kısayol görünür; gerçek diyalog, dünya görünümü, kapatma ve hata halinde kaldırılır; etiket/işaret yerleşimi alanını dışlar.
+
+Yerel doğrulama filtre döngüsünü, ekran/UI ölçülerini ve iki kontrolün engel alanını kapsar. Kısayolun gerçek telefon konumu/dokunuşu ve kalıcılığı için yeni OpenSpec 7.2 görevi açık kalır. Mevcut 6.3–6.5 cihaz görevlerinin tümü için gereken kanıtlar da tamamlanmadı.
 
 ## 0.2.2 koleksiyon dolaşımı düzeltmesi
 
@@ -55,7 +63,7 @@ OpenSpec görevleri **6.3, 6.4, 6.5 açık** kalır. Telefon modeli S25 FE ve Ri
 
 ## Kurulum ve geri dönüş
 
-README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.2.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
+README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.3.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
 
 Kapatmak için **İşaretleri aç** seçeneğini kaldırın veya mod listesinden devre dışı bırakın. Göstergeler ve mod pencereleri kaldırılır; tercihler korunur. Gerekirse eski 0.1.0 paketine dönülebilir. Oyun dosyaları ve kayıtları dönüştürülmez.
 

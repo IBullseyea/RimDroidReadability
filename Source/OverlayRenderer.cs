@@ -13,6 +13,8 @@ namespace RimDroid.Readability
         internal static int OmittedGroups { get; private set; }
         internal static LabelRect ControlBounds
         { get { return FinderGeometry.Control(UI.screenWidth, UI.screenHeight); } }
+        internal static LabelRect FilterControlBounds
+        { get { return FilterShortcutGeometry.Bounds(UI.screenWidth, UI.screenHeight); } }
 
         internal static void Invalidate()
         {
@@ -52,8 +54,8 @@ namespace RimDroid.Readability
                     || !AnnotationRules.TryMarker(target.X, target.Y, bounds, settings.MarkerSize, out marker);
             });
             List<TargetGroup> groups = GroupRules.Visual(targets, settings.GroupItems);
-            List<PlannedMarker> markers = OverlayBudget.Select(groups, bounds, ControlBounds, settings.MarkerSize);
-            layout.Reset(bounds); layout.SetControl(ControlBounds);
+            List<PlannedMarker> markers = OverlayBudget.Select(groups, bounds, ControlBounds, settings.MarkerSize, FilterControlBounds);
+            layout.Reset(bounds); layout.SetControls(ControlBounds, FilterControlBounds);
             foreach (PlannedMarker marker in markers)
             {
                 layout.AddObstacle(marker.Rect);

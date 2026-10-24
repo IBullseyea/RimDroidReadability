@@ -30,10 +30,12 @@ namespace RimDroid.Readability
         private readonly List<LabelRect> obstacles = new List<LabelRect>(AnnotationRules.MaximumMarkers);
         private LabelRect viewport;
         private LabelRect control;
+        private LabelRect secondControl;
         internal int Count { get { return occupied.Count; } }
         internal int ObstacleCount { get { return obstacles.Count; } }
-        internal void Reset(LabelRect bounds) { viewport = bounds; control = default(LabelRect); occupied.Clear(); obstacles.Clear(); }
-        internal void SetControl(LabelRect bounds) { control = bounds; }
+        internal void Reset(LabelRect bounds) { viewport = bounds; control = default(LabelRect); secondControl = default(LabelRect); occupied.Clear(); obstacles.Clear(); }
+        internal void SetControl(LabelRect bounds) { control = bounds; secondControl = default(LabelRect); }
+        internal void SetControls(LabelRect first, LabelRect second) { control = first; secondControl = second; }
         internal bool AddObstacle(LabelRect marker)
         {
             if (obstacles.Count >= AnnotationRules.MaximumMarkers || !viewport.IsFinite || !marker.IsFinite || !viewport.Contains(marker))
@@ -55,7 +57,8 @@ namespace RimDroid.Readability
                 float py = i == 0 ? y - height - offset : i == 3 ? y + offset : y - height / 2;
                 LabelRect candidate = new LabelRect(px, py, width, height);
                 if (!candidate.IsFinite || !viewport.Contains(candidate)) continue;
-                bool collision = control.IsFinite && candidate.Overlaps(control, 3);
+                bool collision = (control.IsFinite && candidate.Overlaps(control, 3))
+                    || (secondControl.IsFinite && candidate.Overlaps(secondControl, 3));
                 for (int j = 0; j < occupied.Count; j++)
                     if (candidate.Overlaps(occupied[j], 3)) { collision = true; break; }
                 for (int j = 0; !collision && j < obstacles.Count; j++)

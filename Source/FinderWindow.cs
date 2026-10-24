@@ -134,8 +134,7 @@ namespace RimDroid.Readability
                 {
                     if (Widgets.ButtonText(new Rect(0, y, width, 48), "Kategori: " + SettingsRules.FilterName(ReadabilityMod.Settings.Filter)))
                     {
-                        ReadabilityMod.Settings.Filter = SettingsRules.NextFilter(ReadabilityMod.Settings.Filter);
-                        ReadabilityMod.Settings.Write(); TargetCatalog.Clear(); state.ResetNavigation(); return;
+                        ReadabilityMod.CycleItemFilter(); state.ResetNavigation(); return;
                     }
                     y += 56;
                     string search = Widgets.TextField(new Rect(0, y, width - 104, 48), TargetCatalog.Search);

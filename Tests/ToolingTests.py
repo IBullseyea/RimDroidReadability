@@ -116,7 +116,7 @@ class ToolingTests(unittest.TestCase):
             audit.audit_release(archive(self.payload, 'RimDroidReadability/1.6/Assemblies/Assembly-CSharp.dll'), self.payload)
 
     def test_old_release_version_rejected_even_with_matching_archive(self):
-        for old_version in (b'0.1.0', b'0.2.0', b'0.2.1'):
+        for old_version in (b'0.1.0', b'0.2.0', b'0.2.1', b'0.2.2'):
             for rel in ('About/About.xml', 'README.md'):
                 changed = dict(self.payload)
                 changed[rel] = changed[rel].replace(build.VERSION.encode(), old_version)

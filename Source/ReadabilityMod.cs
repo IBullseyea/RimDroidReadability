@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7.2", FrameworkDisplayName = ".NET Framework 4.7.2")]
-[assembly: AssemblyVersion("0.2.2.0")]
+[assembly: AssemblyVersion("0.2.3.0")]
 
 namespace RimDroid.Readability
 {
@@ -56,6 +56,13 @@ namespace RimDroid.Readability
 
         public override string SettingsCategory() { return "RimDroid Readability"; }
 
+        internal static void CycleItemFilter()
+        {
+            Settings.Filter = SettingsRules.NextFilter(Settings.Filter);
+            OverlayRenderer.Invalidate();
+            Settings.Write();
+        }
+
         public override void DoSettingsWindowContents(Rect inRect)
         {
             bool oldEnabled = Settings.Enabled, oldColonists = Settings.Colonists;
@@ -64,7 +71,7 @@ namespace RimDroid.Readability
             bool oldGroup = Settings.GroupItems;
             Listing_Standard list = new Listing_Standard();
             list.Begin(inRect);
-            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.2");
+            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.3");
             list.Label(status);
             list.Gap();
             list.CheckboxLabeled("İşaretleri aç", ref Settings.Enabled);

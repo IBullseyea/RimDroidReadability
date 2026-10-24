@@ -11,6 +11,20 @@ internal static class LogicTests
     {
         CatalogTests.Run(Check);
         Check((int)ItemFilter.Off == 0 && (int)ItemFilter.Medicine == 1 && (int)ItemFilter.Wood == 2, "legacy filter numeric values");
+        ItemFilter cycling = ItemFilter.Off;
+        foreach (ItemFilter expected in new[] { ItemFilter.All, ItemFilter.Medicine, ItemFilter.Wood, ItemFilter.Weapon,
+            ItemFilter.Food, ItemFilter.Resource, ItemFilter.Apparel, ItemFilter.Off })
+        {
+            cycling = SettingsRules.NextFilter(cycling);
+            Check(cycling == expected, "shortcut advances exactly one category " + expected);
+            Check(!string.IsNullOrEmpty(SettingsRules.FilterName(cycling)), "shortcut has a current filter caption " + expected);
+        }
+        Check(SettingsRules.NextFilter((ItemFilter)999) == ItemFilter.Off, "shortcut invalid value returns safely to Off");
+        for (int mask = 0; mask < 8; mask++)
+            Check(MapControlRules.BlockedByWindow((mask & 1) != 0, (mask & 2) != 0, (mask & 4) != 0) == (mask == 4),
+                "only a real foreground window blocks map controls " + mask);
+        Check(!MapControlRules.BlockedByWindow(false, true, true), "learning readout immediate HUD leaves shortcut and finder available");
+        Check(MapControlRules.BlockedByWindow(false, false, true), "settings dialog still blocks shortcut actions");
         Check(SettingsRules.Filter(ItemFilter.Wood) == ItemFilter.Wood && SettingsRules.Font(26) == 26, "legacy Wood/26 unchanged");
         Check(SettingsRules.Marker(16) == 16 && SettingsRules.Font(32) == 32, "new defaults and largest font");
         Check(SettingsRules.Font(-1) == 22 && SettingsRules.Marker(100) == 16 && SettingsRules.Filter((ItemFilter)90) == ItemFilter.Off,
@@ -158,6 +172,28 @@ internal static class LogicTests
         LabelRect placed;
         LabelLayout layout = new LabelLayout();
         LabelRect viewport = new LabelRect(8, 8, 500, 400);
+        foreach (LabelRect screen in new[] { new LabelRect(0, 0, 360, 640), new LabelRect(0, 0, 640, 360),
+            new LabelRect(0, 0, 1280, 720), new LabelRect(0, 0, 2048, 945), new LabelRect(0, 0, 1706, 787) })
+        {
+            LabelRect shortcut = FilterShortcutGeometry.Bounds(screen.Width, screen.Height);
+            LabelRect visibilityIcons = new LabelRect(screen.Width - 141, screen.Height - 140, 141, 105);
+            LabelRect bottomBar = new LabelRect(0, screen.Height - 35, screen.Width, 35);
+            Check(shortcut.IsFinite && screen.Contains(shortcut), "filter shortcut fits screen/UI dimensions " + screen.Width);
+            Check(shortcut.Width >= 48 && shortcut.Height >= 48, "filter shortcut touch target minimum");
+            Check(!shortcut.Overlaps(visibilityIcons, 0) && !shortcut.Overlaps(bottomBar, 0), "filter shortcut leaves native icons and main bar free");
+            Check(!shortcut.Overlaps(FinderGeometry.Control(screen.Width, screen.Height), 0), "two mod windows stay separate");
+        }
+        Check(!FilterShortcutGeometry.Bounds(320, 640).IsFinite && !FilterShortcutGeometry.Bounds(640, 80).IsFinite,
+            "insufficient shortcut space hides rather than clips or overlaps");
+        Check(!FilterShortcutGeometry.Bounds(float.NaN, 640).IsFinite && !FilterShortcutGeometry.Bounds(640, float.PositiveInfinity).IsFinite,
+            "invalid shortcut geometry fails closed");
+        LabelRect filterObstacle = new LabelRect(400, 100, 192, 48);
+        layout.Reset(new LabelRect(0, 0, 1000, 600));
+        layout.SetControls(new LabelRect(20, 300, 200, 56), filterObstacle);
+        Check(layout.TryPlace(496, 170, 100, 32, out placed) && !placed.Overlaps(filterObstacle, 0), "labels avoid the new filter shortcut");
+        List<PlannedMarker> shortcutBlocked = OverlayBudget.Select(denseGroups, largeView, default(LabelRect), 24, blockedControl);
+        Check(shortcutBlocked.Count == 120 && shortcutBlocked[0].Group.Id == 198, "secondary shortcut exclusion retains marker budget/priority");
+        foreach (PlannedMarker marker in shortcutBlocked) Check(!marker.Rect.Overlaps(blockedControl, 0), "markers avoid the second control");
         layout.Reset(viewport);
         LabelRect blockingControl = new LabelRect(150, 110, 200, 60); layout.SetControl(blockingControl);
         Check(layout.TryPlace(250, 200, 100, 40, out placed, 24) && !placed.Overlaps(blockingControl, 0), "label switches placement when preferred position hits control");

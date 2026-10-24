@@ -172,7 +172,8 @@ namespace RimDroid.Readability
 
     internal static class OverlayBudget
     {
-        internal static List<PlannedMarker> Select(List<TargetGroup> groups, LabelRect bounds, LabelRect control, int markerSize)
+        internal static List<PlannedMarker> Select(List<TargetGroup> groups, LabelRect bounds, LabelRect control, int markerSize,
+            LabelRect secondControl = default(LabelRect))
         {
             List<TargetGroup> ordered = new List<TargetGroup>(groups); ordered.Sort(GroupRules.Compare);
             List<PlannedMarker> result = new List<PlannedMarker>(AnnotationRules.MaximumMarkers);
@@ -181,7 +182,8 @@ namespace RimDroid.Readability
                 LabelRect marker;
                 if (result.Count == AnnotationRules.MaximumMarkers) break;
                 if (!AnnotationRules.TryMarker(group.X, group.Y, bounds, markerSize, out marker)
-                    || (control.IsFinite && marker.Overlaps(control, 3))) continue;
+                    || (control.IsFinite && marker.Overlaps(control, 3))
+                    || (secondControl.IsFinite && marker.Overlaps(secondControl, 3))) continue;
                 result.Add(new PlannedMarker { Group = group, Rect = marker });
             }
             return result;
@@ -200,6 +202,25 @@ namespace RimDroid.Readability
         { return Math.Max(1, Math.Min(12, (int)((contentHeight - (items ? 312 : 200)) / RowHeight))); }
         internal static bool FitsActions(float contentWidth)
         { return contentWidth >= 2 * Touch + 8 + 20; }
+    }
+
+    internal static class FilterShortcutGeometry
+    {
+        internal const float Width = 192, Height = 48, VisibilityPanelWidth = 141, BottomBarHeight = 35, Gap = 8;
+        internal static LabelRect Bounds(float screenWidth, float screenHeight)
+        {
+            LabelRect viewport = new LabelRect(Gap, Gap, screenWidth - 2 * Gap, screenHeight - 2 * Gap);
+            LabelRect button = new LabelRect(screenWidth - VisibilityPanelWidth - Gap - Width,
+                screenHeight - BottomBarHeight - Gap - Height, Width, Height);
+            return viewport.IsFinite && button.IsFinite && viewport.Contains(button)
+                && !button.Overlaps(FinderGeometry.Control(screenWidth, screenHeight), 3) ? button : default(LabelRect);
+        }
+    }
+
+    internal static class MapControlRules
+    {
+        internal static bool BlockedByWindow(bool ownMapControl, bool immediateHud, bool dialogOrHigher)
+        { return !ownMapControl && !immediateHud && dialogOrHigher; }
     }
 
     internal sealed class FinderState

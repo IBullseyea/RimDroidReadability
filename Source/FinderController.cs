@@ -10,6 +10,7 @@ namespace RimDroid.Readability
     internal static class FinderController
     {
         private static FinderButtonWindow button;
+        private static FilterShortcutWindow filterButton;
         private static FinderWindow finder;
         private static readonly SessionScope scope = new SessionScope();
         internal static bool CanDraw
@@ -21,7 +22,8 @@ namespace RimDroid.Readability
             {
                 if (Find.WindowStack == null) return true;
                 foreach (Window window in Find.WindowStack.Windows)
-                    if (window != button && window.layer >= WindowLayer.Dialog) return true;
+                    if (MapControlRules.BlockedByWindow(window == button || window == filterButton,
+                        window is ImmediateWindow, window.layer >= WindowLayer.Dialog)) return true;
                 return false;
             }
         }
@@ -36,10 +38,17 @@ namespace RimDroid.Readability
                 { Reset(); scope.Bind(Find.CurrentMap, Current.Game); }
                 if (finder != null && !finder.IsOpen) finder = null;
                 if (HasForeground)
-                { Remove(button); button = null; return; }
+                { Remove(button); button = null; Remove(filterButton); filterButton = null; return; }
                 if (button == null || !button.IsOpen)
                 { button = new FinderButtonWindow(); Find.WindowStack.Add(button); }
                 button.UpdatePosition();
+                if (OverlayRenderer.FilterControlBounds.IsFinite)
+                {
+                    if (filterButton == null || !filterButton.IsOpen)
+                    { filterButton = new FilterShortcutWindow(); Find.WindowStack.Add(filterButton); }
+                    filterButton.UpdatePosition();
+                }
+                else { Remove(filterButton); filterButton = null; }
             }
             catch (Exception error) { ReadabilityMod.Disable("Harita arayüzü hatası: " + error.GetType().Name + ": " + error.Message, error); }
         }
@@ -53,12 +62,17 @@ namespace RimDroid.Readability
         internal static void Reset()
         {
             FinderButtonWindow oldButton = button; FinderWindow oldFinder = finder;
-            button = null; finder = null; scope.Clear();
+            FilterShortcutWindow oldFilter = filterButton;
+            button = null; filterButton = null; finder = null; scope.Clear();
             try { Remove(oldButton); }
             finally
             {
-                try { Remove(oldFinder); }
-                finally { TargetCatalog.Search = ""; OverlayRenderer.Invalidate(); }
+                try { Remove(oldFilter); }
+                finally
+                {
+                    try { Remove(oldFinder); }
+                    finally { TargetCatalog.Search = ""; OverlayRenderer.Invalidate(); }
+                }
             }
         }
 
