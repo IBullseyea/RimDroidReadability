@@ -39,7 +39,7 @@ namespace RimDroid.Readability
                     if (!FinderController.ValidWindow || FinderController.HasForeground) return;
                     UpdatePosition(); base.WindowOnGUI();
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Bul kontrolü pencere hatası: " + error.Message); }
+                catch (Exception error) { ReadabilityMod.Disable("Bul kontrolü pencere hatası: " + error.Message, error); }
             }
         }
         public override void DoWindowContents(Rect inRect)
@@ -54,7 +54,7 @@ namespace RimDroid.Readability
                     if (Widgets.ButtonText(inRect, "Bul" + count)) FinderController.Open();
                     TooltipHandler.TipRegion(inRect, "Kolonist ve eşya bulucu. + sayı, etiketi gösterilemeyen görsel grup sayısıdır; yığın sayısı değildir.");
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Bul kontrolü hatası: " + error.Message); }
+                catch (Exception error) { ReadabilityMod.Disable("Bul kontrolü hatası: " + error.Message, error); }
             }
         }
     }
@@ -89,7 +89,7 @@ namespace RimDroid.Readability
                     }
                     base.WindowOnGUI();
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Bulucu pencere hatası: " + error.GetType().Name + ": " + error.Message); }
+                catch (Exception error) { ReadabilityMod.Disable("Bulucu pencere hatası: " + error.GetType().Name + ": " + error.Message, error); }
             }
         }
 
@@ -98,7 +98,7 @@ namespace RimDroid.Readability
             using (new GuiState())
             {
                 try { Draw(inRect); }
-                catch (Exception error) { ReadabilityMod.Disable("Bulucu hatası: " + error.GetType().Name + ": " + error.Message); }
+                catch (Exception error) { ReadabilityMod.Disable("Bulucu hatası: " + error.GetType().Name + ": " + error.Message, error); }
             }
         }
 

@@ -1,6 +1,10 @@
-# RimDroid Readability — 0.2.1
+# RimDroid Readability — 0.2.2
 
 RimWorld 1.6’yı **RimDroid Native Unity** üzerinden telefonda oynamak için özgün, isteğe bağlı mod: kamera yakınlığından bağımsız büyük göstergeler, eşya gruplama ve dokunmatik hedef bulucu. **Gerçek telefon uyumluluğu, okunabilirlik, dokunma ve performans kabulü beklemededir.** Yerel derleme bu kabulün yerine geçmez.
+
+## 0.2.2 düzeltmesi
+
+Kolonist sorgusunun oyuna ait geçici listesini dolaşırken yeniden sorgulaması, `Collection was modified` çizim hatasına ve modun kendini kapatmasına yol açıyordu. Katalog yenilemesi artık kolonist/eşya sorgularının sahip olduğu dizi kopyaları üzerinde dolaşır; hedefin güncel uygunluğu yine çizim ve Git öncesinde denetlenir. Hata aynı katalog kaynak koduyla, oyun/Unity yerine özgün API fikstürleri kullanılarak yeniden üretildi ve düzeltmeyle geçti. Başka bir çalışma hatası olursa tek mod loguna tam exception/çağrı izi eklenir; ayar ekranındaki kısa durum mesajı korunur.
 
 ## Kullanım ve ayarlar
 
@@ -83,12 +87,12 @@ python3 tools/build.py --game-managed-dir "/tam/yol/RimWorldLinux_Data/Managed"
 
 `ILSPYCMD` ortam değişkeniyle kurulu `ilspycmd` dosyasının tam yolu verilebilir. Yerel çalışma alanında isteğe bağlı varsayılan, mod kökünün iki üstündeki `RimWorld/game/RimWorldLinux_Data/Managed` konumudur; bağımsız klonda **`--game-managed-dir` kullanın**.
 
-MSBuild’i Python başlatıcısıyla çalıştırın; CLI/runtime geçici dosyaları, önbellekler ve test çıktıları `.build/` altında kalır. C# 7.3, AnyCPU, .NET Framework 4.7.2 hedeflenir; modern .NET runtime mod DLL’sine bağlanmaz. Saf mantık testleri yalnız özgün mantığı ve kurulu uyumlu .NET runtime’ını kullanır; oyun/Unity kodu çalıştırmaz. Referans DLL hash ve değişiklik zamanları derleme öncesi/sonrası karşılaştırılır.
+MSBuild’i Python başlatıcısıyla çalıştırın; CLI/runtime geçici dosyaları, önbellekler ve test çıktıları `.build/` altında kalır. C# 7.3, AnyCPU, .NET Framework 4.7.2 hedeflenir; modern .NET runtime mod DLL’sine bağlanmaz. Saf mantık ve katalog uyarlayıcı testleri yalnız özgün kodu/API fikstürlerini ve kurulu uyumlu .NET runtime’ını kullanır; oyun/Unity kodu çalıştırmaz. Referans DLL hash ve değişiklik zamanları derleme öncesi/sonrası karşılaştırılır.
 
 Çıktılar:
 
 - `1.6/Assemblies/RimDroidReadability.dll`
-- `dist/RimDroidReadability-0.2.1.zip`
+- `dist/RimDroidReadability-0.2.2.zip`
 - Yerel kanıt: `docs/validation.json`, `docs/static-validation.json` (Git’e alınmaz).
 
 ZIP izin listesi: yalnız `About/About.xml`, `LoadFolders.xml`, özgün mod DLL’si, `README.md`, `RELEASE.md`. Oyun, Unity, Harmony DLL’leri, oyun görselleri, kaynak referanslar, önbellekler ve raporlar pakete konmaz. Kaynak/test/OpenSpec belgeleri Git deposundadır. Lisans seçilmediğinden açık kaynak lisansı varmış gibi dağıtım yapılmaz.

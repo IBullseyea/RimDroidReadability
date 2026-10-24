@@ -41,7 +41,7 @@ namespace RimDroid.Readability
                 { button = new FinderButtonWindow(); Find.WindowStack.Add(button); }
                 button.UpdatePosition();
             }
-            catch (Exception error) { ReadabilityMod.Disable("Harita arayüzü hatası: " + error.GetType().Name + ": " + error.Message); }
+            catch (Exception error) { ReadabilityMod.Disable("Harita arayüzü hatası: " + error.GetType().Name + ": " + error.Message, error); }
         }
 
         internal static void Open()

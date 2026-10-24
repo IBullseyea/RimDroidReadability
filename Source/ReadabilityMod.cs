@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7.2", FrameworkDisplayName = ".NET Framework 4.7.2")]
-[assembly: AssemblyVersion("0.2.1.0")]
+[assembly: AssemblyVersion("0.2.2.0")]
 
 namespace RimDroid.Readability
 {
@@ -64,7 +64,7 @@ namespace RimDroid.Readability
             bool oldGroup = Settings.GroupItems;
             Listing_Standard list = new Listing_Standard();
             list.Begin(inRect);
-            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.1");
+            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.2");
             list.Label(status);
             list.Gap();
             list.CheckboxLabeled("İşaretleri aç", ref Settings.Enabled);
@@ -137,7 +137,7 @@ namespace RimDroid.Readability
                     + "; SHA256=" + actualHash + "; MVID=" + ReferenceMvid
                     + ". Android visual/performance acceptance still pending.");
             }
-            catch (Exception error) { Disable("Başlatma kontrolü başarısız: " + error.GetType().Name + ": " + error.Message); }
+            catch (Exception error) { Disable("Başlatma kontrolü başarısız: " + error.GetType().Name + ": " + error.Message, error); }
         }
 
         private static void InstallHarmony(MethodInfo[] originals)
@@ -199,17 +199,17 @@ namespace RimDroid.Readability
             return true;
         }
 
-        internal static void Disable(string reason)
+        internal static void Disable(string reason, Exception error = null)
         {
             gate.Disable();
             try { FinderController.Reset(); }
-            catch (Exception error) { reason += "; pencere temizliği: " + error.GetType().Name; }
+            catch (Exception cleanupError) { reason += "; pencere temizliği: " + cleanupError.GetType().Name; }
             try { hooks.Remove(RollbackHarmony); }
-            catch (Exception error) { reason += "; kanca temizliği: " + error.GetType().Name; }
+            catch (Exception cleanupError) { reason += "; kanca temizliği: " + cleanupError.GetType().Name; }
             status = reason;
             if (reported) return;
             reported = true;
-            Log.Warning("[RimDroid Readability] Disabled: " + reason);
+            Log.Warning("[RimDroid Readability] Disabled: " + reason + (error == null ? "" : "\n" + error));
         }
     }
 }

@@ -1,12 +1,20 @@
-# 0.2.1 yayın hazırlığı
+# 0.2.2 yayın hazırlığı
 
 24 Ekim 2026. Bu paket yerel geliştirme çıktısıdır. **Gerçek telefon kabulü, lisans ve GitHub depo kararı beklemededir.** Kamuya yayın yapılmadı; yayına hazır olduğu iddia edilmez.
+
+## 0.2.2 koleksiyon dolaşımı düzeltmesi
+
+Kullanıcı 0.2.1’in 5–10 saniye sonra yalnız göstergeler/Bul kaybolacak şekilde kapandığını bildirdi. Ayar görüntüsünde `Çizim hatası: InvalidOperationException: Collection was modified; enumeration operation may not execute.` doğrulandı. Katalog kolonistlerin oyuna ait geçici listesini dolaşırken uygunluk denetiminde aynı listeyi yeniden dolduruyordu.
+
+Yenileme artık kolonist/eşya sorgularının dizi kopyaları üzerinde çalışır. Sis/doğma/yok olma/harita koşulları ve miktarlar çizim/eylem öncesinde tekrar denetlenir. Aynı özgün katalog kaynak kodu, oyun/Unity içermeyen yeniden kullanılan liste fikstürüyle düzeltme öncesinde aynı exception’ı üretti; düzeltme sonrasında çoklu kolonist, 120 tekrar, periyodik yenileme, güncel miktar/sis/silinme ve hedefe gitme uygunluğu kontrollerinden geçti. Runtime hata loguna tek seferlik tam çağrı izi eklendi. 0.2.1 Native tespit düzeltmesi ve tüm uyumluluk kapıları korunur.
+
+Gerçek telefonda 0.2.2’nin sürekli çalışması henüz doğrulanmadı; cihaz kabul görevleri açık kalır.
 
 ## 0.2.1 başlangıç düzeltmesi
 
 Samsung S25 FE / RimDroid 0.3.0v2 ile paylaşılan ayar görüntüsünde 0.2.0’ın ilk runtime kapısında durduğu görüldü. RimDroid 0.3.0 kaynak referansı, Native köprünün Android’de kasıtlı olarak `LinuxPlayer` döndürdüğünü doğruluyor. 0.2.0’ın Android enum’una bağlı kontrolü bu yolu hatalı reddediyordu.
 
-0.2.1, Native işaretine ek olarak gerçek Android oyuncusunu veya LinuxPlayer + Android işletim sistemi bilgisini kabul eder. Diğer platformlar, eksik Native işareti ve masaüstü Linux reddedilir. Runtime hatasında platform/işletim sistemi/Native işareti tanısı görünür. Sürüm/DLL/MVID/API/Harmony kapıları korunur. Yeni paketin telefonda başarılı başlatılması henüz doğrulanmadı; eski görüntüler göstergelerin kabul kanıtı değildir.
+0.2.1, Native işaretine ek olarak gerçek Android oyuncusunu veya LinuxPlayer + Android işletim sistemi bilgisini kabul eder. Diğer platformlar, eksik Native işareti ve masaüstü Linux reddedilir. Runtime hatasında platform/işletim sistemi/Native işareti tanısı görünür. Sürüm/DLL/MVID/API/Harmony kapıları korunur. Bu düzeltmeden sonra kullanıcı kısa süre çalışıp çizim hatasıyla kapandığını bildirdi; ayrıntısı 0.2.2 bölümündedir. İlk kapının aşılması tek başına cihaz kabulü değildir.
 
 ## Değişiklikler
 
@@ -47,7 +55,7 @@ OpenSpec görevleri **6.3, 6.4, 6.5 açık** kalır. Telefon modeli S25 FE ve Ri
 
 ## Kurulum ve geri dönüş
 
-README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.1.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
+README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.2.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
 
 Kapatmak için **İşaretleri aç** seçeneğini kaldırın veya mod listesinden devre dışı bırakın. Göstergeler ve mod pencereleri kaldırılır; tercihler korunur. Gerekirse eski 0.1.0 paketine dönülebilir. Oyun dosyaları ve kayıtları dönüştürülmez.
 

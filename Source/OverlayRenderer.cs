@@ -26,7 +26,7 @@ namespace RimDroid.Readability
                 || Event.current == null || Event.current.type != EventType.Repaint) return;
             Color oldColor = GUI.color;
             try { Render(); }
-            catch (Exception error) { ReadabilityMod.Disable("Çizim hatası: " + error.GetType().Name + ": " + error.Message); }
+            catch (Exception error) { ReadabilityMod.Disable("Çizim hatası: " + error.GetType().Name + ": " + error.Message, error); }
             finally { GUI.color = oldColor; }
         }
 

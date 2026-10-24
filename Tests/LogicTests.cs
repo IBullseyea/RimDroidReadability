@@ -9,6 +9,7 @@ internal static class LogicTests
     { assertions++; if (!condition) throw new Exception("FAILED: " + name); }
     private static void Main()
     {
+        CatalogTests.Run(Check);
         Check((int)ItemFilter.Off == 0 && (int)ItemFilter.Medicine == 1 && (int)ItemFilter.Wood == 2, "legacy filter numeric values");
         Check(SettingsRules.Filter(ItemFilter.Wood) == ItemFilter.Wood && SettingsRules.Font(26) == 26, "legacy Wood/26 unchanged");
         Check(SettingsRules.Marker(16) == 16 && SettingsRules.Font(32) == 32, "new defaults and largest font");
@@ -285,6 +286,6 @@ internal static class LogicTests
         Check(gate.ConsumeReplacement(), "late notification remains pending despite closed Ready gate");
         gate.Disable();
         Check(!gate.Ready && !gate.ConsumeReplacement(), "disabled gate stays closed without duplicate handling");
-        Console.WriteLine("PASS: " + assertions + " standalone layout/visibility/runtime-gate assertions; no game code loaded");
+        Console.WriteLine("PASS: " + assertions + " standalone catalogue/layout/visibility/runtime-gate assertions; no game code loaded");
     }
 }

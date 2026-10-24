@@ -58,9 +58,15 @@ namespace RimDroid.Readability
             Map map = Find.CurrentMap;
             if (!clock.Refresh(map, Current.Game, (int)ReadabilityMod.Settings.Filter + ":" + Search, Time.realtimeSinceStartup)) return;
             entries.Clear(); byId.Clear();
-            foreach (Pawn pawn in map.mapPawns.FreeColonistsSpawned) Add(pawn, true);
+            // MapPawns rebuilds and returns a shared scratch list. Eligible() queries it again,
+            // so iterating the borrowed list itself invalidates its enumerator on the first pawn.
+            Pawn[] colonists = map.mapPawns.FreeColonistsSpawned.ToArray();
+            foreach (Pawn pawn in colonists) Add(pawn, true);
             if (ReadabilityMod.Settings.Filter != ItemFilter.Off)
-                foreach (Thing thing in map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver)) Add(thing, false);
+            {
+                Thing[] items = map.listerThings.ThingsInGroup(ThingRequestGroup.HaulableEver).ToArray();
+                foreach (Thing thing in items) Add(thing, false);
+            }
             entries.Sort(delegate(Entry a, Entry b) { return a.Thing.thingIDNumber.CompareTo(b.Thing.thingIDNumber); });
         }
 
