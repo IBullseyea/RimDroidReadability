@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Alle gyldige stakke af denne type</RDR_AllStacks>
+  <RDR_Back>Tilbage</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Kategori</RDR_Category>
+  <RDR_Clear>Ryd</RDR_Clear>
+  <RDR_Close>Luk</RDR_Close>
+  <RDR_Colonist>Kolonist</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>K</RDR_ColonistShort>
+  <RDR_Colonists>Kolonister</RDR_Colonists>
+  <RDR_ColonistsToggle>Vis kolonister</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Tegnefejl</RDR_ContextDraw>
+  <RDR_ContextFindButton>Fejl i Find-knappen</RDR_ContextFindButton>
+  <RDR_ContextFinder>Søgefejl</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Fejl ved fjernelse af hooks</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Fejl i kortvisning</RDR_ContextMap>
+  <RDR_ContextShortcut>Fejl i filtergenvej</RDR_ContextShortcut>
+  <RDR_ContextStartup>Opstartsfejl</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Fejl ved lukning af vinduer</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Telefonkompatibilitet og ydelse er endnu ikke testet.</RDR_DevicePending>
+  <RDR_Enabled>Aktivér markører</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Alle</RDR_FilterAll>
+  <RDR_FilterApparel>Tøj</RDR_FilterApparel>
+  <RDR_FilterFood>Mad</RDR_FilterFood>
+  <RDR_FilterMedicine>Medicin</RDR_FilterMedicine>
+  <RDR_FilterOff>Fra</RDR_FilterOff>
+  <RDR_FilterResource>Ressourcer</RDR_FilterResource>
+  <RDR_FilterWeapon>Våben</RDR_FilterWeapon>
+  <RDR_FilterWood>Træ</RDR_FilterWood>
+  <RDR_Find>Find</RDR_Find>
+  <RDR_FindTip>Find kolonister og genstande. +N tæller grupper uden fuld etiket, ikke stakke.</RDR_FindTip>
+  <RDR_FinderTitle>Målsøgning</RDR_FinderTitle>
+  <RDR_FontSize>Tekststørrelse</RDR_FontSize>
+  <RDR_Go>Gå til</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Gruppér nærliggende stakke</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony er ikke indlæst</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Der er flere Harmony-assemblies</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Ikke-understøttet Harmony-version: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Ikke nok plads. Sænk UI-skalaen eller brug liggende visning.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Genstandsfilter</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>G</RDR_ItemShort>
+  <RDR_Items>Genstande</RDR_Items>
+  <RDR_Limits>Ét genstandsfilter; højst 40 etiketter og 120 markører. Brug Find til at gå til et mål uden at ændre zoom. Deaktivering fjerner moddets knapper.</RDR_Limits>
+  <RDR_MarkerSize>Markørstørrelse</RDR_MarkerSize>
+  <RDR_Missing>mangler</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native-markør</RDR_NativeMarker>
+  <RDR_Next>Næste</RDR_Next>
+  <RDR_NoColonists>Ingen egnede frie kolonister på dette kort.</RDR_NoColonists>
+  <RDR_NoItems>Ingen matchende genstande. Skift kategori eller søgning.</RDR_NoItems>
+  <RDR_NoStacks>Ingen stakke tilbage. Gå tilbage til grupperne.</RDR_NoStacks>
+  <RDR_Open>Åbn</RDR_Open>
+  <RDR_OperatingSystem>Operativsystem</RDR_OperatingSystem>
+  <RDR_Platform>Platform</RDR_Platform>
+  <RDR_Present>til stede</RDR_Present>
+  <RDR_Previous>Forrige</RDR_Previous>
+  <RDR_Quantity>Antal</RDR_Quantity>
+  <RDR_Results>Resultater</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Skift til næste genstandsfilter. Søgningen gælder stadig.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Stakke</RDR_Stacks>
+  <RDR_StatusAssembly>Spillets assembly er ændret eller indlæst flere gange; mod deaktiveret.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Den indlæste DLL-fil fra spillet kunne ikke identificeres.</RDR_StatusGameFile>
+  <RDR_StatusHash>Spillets DLL har en anden SHA-256 ({0}); kontrollér denne version.</RDR_StatusHash>
+  <RDR_StatusMvid>Spillets DLL-id afviger; denne version skal kontrolleres.</RDR_StatusMvid>
+  <RDR_StatusNative>Kræver RimDroid Native på Android. Kontrollér instansens motor; box64 + native Mono er en anden tilstand.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL-kontrol bestået. Enhedstest afventes.</RDR_StatusReady>
+  <RDR_StatusVersion>Kræver RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Venter på opstartskontrol.</RDR_StatusWaiting>
+  <RDR_TargetGone>Målet er ikke længere tilgængeligt på dette kort. Resultater opdateret.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Målet kunne ikke vælges</RDR_TargetNotSelected>
+</LanguageData>

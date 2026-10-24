@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Όλες οι έγκυρες στοίβες αυτού του τύπου</RDR_AllStacks>
+  <RDR_Back>Πίσω</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Κατηγορία</RDR_Category>
+  <RDR_Clear>Καθαρισμός</RDR_Clear>
+  <RDR_Close>Κλείσιμο</RDR_Close>
+  <RDR_Colonist>Άποικος</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>Α</RDR_ColonistShort>
+  <RDR_Colonists>Άποικοι</RDR_Colonists>
+  <RDR_ColonistsToggle>Εμφάνιση αποίκων</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Σφάλμα σχεδίασης</RDR_ContextDraw>
+  <RDR_ContextFindButton>Σφάλμα κουμπιού εύρεσης</RDR_ContextFindButton>
+  <RDR_ContextFinder>Σφάλμα εύρεσης</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Σφάλμα αφαίρεσης hooks</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Σφάλμα διεπαφής χάρτη</RDR_ContextMap>
+  <RDR_ContextShortcut>Σφάλμα γρήγορου φίλτρου</RDR_ContextShortcut>
+  <RDR_ContextStartup>Σφάλμα εκκίνησης</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Σφάλμα κλεισίματος παραθύρων</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Οι έλεγχοι συμβατότητας και απόδοσης στο τηλέφωνο εκκρεμούν.</RDR_DevicePending>
+  <RDR_Enabled>Ενεργοποίηση ενδείξεων</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Όλα</RDR_FilterAll>
+  <RDR_FilterApparel>Ενδύματα</RDR_FilterApparel>
+  <RDR_FilterFood>Τροφή</RDR_FilterFood>
+  <RDR_FilterMedicine>Φάρμακα</RDR_FilterMedicine>
+  <RDR_FilterOff>Ανενεργό</RDR_FilterOff>
+  <RDR_FilterResource>Πόροι</RDR_FilterResource>
+  <RDR_FilterWeapon>Όπλα</RDR_FilterWeapon>
+  <RDR_FilterWood>Ξύλο</RDR_FilterWood>
+  <RDR_Find>Εύρεση</RDR_Find>
+  <RDR_FindTip>Βρείτε αποίκους και αντικείμενα. Το +N μετρά ομάδες χωρίς πλήρη ετικέτα, όχι στοίβες.</RDR_FindTip>
+  <RDR_FinderTitle>Εύρεση στόχων</RDR_FinderTitle>
+  <RDR_FontSize>Μέγεθος κειμένου</RDR_FontSize>
+  <RDR_Go>Μετάβαση</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Ομαδοποίηση κοντινών στοιβών</RDR_Grouping>
+  <RDR_HarmonyMissing>Το RimDroid Native Harmony δεν έχει φορτωθεί</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Βρέθηκαν πολλές βιβλιοθήκες Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Μη υποστηριζόμενη έκδοση Harmony: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Δεν υπάρχει αρκετός χώρος. Μειώστε την κλίμακα διεπαφής ή χρησιμοποιήστε οριζόντια προβολή.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Φίλτρο αντικειμένων</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>Π</RDR_ItemShort>
+  <RDR_Items>Αντικείμενα</RDR_Items>
+  <RDR_Limits>Ένα φίλτρο αντικειμένων· έως 40 ετικέτες και 120 ενδείξεις. Η Εύρεση μεταφέρει στον στόχο χωρίς αλλαγή μεγέθυνσης. Η απενεργοποίηση αφαιρεί τα κουμπιά του mod.</RDR_Limits>
+  <RDR_MarkerSize>Μέγεθος ενδείξεων</RDR_MarkerSize>
+  <RDR_Missing>λείπει</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Ένδειξη Native</RDR_NativeMarker>
+  <RDR_Next>Επόμενη</RDR_Next>
+  <RDR_NoColonists>Δεν υπάρχουν κατάλληλοι ελεύθεροι άποικοι σε αυτόν τον χάρτη.</RDR_NoColonists>
+  <RDR_NoItems>Δεν βρέθηκαν αντίστοιχα αντικείμενα. Αλλάξτε κατηγορία ή αναζήτηση.</RDR_NoItems>
+  <RDR_NoStacks>Δεν απομένουν στοίβες. Επιστρέψτε στις ομάδες.</RDR_NoStacks>
+  <RDR_Open>Άνοιγμα</RDR_Open>
+  <RDR_OperatingSystem>Λειτουργικό σύστημα</RDR_OperatingSystem>
+  <RDR_Platform>Πλατφόρμα</RDR_Platform>
+  <RDR_Present>υπάρχει</RDR_Present>
+  <RDR_Previous>Προηγούμενη</RDR_Previous>
+  <RDR_Quantity>Ποσότητα</RDR_Quantity>
+  <RDR_Results>Αποτελέσματα</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Μετάβαση στο επόμενο φίλτρο αντικειμένων. Η αναζήτηση εξακολουθεί να ισχύει.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Στοίβες</RDR_Stacks>
+  <RDR_StatusAssembly>Το συγκρότημα του παιχνιδιού άλλαξε ή βρέθηκε αντίγραφο· το mod απενεργοποιήθηκε.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Δεν ήταν δυνατή η αναγνώριση του φορτωμένου αρχείου DLL του παιχνιδιού.</RDR_StatusGameFile>
+  <RDR_StatusHash>Το SHA-256 του DLL του παιχνιδιού διαφέρει ({0})· ελέγξτε αυτή την έκδοση.</RDR_StatusHash>
+  <RDR_StatusMvid>Το αναγνωριστικό DLL του παιχνιδιού διαφέρει· αυτή η έκδοση πρέπει να ελεγχθεί.</RDR_StatusMvid>
+  <RDR_StatusNative>Απαιτείται RimDroid Native σε Android. Ελέγξτε τη μηχανή της παρουσίας· το box64 + native Mono είναι άλλη λειτουργία.</RDR_StatusNative>
+  <RDR_StatusReady>Οι έλεγχοι API/DLL ολοκληρώθηκαν. Οι δοκιμές συσκευής εκκρεμούν.</RDR_StatusReady>
+  <RDR_StatusVersion>Απαιτείται RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Αναμονή αρχικών ελέγχων.</RDR_StatusWaiting>
+  <RDR_TargetGone>Ο στόχος δεν είναι πλέον διαθέσιμος σε αυτόν τον χάρτη. Τα αποτελέσματα ανανεώθηκαν.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Δεν ήταν δυνατή η επιλογή στόχου</RDR_TargetNotSelected>
+</LanguageData>

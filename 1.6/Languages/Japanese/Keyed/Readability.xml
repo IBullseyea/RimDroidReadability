@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>この種類の有効な全スタック</RDR_AllStacks>
+  <RDR_Back>戻る</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>分類</RDR_Category>
+  <RDR_Clear>消去</RDR_Clear>
+  <RDR_Close>閉じる</RDR_Close>
+  <RDR_Colonist>入植者</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>人</RDR_ColonistShort>
+  <RDR_Colonists>入植者</RDR_Colonists>
+  <RDR_ColonistsToggle>入植者を表示</RDR_ColonistsToggle>
+  <RDR_ContextDraw>描画エラー</RDR_ContextDraw>
+  <RDR_ContextFindButton>検索ボタンのエラー</RDR_ContextFindButton>
+  <RDR_ContextFinder>検索エラー</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>フックの解除エラー</RDR_ContextHookCleanup>
+  <RDR_ContextMap>マップ画面エラー</RDR_ContextMap>
+  <RDR_ContextShortcut>絞り込みボタンのエラー</RDR_ContextShortcut>
+  <RDR_ContextStartup>起動エラー</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>ウィンドウの終了処理エラー</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>スマートフォンでの互換性と性能の確認は未完了です。</RDR_DevicePending>
+  <RDR_Enabled>マーカーを有効化</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>すべて</RDR_FilterAll>
+  <RDR_FilterApparel>衣服</RDR_FilterApparel>
+  <RDR_FilterFood>食料</RDR_FilterFood>
+  <RDR_FilterMedicine>医薬品</RDR_FilterMedicine>
+  <RDR_FilterOff>オフ</RDR_FilterOff>
+  <RDR_FilterResource>資源</RDR_FilterResource>
+  <RDR_FilterWeapon>武器</RDR_FilterWeapon>
+  <RDR_FilterWood>木材</RDR_FilterWood>
+  <RDR_Find>検索</RDR_Find>
+  <RDR_FindTip>入植者とアイテムを探します。+Nはラベル全体を表示できないグループ数で、スタック数ではありません。</RDR_FindTip>
+  <RDR_FinderTitle>対象を探す</RDR_FinderTitle>
+  <RDR_FontSize>文字サイズ</RDR_FontSize>
+  <RDR_Go>移動</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>近くのスタックをまとめる</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony が読み込まれていません</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Harmony アセンブリが複数あります</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>未対応のHarmonyバージョン: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>画面の空きが足りません。UI倍率を下げるか、横向きにしてください。</RDR_InsufficientSpace>
+  <RDR_ItemFilter>アイテムの絞り込み</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>物</RDR_ItemShort>
+  <RDR_Items>アイテム</RDR_Items>
+  <RDR_Limits>アイテムの絞り込みは1種類まで。ラベルは最大40個、マーカーは120個です。検索からズームを変えずに移動できます。無効化すると操作ボタンも消えます。</RDR_Limits>
+  <RDR_MarkerSize>マーカーサイズ</RDR_MarkerSize>
+  <RDR_Missing>なし</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native マーカー</RDR_NativeMarker>
+  <RDR_Next>次へ</RDR_Next>
+  <RDR_NoColonists>このマップに条件を満たす自由な入植者はいません。</RDR_NoColonists>
+  <RDR_NoItems>一致するアイテムはありません。分類や検索条件を変えてください。</RDR_NoItems>
+  <RDR_NoStacks>スタックは残っていません。グループ一覧に戻ってください。</RDR_NoStacks>
+  <RDR_Open>開く</RDR_Open>
+  <RDR_OperatingSystem>OS</RDR_OperatingSystem>
+  <RDR_Platform>プラットフォーム</RDR_Platform>
+  <RDR_Present>あり</RDR_Present>
+  <RDR_Previous>前へ</RDR_Previous>
+  <RDR_Quantity>個数</RDR_Quantity>
+  <RDR_Results>結果</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>次のアイテム分類に切り替えます。検索条件は引き続き適用されます。</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>スタック</RDR_Stacks>
+  <RDR_StatusAssembly>ゲームアセンブリの変更または重複を検出したため、MODを停止しました。</RDR_StatusAssembly>
+  <RDR_StatusGameFile>読み込まれたゲームDLLファイルを識別できません。</RDR_StatusGameFile>
+  <RDR_StatusHash>ゲームDLLのSHA-256が異なります（{0}）。このビルドを確認してください。</RDR_StatusHash>
+  <RDR_StatusMvid>ゲームDLLの識別情報が異なります。このビルドの確認が必要です。</RDR_StatusMvid>
+  <RDR_StatusNative>Android版RimDroid Nativeが必要です。インスタンスのエンジンを確認してください。box64 + native Monoとは別のモードです。</RDR_StatusNative>
+  <RDR_StatusReady>API/DLLの確認に成功しました。実機での確認は未完了です。</RDR_StatusReady>
+  <RDR_StatusVersion>RimWorld 1.6が必要です。</RDR_StatusVersion>
+  <RDR_StatusWaiting>起動確認を待っています。</RDR_StatusWaiting>
+  <RDR_TargetGone>このマップでは対象を利用できなくなりました。一覧を更新しました。</RDR_TargetGone>
+  <RDR_TargetNotSelected>対象を選択できませんでした</RDR_TargetNotSelected>
+</LanguageData>

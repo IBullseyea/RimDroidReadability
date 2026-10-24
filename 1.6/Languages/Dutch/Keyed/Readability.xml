@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Alle geldige stapels van dit type</RDR_AllStacks>
+  <RDR_Back>Terug</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Categorie</RDR_Category>
+  <RDR_Clear>Wissen</RDR_Clear>
+  <RDR_Close>Sluiten</RDR_Close>
+  <RDR_Colonist>Kolonist</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>K</RDR_ColonistShort>
+  <RDR_Colonists>Kolonisten</RDR_Colonists>
+  <RDR_ColonistsToggle>Kolonisten tonen</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Tekenfout</RDR_ContextDraw>
+  <RDR_ContextFindButton>Fout in zoekknop</RDR_ContextFindButton>
+  <RDR_ContextFinder>Zoekfout</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Fout bij verwijderen van hooks</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Kaartinterfacefout</RDR_ContextMap>
+  <RDR_ContextShortcut>Fout in filtersnelknop</RDR_ContextShortcut>
+  <RDR_ContextStartup>Opstartfout</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Fout bij sluiten van vensters</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Telefooncompatibiliteit en prestaties moeten nog worden getest.</RDR_DevicePending>
+  <RDR_Enabled>Markeringen inschakelen</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Alles</RDR_FilterAll>
+  <RDR_FilterApparel>Kleding</RDR_FilterApparel>
+  <RDR_FilterFood>Voedsel</RDR_FilterFood>
+  <RDR_FilterMedicine>Medicijnen</RDR_FilterMedicine>
+  <RDR_FilterOff>Uit</RDR_FilterOff>
+  <RDR_FilterResource>Grondstoffen</RDR_FilterResource>
+  <RDR_FilterWeapon>Wapens</RDR_FilterWeapon>
+  <RDR_FilterWood>Hout</RDR_FilterWood>
+  <RDR_Find>Zoeken</RDR_Find>
+  <RDR_FindTip>Zoek kolonisten en voorwerpen. +N telt groepen zonder volledig label, geen stapels.</RDR_FindTip>
+  <RDR_FinderTitle>Doelen zoeken</RDR_FinderTitle>
+  <RDR_FontSize>Tekstgrootte</RDR_FontSize>
+  <RDR_Go>Ga naar</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Nabije stapels groeperen</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony is niet geladen</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Er zijn meerdere Harmony-assemblies</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Niet-ondersteunde Harmony-versie: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Onvoldoende ruimte. Verlaag de UI-schaal of gebruik liggende stand.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Voorwerpenfilter</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>V</RDR_ItemShort>
+  <RDR_Items>Voorwerpen</RDR_Items>
+  <RDR_Limits>Eén voorwerpenfilter; maximaal 40 labels en 120 markeringen. Met Zoeken spring je naar het doel zonder de zoom te wijzigen. Uitschakelen verwijdert de modknoppen.</RDR_Limits>
+  <RDR_MarkerSize>Markeringsgrootte</RDR_MarkerSize>
+  <RDR_Missing>ontbreekt</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native-markering</RDR_NativeMarker>
+  <RDR_Next>Volgende</RDR_Next>
+  <RDR_NoColonists>Geen geschikte vrije kolonisten op deze kaart.</RDR_NoColonists>
+  <RDR_NoItems>Geen passende voorwerpen. Wijzig de categorie of zoekopdracht.</RDR_NoItems>
+  <RDR_NoStacks>Geen stapels meer. Ga terug naar de groepen.</RDR_NoStacks>
+  <RDR_Open>Openen</RDR_Open>
+  <RDR_OperatingSystem>Besturingssysteem</RDR_OperatingSystem>
+  <RDR_Platform>Platform</RDR_Platform>
+  <RDR_Present>aanwezig</RDR_Present>
+  <RDR_Previous>Vorige</RDR_Previous>
+  <RDR_Quantity>Aantal</RDR_Quantity>
+  <RDR_Results>Resultaten</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Ga naar het volgende voorwerpenfilter. De zoekopdracht blijft gelden.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Stapels</RDR_Stacks>
+  <RDR_StatusAssembly>De spel-assembly is gewijzigd of dubbel geladen; mod uitgeschakeld.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Het geladen DLL-bestand van het spel kon niet worden geïdentificeerd.</RDR_StatusGameFile>
+  <RDR_StatusHash>De SHA-256 van de spel-DLL wijkt af ({0}); controleer deze versie.</RDR_StatusHash>
+  <RDR_StatusMvid>De identificatie van de spel-DLL wijkt af; deze versie moet worden gecontroleerd.</RDR_StatusMvid>
+  <RDR_StatusNative>RimDroid Native op Android is vereist. Controleer de engine van de instantie; box64 + native Mono is anders.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL-controles geslaagd. Apparaattests volgen nog.</RDR_StatusReady>
+  <RDR_StatusVersion>RimWorld 1.6 is vereist.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Wachten op opstartcontroles.</RDR_StatusWaiting>
+  <RDR_TargetGone>Het doel is niet meer beschikbaar op deze kaart. Resultaten vernieuwd.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Het doel kon niet worden geselecteerd</RDR_TargetNotSelected>
+</LanguageData>

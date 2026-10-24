@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>이 종류의 모든 유효한 묶음</RDR_AllStacks>
+  <RDR_Back>뒤로</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>분류</RDR_Category>
+  <RDR_Clear>지우기</RDR_Clear>
+  <RDR_Close>닫기</RDR_Close>
+  <RDR_Colonist>정착민</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>민</RDR_ColonistShort>
+  <RDR_Colonists>정착민</RDR_Colonists>
+  <RDR_ColonistsToggle>정착민 표시</RDR_ColonistsToggle>
+  <RDR_ContextDraw>그리기 오류</RDR_ContextDraw>
+  <RDR_ContextFindButton>찾기 버튼 오류</RDR_ContextFindButton>
+  <RDR_ContextFinder>찾기 오류</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>후크 해제 오류</RDR_ContextHookCleanup>
+  <RDR_ContextMap>지도 화면 오류</RDR_ContextMap>
+  <RDR_ContextShortcut>필터 바로가기 오류</RDR_ContextShortcut>
+  <RDR_ContextStartup>시작 오류</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>창 정리 오류</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>휴대전화 호환성 및 성능 테스트는 아직 완료되지 않았습니다.</RDR_DevicePending>
+  <RDR_Enabled>표시 켜기</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>모두</RDR_FilterAll>
+  <RDR_FilterApparel>의류</RDR_FilterApparel>
+  <RDR_FilterFood>음식</RDR_FilterFood>
+  <RDR_FilterMedicine>의약품</RDR_FilterMedicine>
+  <RDR_FilterOff>끄기</RDR_FilterOff>
+  <RDR_FilterResource>자원</RDR_FilterResource>
+  <RDR_FilterWeapon>무기</RDR_FilterWeapon>
+  <RDR_FilterWood>목재</RDR_FilterWood>
+  <RDR_Find>찾기</RDR_Find>
+  <RDR_FindTip>정착민과 아이템을 찾습니다. +N은 이름표 전체를 표시하지 못한 그룹 수이며 묶음 수가 아닙니다.</RDR_FindTip>
+  <RDR_FinderTitle>대상 찾기</RDR_FinderTitle>
+  <RDR_FontSize>글자 크기</RDR_FontSize>
+  <RDR_Go>이동</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>가까운 묶음 합치기</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony가 로드되지 않았습니다</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Harmony 어셈블리가 여러 개입니다</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>지원하지 않는 Harmony 버전: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>화면 공간이 부족합니다. UI 배율을 낮추거나 가로로 사용하세요.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>아이템 필터</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>물</RDR_ItemShort>
+  <RDR_Items>아이템</RDR_Items>
+  <RDR_Limits>아이템 필터는 한 종류만 적용됩니다. 이름표는 최대 40개, 표시는 120개입니다. 찾기에서 확대 비율을 유지하며 이동할 수 있습니다. 모드를 끄면 조작 버튼도 사라집니다.</RDR_Limits>
+  <RDR_MarkerSize>표시 크기</RDR_MarkerSize>
+  <RDR_Missing>없음</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native 표시</RDR_NativeMarker>
+  <RDR_Next>다음</RDR_Next>
+  <RDR_NoColonists>이 지도에 조건에 맞는 자유 정착민이 없습니다.</RDR_NoColonists>
+  <RDR_NoItems>일치하는 아이템이 없습니다. 분류나 검색 조건을 바꾸세요.</RDR_NoItems>
+  <RDR_NoStacks>남은 묶음이 없습니다. 그룹 목록으로 돌아가세요.</RDR_NoStacks>
+  <RDR_Open>열기</RDR_Open>
+  <RDR_OperatingSystem>운영 체제</RDR_OperatingSystem>
+  <RDR_Platform>플랫폼</RDR_Platform>
+  <RDR_Present>있음</RDR_Present>
+  <RDR_Previous>이전</RDR_Previous>
+  <RDR_Quantity>수량</RDR_Quantity>
+  <RDR_Results>결과</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>다음 아이템 필터로 전환합니다. 찾기의 검색 조건은 계속 적용됩니다.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>묶음</RDR_Stacks>
+  <RDR_StatusAssembly>게임 어셈블리가 변경되었거나 중복이 감지되어 모드를 껐습니다.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>로드된 게임 DLL 파일을 식별할 수 없습니다.</RDR_StatusGameFile>
+  <RDR_StatusHash>게임 DLL의 SHA-256이 다릅니다({0}). 이 빌드를 확인하세요.</RDR_StatusHash>
+  <RDR_StatusMvid>게임 DLL 식별자가 다릅니다. 이 빌드를 확인해야 합니다.</RDR_StatusMvid>
+  <RDR_StatusNative>Android의 RimDroid Native가 필요합니다. 인스턴스 엔진을 확인하세요. box64 + native Mono는 다른 모드입니다.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL 검사를 통과했습니다. 기기 테스트는 아직 필요합니다.</RDR_StatusReady>
+  <RDR_StatusVersion>RimWorld 1.6이 필요합니다.</RDR_StatusVersion>
+  <RDR_StatusWaiting>시작 검사를 기다리는 중입니다.</RDR_StatusWaiting>
+  <RDR_TargetGone>이 지도에서 더 이상 대상을 사용할 수 없습니다. 결과를 갱신했습니다.</RDR_TargetGone>
+  <RDR_TargetNotSelected>대상을 선택할 수 없습니다</RDR_TargetNotSelected>
+</LanguageData>

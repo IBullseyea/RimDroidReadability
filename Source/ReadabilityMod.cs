@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7.2", FrameworkDisplayName = ".NET Framework 4.7.2")]
-[assembly: AssemblyVersion("0.2.3.0")]
+[assembly: AssemblyVersion("0.2.4.0")]
 
 namespace RimDroid.Readability
 {
@@ -46,10 +46,12 @@ namespace RimDroid.Readability
         private static readonly HookLifecycle hooks = new HookLifecycle();
         private static object harmonyInstance;
         private static MethodInfo unpatch;
-        private static string status = "Başlangıç kontrolü bekleniyor.";
+        private static LocalizedText status = ModText.Message("StatusWaiting");
 
         public ReadabilityMod(ModContentPack content) : base(content)
         {
+            ModText.Lookup = Translator.TranslateSimple;
+            ModText.Language = delegate { return LanguageDatabase.activeLanguage; };
             Settings = GetSettings<ReadabilitySettings>();
             LongEventHandler.ExecuteWhenFinished(Initialize);
         }
@@ -71,21 +73,21 @@ namespace RimDroid.Readability
             bool oldGroup = Settings.GroupItems;
             Listing_Standard list = new Listing_Standard();
             list.Begin(inRect);
-            list.Label("RimWorld 1.6 / RimDroid Native — 0.2.3");
-            list.Label(status);
+            list.Label(ModText.Get("SettingsHeader", "0.2.4"));
+            list.Label(status.ToString());
             list.Gap();
-            list.CheckboxLabeled("İşaretleri aç", ref Settings.Enabled);
-            list.CheckboxLabeled("Kolonistleri göster", ref Settings.Colonists);
+            list.CheckboxLabeled(ModText.Get("Enabled"), ref Settings.Enabled);
+            list.CheckboxLabeled(ModText.Get("ColonistsToggle"), ref Settings.Colonists);
             string filter = SettingsRules.FilterName(Settings.Filter);
-            if (list.ButtonText("Eşya filtresi: " + filter)) Settings.Filter = SettingsRules.NextFilter(Settings.Filter);
-            if (list.ButtonText("Yazı boyutu: " + Settings.FontSize))
+            if (list.ButtonText(ModText.Get("NamedValue", ModText.Get("ItemFilter"), filter))) Settings.Filter = SettingsRules.NextFilter(Settings.Filter);
+            if (list.ButtonText(ModText.Get("NamedValue", ModText.Get("FontSize"), Settings.FontSize)))
                 Settings.FontSize = Settings.FontSize == 18 ? 22 : Settings.FontSize == 22 ? 26 : Settings.FontSize == 26 ? 32 : 18;
-            if (list.ButtonText("İşaret boyutu: " + Settings.MarkerSize))
+            if (list.ButtonText(ModText.Get("NamedValue", ModText.Get("MarkerSize"), Settings.MarkerSize)))
                 Settings.MarkerSize = Settings.MarkerSize == 8 ? 16 : Settings.MarkerSize == 16 ? 24 : 8;
-            list.CheckboxLabeled("Yakın eşya yığınlarını grupla", ref Settings.GroupItems);
+            list.CheckboxLabeled(ModText.Get("Grouping"), ref Settings.GroupItems);
             list.Gap();
-            list.Label("Bir eşya kategorisi, en fazla 40 etiket ve 120 işaret. Bul ile kolonist veya yığına Git; yakınlık korunur. Kapatınca bütün mod kontrolleri kaldırılır.");
-            list.Label("Telefon DLL eşleşmesi ve gerçek cihaz performansı henüz doğrulanmadı.");
+            list.Label(ModText.Get("Limits"));
+            list.Label(ModText.Get("DevicePending"));
             list.End();
             if (oldEnabled != Settings.Enabled || oldColonists != Settings.Colonists || oldFilter != Settings.Filter
                 || oldFont != Settings.FontSize || oldMarker != Settings.MarkerSize || oldGroup != Settings.GroupItems)
@@ -108,27 +110,27 @@ namespace RimDroid.Readability
                 if (!AnnotationRules.NativeAllowed(platform == RuntimePlatform.Android,
                     platform == RuntimePlatform.LinuxPlayer, operatingSystem, nativeMarker))
                 {
-                    Disable("Native Android ortamı doğrulanamadı: platform=" + platform + "; işletim sistemi="
-                        + operatingSystem + "; Native işareti=" + (string.IsNullOrWhiteSpace(nativeMarker) ? "yok" : "var")
-                        + ". RimDroid instance ayarlarında Native motorunu kontrol edin; box64 + native Mono farklıdır.");
+                    Disable(ModText.Message("NativeDetails", ModText.Message("StatusNative"), ModText.Message("Platform"), platform,
+                        ModText.Message("OperatingSystem"), operatingSystem, ModText.Message("NativeMarker"),
+                        ModText.Message(string.IsNullOrWhiteSpace(nativeMarker) ? "Missing" : "Present")));
                     return;
                 }
                 if (!AnnotationRules.VersionAllowed(VersionControl.CurrentVersionString))
-                { Disable("Bu mod yalnız RimWorld 1.6 içindir."); return; }
+                { Disable(ModText.Message("StatusVersion")); return; }
                 boundGame = typeof(Find).Assembly;
                 // Subscribe before any snapshot. A load before subscription is covered by the snapshot;
                 // a load after it is covered by the sticky gate, which initialization cannot overwrite.
                 AppDomain.CurrentDomain.AssemblyLoad += OnAssemblyLoad;
                 if (boundGame.ManifestModule.ModuleVersionId.ToString() != ReferenceMvid)
-                { Disable("Oyun MVID değeri incelenen DLL ile eşleşmiyor; API doğrulaması gerekli."); return; }
+                { Disable(ModText.Message("StatusMvid")); return; }
                 if (string.IsNullOrEmpty(boundGame.Location) || !File.Exists(boundGame.Location))
-                { Disable("Yüklenen oyun DLL dosyasının kimliği okunamadı."); return; }
+                { Disable(ModText.Message("StatusGameFile")); return; }
                 string actualHash;
                 using (SHA256 hash = SHA256.Create())
                 using (FileStream file = File.OpenRead(boundGame.Location))
                     actualHash = BitConverter.ToString(hash.ComputeHash(file)).Replace("-", "").ToLowerInvariant();
                 if (actualHash != ReferenceHash)
-                { Disable("Oyun DLL SHA-256 eşleşmedi: " + actualHash + ". Bu build yeniden doğrulanmalı."); return; }
+                { Disable(ModText.Message("StatusHash", actualHash)); return; }
                 foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
                     if (assembly.GetName().Name == "Assembly-CSharp" && assembly != boundGame)
                         gate.ObserveReplacement();
@@ -138,13 +140,13 @@ namespace RimDroid.Readability
                 MethodInfo target = ApiContract.Method(typeof(ThingOverlays), "ThingOverlaysOnGUI", typeof(void), false);
                 InstallHarmony(new[] { target, ApiContract.Method(typeof(MapInterface), "MapInterfaceOnGUI_AfterMainTabs", typeof(void), false) });
                 if (!gate.MarkInitialized(hooks.Active)) { HandleAssemblyReplacement(); return; }
-                status = "API/DLL kontrolü geçti. Göstergeler ve Bul açılabilir; cihaz testi bekleniyor.";
+                status = ModText.Message("StatusReady");
                 Log.Message("[RimDroid Readability] Native 1.6 reference DLL verified; overlay and finder patches installed, enabled="
                     + Settings.Enabled + "; reportedPlatform=" + platform + "; operatingSystem=" + operatingSystem
                     + "; SHA256=" + actualHash + "; MVID=" + ReferenceMvid
                     + ". Android visual/performance acceptance still pending.");
             }
-            catch (Exception error) { Disable("Başlatma kontrolü başarısız: " + error.GetType().Name + ": " + error.Message, error); }
+            catch (Exception error) { Disable(ModText.Error("ContextStartup", error), error); }
         }
 
         private static void InstallHarmony(MethodInfo[] originals)
@@ -154,12 +156,12 @@ namespace RimDroid.Readability
             foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
                 if (assembly.GetName().Name == "0Harmony")
                 {
-                    if (runtime != null && runtime != assembly) throw new InvalidOperationException("Multiple Harmony assemblies");
+                    if (runtime != null && runtime != assembly) throw new LocalizedException(ModText.Message("HarmonyMultiple"));
                     runtime = assembly;
                 }
-            if (runtime == null) throw new InvalidOperationException("RimDroid Native Harmony is not loaded");
+            if (runtime == null) throw new LocalizedException(ModText.Message("HarmonyMissing"));
             Version version = runtime.GetName().Version;
-            if (version.Major != 2) throw new InvalidOperationException("Unsupported Harmony " + version);
+            if (version.Major != 2) throw new LocalizedException(ModText.Message("HarmonyVersion", version));
             Type harmony = runtime.GetType("HarmonyLib.Harmony", true);
             Type harmonyMethod = runtime.GetType("HarmonyLib.HarmonyMethod", true);
             MethodInfo patch = null;
@@ -170,7 +172,7 @@ namespace RimDroid.Readability
                     && p[1].ParameterType == harmonyMethod && p[2].ParameterType == harmonyMethod)
                 { patch = method; break; }
             }
-            if (patch == null) throw new MissingMethodException("Harmony.Patch postfix signature");
+            if (patch == null) throw new MissingMethodException("Harmony.Patch(MethodBase, HarmonyMethod, HarmonyMethod, ...)");
             unpatch = harmony.GetMethod("UnpatchAll", BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static,
                 null, new[] { typeof(string) }, null);
             if (unpatch == null || unpatch.ReturnType != typeof(void)) throw new MissingMethodException("Harmony.UnpatchAll(string)");
@@ -202,17 +204,17 @@ namespace RimDroid.Readability
         internal static bool HandleAssemblyReplacement()
         {
             if (!gate.ConsumeReplacement()) return false;
-            Disable("Oyun assembly'si değişti veya birden fazla kopya var; overlay yeniden doğrulama için kapatıldı.");
+            Disable(ModText.Message("StatusAssembly"));
             return true;
         }
 
-        internal static void Disable(string reason, Exception error = null)
+        internal static void Disable(LocalizedText reason, Exception error = null)
         {
             gate.Disable();
             try { FinderController.Reset(); }
-            catch (Exception cleanupError) { reason += "; pencere temizliği: " + cleanupError.GetType().Name; }
+            catch (Exception cleanupError) { reason = ModText.Message("ErrorAppend", reason, ModText.Error("ContextWindowCleanup", cleanupError)); }
             try { hooks.Remove(RollbackHarmony); }
-            catch (Exception cleanupError) { reason += "; kanca temizliği: " + cleanupError.GetType().Name; }
+            catch (Exception cleanupError) { reason = ModText.Message("ErrorAppend", reason, ModText.Error("ContextHookCleanup", cleanupError)); }
             status = reason;
             if (reported) return;
             reported = true;

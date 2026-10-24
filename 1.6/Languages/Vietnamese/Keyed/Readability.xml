@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Tất cả chồng hợp lệ của loại này</RDR_AllStacks>
+  <RDR_Back>Quay lại</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Danh mục</RDR_Category>
+  <RDR_Clear>Xóa</RDR_Clear>
+  <RDR_Close>Đóng</RDR_Close>
+  <RDR_Colonist>Cư dân</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>D</RDR_ColonistShort>
+  <RDR_Colonists>Cư dân</RDR_Colonists>
+  <RDR_ColonistsToggle>Hiện cư dân</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Lỗi vẽ</RDR_ContextDraw>
+  <RDR_ContextFindButton>Lỗi nút tìm</RDR_ContextFindButton>
+  <RDR_ContextFinder>Lỗi tìm kiếm</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Lỗi gỡ hook</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Lỗi giao diện bản đồ</RDR_ContextMap>
+  <RDR_ContextShortcut>Lỗi nút lọc nhanh</RDR_ContextShortcut>
+  <RDR_ContextStartup>Lỗi khởi động</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Lỗi đóng cửa sổ</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Chưa hoàn tất kiểm tra tương thích và hiệu năng trên điện thoại.</RDR_DevicePending>
+  <RDR_Enabled>Bật dấu hiển thị</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Tất cả</RDR_FilterAll>
+  <RDR_FilterApparel>Quần áo</RDR_FilterApparel>
+  <RDR_FilterFood>Thức ăn</RDR_FilterFood>
+  <RDR_FilterMedicine>Thuốc</RDR_FilterMedicine>
+  <RDR_FilterOff>Tắt</RDR_FilterOff>
+  <RDR_FilterResource>Tài nguyên</RDR_FilterResource>
+  <RDR_FilterWeapon>Vũ khí</RDR_FilterWeapon>
+  <RDR_FilterWood>Gỗ</RDR_FilterWood>
+  <RDR_Find>Tìm</RDR_Find>
+  <RDR_FindTip>Tìm cư dân và vật phẩm. +N là số nhóm không có nhãn đầy đủ, không phải số chồng.</RDR_FindTip>
+  <RDR_FinderTitle>Tìm mục tiêu</RDR_FinderTitle>
+  <RDR_FontSize>Cỡ chữ</RDR_FontSize>
+  <RDR_Go>Đi tới</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Gộp các chồng gần nhau</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony chưa được nạp</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Có nhiều assembly Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Phiên bản Harmony không được hỗ trợ: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Không đủ chỗ. Giảm tỷ lệ giao diện hoặc dùng màn hình ngang.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Bộ lọc vật phẩm</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>V</RDR_ItemShort>
+  <RDR_Items>Vật phẩm</RDR_Items>
+  <RDR_Limits>Một bộ lọc vật phẩm; tối đa 40 nhãn và 120 dấu. Dùng Tìm để đi tới mục tiêu mà không đổi độ thu phóng. Tắt mod sẽ bỏ các nút của mod.</RDR_Limits>
+  <RDR_MarkerSize>Cỡ dấu</RDR_MarkerSize>
+  <RDR_Missing>thiếu</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Dấu Native</RDR_NativeMarker>
+  <RDR_Next>Sau</RDR_Next>
+  <RDR_NoColonists>Không có cư dân tự do phù hợp trên bản đồ này.</RDR_NoColonists>
+  <RDR_NoItems>Không có vật phẩm phù hợp. Hãy đổi danh mục hoặc từ tìm kiếm.</RDR_NoItems>
+  <RDR_NoStacks>Không còn chồng nào. Hãy quay lại các nhóm.</RDR_NoStacks>
+  <RDR_Open>Mở</RDR_Open>
+  <RDR_OperatingSystem>Hệ điều hành</RDR_OperatingSystem>
+  <RDR_Platform>Nền tảng</RDR_Platform>
+  <RDR_Present>có</RDR_Present>
+  <RDR_Previous>Trước</RDR_Previous>
+  <RDR_Quantity>Số lượng</RDR_Quantity>
+  <RDR_Results>Kết quả</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Chuyển sang bộ lọc vật phẩm tiếp theo. Điều kiện tìm kiếm vẫn có hiệu lực.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Chồng</RDR_Stacks>
+  <RDR_StatusAssembly>Assembly trò chơi đã đổi hoặc có bản trùng; mod đã bị tắt.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Không thể nhận dạng tệp DLL trò chơi đã nạp.</RDR_StatusGameFile>
+  <RDR_StatusHash>SHA-256 của DLL trò chơi khác ({0}); hãy xác minh bản này.</RDR_StatusHash>
+  <RDR_StatusMvid>Mã nhận dạng DLL của trò chơi khác; cần xác minh bản này.</RDR_StatusMvid>
+  <RDR_StatusNative>Cần RimDroid Native trên Android. Kiểm tra bộ máy của phiên bản chơi; box64 + native Mono là chế độ khác.</RDR_StatusNative>
+  <RDR_StatusReady>Đã qua kiểm tra API/DLL. Chưa hoàn tất kiểm tra trên thiết bị.</RDR_StatusReady>
+  <RDR_StatusVersion>Cần RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Đang chờ kiểm tra khởi động.</RDR_StatusWaiting>
+  <RDR_TargetGone>Mục tiêu không còn khả dụng trên bản đồ này. Đã cập nhật kết quả.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Không thể chọn mục tiêu</RDR_TargetNotSelected>
+</LanguageData>

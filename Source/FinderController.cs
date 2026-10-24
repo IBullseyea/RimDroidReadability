@@ -50,7 +50,7 @@ namespace RimDroid.Readability
                 }
                 else { Remove(filterButton); filterButton = null; }
             }
-            catch (Exception error) { ReadabilityMod.Disable("Harita arayüzü hatası: " + error.GetType().Name + ": " + error.Message, error); }
+            catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextMap", error), error); }
         }
 
         internal static void Open()
@@ -86,7 +86,7 @@ namespace RimDroid.Readability
             if (target == null)
             {
                 TargetCatalog.Clear();
-                Messages.Message("Hedef artık bu haritada uygun değil. Liste yenilendi.", MessageTypeDefOf.RejectInput, false);
+                Messages.Message(ModText.Get("TargetGone"), MessageTypeDefOf.RejectInput, false);
                 return;
             }
             float size = Find.CameraDriver.RootSize;
@@ -97,7 +97,7 @@ namespace RimDroid.Readability
             {
                 CameraJumper.TryJumpAndSelect(new GlobalTargetInfo(target), CameraJumper.MovementMode.Cut);
                 Find.CameraDriver.SetRootSize(size);
-                if (!Find.Selector.IsSelected(target)) throw new InvalidOperationException("Hedef seçilemedi");
+                if (!Find.Selector.IsSelected(target)) throw new LocalizedException(ModText.Message("TargetNotSelected"));
                 Remove(finder); finder = null;
             }
             catch

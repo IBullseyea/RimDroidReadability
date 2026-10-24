@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Všechny platné hromady tohoto typu</RDR_AllStacks>
+  <RDR_Back>Zpět</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Kategorie</RDR_Category>
+  <RDR_Clear>Vymazat</RDR_Clear>
+  <RDR_Close>Zavřít</RDR_Close>
+  <RDR_Colonist>Kolonista</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>K</RDR_ColonistShort>
+  <RDR_Colonists>Kolonisté</RDR_Colonists>
+  <RDR_ColonistsToggle>Zobrazit kolonisty</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Chyba vykreslení</RDR_ContextDraw>
+  <RDR_ContextFindButton>Chyba tlačítka Najít</RDR_ContextFindButton>
+  <RDR_ContextFinder>Chyba vyhledávání</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Chyba odstraňování hooků</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Chyba rozhraní mapy</RDR_ContextMap>
+  <RDR_ContextShortcut>Chyba zkratky filtru</RDR_ContextShortcut>
+  <RDR_ContextStartup>Chyba spuštění</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Chyba zavírání oken</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Testy kompatibility a výkonu na telefonu zatím nejsou dokončeny.</RDR_DevicePending>
+  <RDR_Enabled>Zapnout značky</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Vše</RDR_FilterAll>
+  <RDR_FilterApparel>Oblečení</RDR_FilterApparel>
+  <RDR_FilterFood>Jídlo</RDR_FilterFood>
+  <RDR_FilterMedicine>Léky</RDR_FilterMedicine>
+  <RDR_FilterOff>Vypnuto</RDR_FilterOff>
+  <RDR_FilterResource>Suroviny</RDR_FilterResource>
+  <RDR_FilterWeapon>Zbraně</RDR_FilterWeapon>
+  <RDR_FilterWood>Dřevo</RDR_FilterWood>
+  <RDR_Find>Najít</RDR_Find>
+  <RDR_FindTip>Najde kolonisty a předměty. +N počítá skupiny bez úplného popisku, nikoli hromady.</RDR_FindTip>
+  <RDR_FinderTitle>Vyhledávání cílů</RDR_FinderTitle>
+  <RDR_FontSize>Velikost textu</RDR_FontSize>
+  <RDR_Go>Přejít</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Seskupit blízké hromady</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony není načten</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Nalezeno více sestavení Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Nepodporovaná verze Harmony: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Nedostatek místa. Snižte měřítko rozhraní nebo použijte zobrazení na šířku.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Filtr předmětů</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>P</RDR_ItemShort>
+  <RDR_Items>Předměty</RDR_Items>
+  <RDR_Limits>Jeden filtr předmětů; nejvýše 40 popisků a 120 značek. Najít umožní přejít k cíli bez změny přiblížení. Vypnutí modu odstraní jeho ovládací prvky.</RDR_Limits>
+  <RDR_MarkerSize>Velikost značek</RDR_MarkerSize>
+  <RDR_Missing>chybí</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Značka Native</RDR_NativeMarker>
+  <RDR_Next>Další</RDR_Next>
+  <RDR_NoColonists>Na této mapě nejsou vhodní svobodní kolonisté.</RDR_NoColonists>
+  <RDR_NoItems>Žádné odpovídající předměty. Změňte kategorii nebo hledání.</RDR_NoItems>
+  <RDR_NoStacks>Nezbyly žádné hromady. Vraťte se ke skupinám.</RDR_NoStacks>
+  <RDR_Open>Otevřít</RDR_Open>
+  <RDR_OperatingSystem>Operační systém</RDR_OperatingSystem>
+  <RDR_Platform>Platforma</RDR_Platform>
+  <RDR_Present>přítomen</RDR_Present>
+  <RDR_Previous>Předchozí</RDR_Previous>
+  <RDR_Quantity>Počet</RDR_Quantity>
+  <RDR_Results>Výsledky</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Přejde na další filtr předmětů. Hledání zůstává aktivní.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Hromady</RDR_Stacks>
+  <RDR_StatusAssembly>Herní sestavení se změnilo nebo je duplicitní; mod byl vypnut.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Načtený soubor herní DLL se nepodařilo identifikovat.</RDR_StatusGameFile>
+  <RDR_StatusHash>SHA-256 herní DLL se liší ({0}); ověřte tuto verzi.</RDR_StatusHash>
+  <RDR_StatusMvid>Identifikátor herní DLL se liší; tuto verzi je nutné ověřit.</RDR_StatusMvid>
+  <RDR_StatusNative>Je vyžadován RimDroid Native na Androidu. Zkontrolujte motor instance; box64 + native Mono je jiný režim.</RDR_StatusNative>
+  <RDR_StatusReady>Kontroly API/DLL úspěšné. Testy zařízení zatím čekají.</RDR_StatusReady>
+  <RDR_StatusVersion>Je vyžadován RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Čekání na úvodní kontroly.</RDR_StatusWaiting>
+  <RDR_TargetGone>Cíl již na této mapě není dostupný. Výsledky byly obnoveny.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Cíl nelze vybrat</RDR_TargetNotSelected>
+</LanguageData>

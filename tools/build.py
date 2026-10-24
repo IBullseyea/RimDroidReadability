@@ -16,8 +16,13 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 WORK = ROOT / '.build'
-VERSION = '0.2.3'
-PAYLOAD = ('About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll', 'README.md', 'RELEASE.md')
+VERSION = '0.2.4'
+LANGUAGES = ('Catalan', 'ChineseSimplified', 'ChineseTraditional', 'Czech', 'Danish', 'Dutch', 'English',
+             'Estonian', 'Finnish', 'French', 'German', 'Greek', 'Hungarian', 'Italian', 'Japanese', 'Korean',
+             'Norwegian', 'Polish', 'Portuguese', 'PortugueseBrazilian', 'Romanian', 'Russian', 'Slovak',
+             'Spanish', 'SpanishLatin', 'Swedish', 'Turkish', 'Ukrainian', 'Vietnamese')
+LANGUAGE_PAYLOAD = tuple('1.6/Languages/' + language + '/Keyed/Readability.xml' for language in LANGUAGES)
+PAYLOAD = ('About/About.xml', 'LoadFolders.xml', '1.6/Assemblies/RimDroidReadability.dll', 'README.md', 'RELEASE.md') + LANGUAGE_PAYLOAD
 EXPECTED_HASH = '39c5532c8f9fd8b31cdc9450d3148bc2f372f03f030dc5cddd170c9a08774076'
 
 
@@ -135,7 +140,7 @@ def logic_tests(csc, dotnet_root, env):
             '-out:' + str(out)]
     args += ['-reference:' + str(p) for p in sorted(refs.glob('*.dll'))]
     args += [str(ROOT / rel) for rel in ('Source/LabelLayout.cs', 'Source/ReadabilityLogic.cs',
-             'Source/TargetCatalog.cs', 'Tests/CatalogTests.cs', 'Tests/LogicTests.cs')]
+             'Source/TargetCatalog.cs', 'Source/ModText.cs', 'Tests/CatalogTests.cs', 'Tests/LocalizationTests.cs', 'Tests/LogicTests.cs')]
     rsp = WORK / 'logic-tests.rsp'
     response_file(rsp, args)
     run(['dotnet', csc, '-noconfig', '@' + str(rsp)], env)

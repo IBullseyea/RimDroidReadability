@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>此类型的所有有效物品堆</RDR_AllStacks>
+  <RDR_Back>返回</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>类别</RDR_Category>
+  <RDR_Clear>清空</RDR_Clear>
+  <RDR_Close>关闭</RDR_Close>
+  <RDR_Colonist>殖民者</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>人</RDR_ColonistShort>
+  <RDR_Colonists>殖民者</RDR_Colonists>
+  <RDR_ColonistsToggle>显示殖民者</RDR_ColonistsToggle>
+  <RDR_ContextDraw>绘制错误</RDR_ContextDraw>
+  <RDR_ContextFindButton>查找按钮错误</RDR_ContextFindButton>
+  <RDR_ContextFinder>查找器错误</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>补丁清理错误</RDR_ContextHookCleanup>
+  <RDR_ContextMap>地图界面错误</RDR_ContextMap>
+  <RDR_ContextShortcut>筛选快捷按钮错误</RDR_ContextShortcut>
+  <RDR_ContextStartup>启动错误</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>窗口清理错误</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>手机兼容性和性能测试尚待完成。</RDR_DevicePending>
+  <RDR_Enabled>启用标记</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>全部</RDR_FilterAll>
+  <RDR_FilterApparel>服装</RDR_FilterApparel>
+  <RDR_FilterFood>食物</RDR_FilterFood>
+  <RDR_FilterMedicine>药品</RDR_FilterMedicine>
+  <RDR_FilterOff>关闭</RDR_FilterOff>
+  <RDR_FilterResource>资源</RDR_FilterResource>
+  <RDR_FilterWeapon>武器</RDR_FilterWeapon>
+  <RDR_FilterWood>木材</RDR_FilterWood>
+  <RDR_Find>查找</RDR_Find>
+  <RDR_FindTip>查找殖民者和物品。+N 表示未能完整显示标签的可视组数，而非物品堆数。</RDR_FindTip>
+  <RDR_FinderTitle>目标查找器</RDR_FinderTitle>
+  <RDR_FontSize>文字大小</RDR_FontSize>
+  <RDR_Go>前往</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>合并附近物品堆</RDR_Grouping>
+  <RDR_HarmonyMissing>未加载 RimDroid Native Harmony</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>存在多个 Harmony 程序集</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>不支持的 Harmony 版本：{0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>界面空间不足。请缩小界面比例或横屏使用。</RDR_InsufficientSpace>
+  <RDR_ItemFilter>物品筛选</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>物</RDR_ItemShort>
+  <RDR_Items>物品</RDR_Items>
+  <RDR_Limits>一次启用一种物品筛选；最多显示 40 个标签和 120 个标记。使用查找可在保持缩放的情况下前往目标。关闭模组会移除其控件。</RDR_Limits>
+  <RDR_MarkerSize>标记大小</RDR_MarkerSize>
+  <RDR_Missing>缺失</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>原生标记</RDR_NativeMarker>
+  <RDR_Next>下一页</RDR_Next>
+  <RDR_NoColonists>此地图上没有符合条件的自由殖民者。</RDR_NoColonists>
+  <RDR_NoItems>没有匹配物品。请更改类别或搜索条件。</RDR_NoItems>
+  <RDR_NoStacks>已无物品堆。请返回分组列表。</RDR_NoStacks>
+  <RDR_Open>展开</RDR_Open>
+  <RDR_OperatingSystem>操作系统</RDR_OperatingSystem>
+  <RDR_Platform>平台</RDR_Platform>
+  <RDR_Present>存在</RDR_Present>
+  <RDR_Previous>上一页</RDR_Previous>
+  <RDR_Quantity>数量</RDR_Quantity>
+  <RDR_Results>结果</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>切换到下一种物品筛选。查找器的搜索条件仍然生效。</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>堆数</RDR_Stacks>
+  <RDR_StatusAssembly>游戏程序集已更改或检测到重复副本；模组已停用。</RDR_StatusAssembly>
+  <RDR_StatusGameFile>无法识别已加载的游戏 DLL 文件。</RDR_StatusGameFile>
+  <RDR_StatusHash>游戏 DLL 的 SHA-256 不同（{0}），请验证此版本。</RDR_StatusHash>
+  <RDR_StatusMvid>游戏 DLL 标识不同，需验证此版本。</RDR_StatusMvid>
+  <RDR_StatusNative>需要 Android 上的 RimDroid Native。请检查实例引擎；box64 + native Mono 是另一种模式。</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL 检查通过。设备测试尚待完成。</RDR_StatusReady>
+  <RDR_StatusVersion>需要 RimWorld 1.6。</RDR_StatusVersion>
+  <RDR_StatusWaiting>等待启动检查。</RDR_StatusWaiting>
+  <RDR_TargetGone>目标在此地图上已不可用。结果已刷新。</RDR_TargetGone>
+  <RDR_TargetNotSelected>无法选中目标</RDR_TargetNotSelected>
+</LanguageData>

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Execution-free release/metadata audit. Only the original logic-test DLL is executed by build.py."""
 import argparse
+from collections import Counter
 import importlib.util
 import io
 import json
@@ -8,6 +9,7 @@ import os
 import re
 from pathlib import Path
 import struct
+import string
 import sys
 import xml.etree.ElementTree as ET
 import zipfile
@@ -21,6 +23,8 @@ PAYLOAD = build.PAYLOAD
 
 # Public declarations, read in memory only; no game source/IL is written or packaged.
 API_SIGNATURES = {
+    'Verse.Translator': ['public static string TranslateSimple(this string key)'],
+    'Verse.LanguageDatabase': ['public static LoadedLanguage activeLanguage;'],
     'UnityEngine.SystemInfo': ['public static string operatingSystem'],
     'Verse.ThingOverlays': ['public void ThingOverlaysOnGUI()'],
     'RimWorld.MapInterface': ['public void MapInterfaceOnGUI_AfterMainTabs()'],
@@ -70,6 +74,49 @@ def audit_payload_metadata(payload):
     require(folders.tag == 'loadFolders' and [x.tag for x in folders] == ['v1.6'], '1.6-only load folder version')
     require([x.tag for x in folders[0]] == ['li'] and [x.text for x in folders[0]] == ['1.6'],
             'exact v1.6/li=1.6 routing')
+    audit_translations(payload)
+
+
+def read_keyed(contents, language):
+    root = ET.fromstring(contents)
+    require(root.tag == 'LanguageData', 'translation LanguageData root: ' + language)
+    keys = {}
+    for element in root:
+        require(element.tag.startswith('RDR_') and element.tag not in keys, 'translation duplicate/invalid key: ' + language)
+        require(len(element) == 0 and bool((element.text or '').strip()), 'translation empty or nested value: ' + language)
+        keys[element.tag] = element.text
+    return keys
+
+
+def placeholders(value):
+    try:
+        parsed = list(string.Formatter().parse(value))
+    except ValueError as error:
+        raise RuntimeError('translation invalid format: ' + str(error)) from error
+    fields = []
+    for _, field, specifier, conversion in parsed:
+        if field is None:
+            continue
+        require(field.isdecimal() and not specifier and conversion is None, 'translation numeric placeholders only')
+        fields.append(field)
+    return Counter(fields)
+
+
+def audit_translations(payload):
+    english = read_keyed(payload['1.6/Languages/English/Keyed/Readability.xml'], 'English')
+    required = {'RDR_Filter' + value for value in ('Off', 'All', 'Medicine', 'Wood', 'Weapon', 'Food', 'Resource', 'Apparel')}
+    for source in (ROOT / 'Source').glob('*.cs'):
+        for call in re.findall(r'ModText\.(?:Get|Message|Error)\(([^;\n]*)', source.read_text()):
+            required.update('RDR_' + key for key in re.findall(r'"([A-Z][A-Za-z]+)"', call) if key != 'Filter')
+    require(required <= set(english), 'translation missing referenced source keys: ' + str(sorted(required - set(english))))
+    formats = {key: placeholders(value) for key, value in english.items()}
+    for language, path in zip(build.LANGUAGES, build.LANGUAGE_PAYLOAD):
+        require(path in payload, 'translation missing language file: ' + language)
+        translated = read_keyed(payload[path], language)
+        require(set(translated) == set(english), 'translation missing/extra keys: ' + language)
+        for key, value in translated.items():
+            require(placeholders(value) == formats[key], 'translation placeholder mismatch: ' + language + '/' + key)
+    return len(english)
 
 
 def audit_release(archive_bytes, expected_payload):

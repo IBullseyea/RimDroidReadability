@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Wszystkie prawidłowe stosy tego typu</RDR_AllStacks>
+  <RDR_Back>Wróć</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Kategoria</RDR_Category>
+  <RDR_Clear>Wyczyść</RDR_Clear>
+  <RDR_Close>Zamknij</RDR_Close>
+  <RDR_Colonist>Kolonista</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>K</RDR_ColonistShort>
+  <RDR_Colonists>Koloniści</RDR_Colonists>
+  <RDR_ColonistsToggle>Pokaż kolonistów</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Błąd rysowania</RDR_ContextDraw>
+  <RDR_ContextFindButton>Błąd przycisku wyszukiwania</RDR_ContextFindButton>
+  <RDR_ContextFinder>Błąd wyszukiwarki</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Błąd usuwania hooków</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Błąd interfejsu mapy</RDR_ContextMap>
+  <RDR_ContextShortcut>Błąd skrótu filtra</RDR_ContextShortcut>
+  <RDR_ContextStartup>Błąd uruchamiania</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Błąd zamykania okien</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Testy zgodności i wydajności na telefonie są jeszcze w toku.</RDR_DevicePending>
+  <RDR_Enabled>Włącz znaczniki</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Wszystko</RDR_FilterAll>
+  <RDR_FilterApparel>Odzież</RDR_FilterApparel>
+  <RDR_FilterFood>Żywność</RDR_FilterFood>
+  <RDR_FilterMedicine>Leki</RDR_FilterMedicine>
+  <RDR_FilterOff>Wyłączone</RDR_FilterOff>
+  <RDR_FilterResource>Surowce</RDR_FilterResource>
+  <RDR_FilterWeapon>Broń</RDR_FilterWeapon>
+  <RDR_FilterWood>Drewno</RDR_FilterWood>
+  <RDR_Find>Znajdź</RDR_Find>
+  <RDR_FindTip>Znajdź kolonistów i przedmioty. +N oznacza grupy bez pełnej etykiety, a nie stosy.</RDR_FindTip>
+  <RDR_FinderTitle>Wyszukiwarka celów</RDR_FinderTitle>
+  <RDR_FontSize>Rozmiar tekstu</RDR_FontSize>
+  <RDR_Go>Idź</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Grupuj pobliskie stosy</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony nie został załadowany</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Znaleziono wiele zestawów Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Nieobsługiwana wersja Harmony: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Za mało miejsca. Zmniejsz skalę interfejsu lub użyj orientacji poziomej.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Filtr przedmiotów</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>P</RDR_ItemShort>
+  <RDR_Items>Przedmioty</RDR_Items>
+  <RDR_Limits>Jeden filtr przedmiotów; najwyżej 40 etykiet i 120 znaczników. Znajdź pozwala przejść do celu bez zmiany przybliżenia. Wyłączenie moda usuwa jego przyciski.</RDR_Limits>
+  <RDR_MarkerSize>Rozmiar znacznika</RDR_MarkerSize>
+  <RDR_Missing>brak</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Znacznik Native</RDR_NativeMarker>
+  <RDR_Next>Następna</RDR_Next>
+  <RDR_NoColonists>Na tej mapie nie ma odpowiednich wolnych kolonistów.</RDR_NoColonists>
+  <RDR_NoItems>Brak pasujących przedmiotów. Zmień kategorię lub wyszukiwanie.</RDR_NoItems>
+  <RDR_NoStacks>Nie ma już stosów. Wróć do grup.</RDR_NoStacks>
+  <RDR_Open>Otwórz</RDR_Open>
+  <RDR_OperatingSystem>System operacyjny</RDR_OperatingSystem>
+  <RDR_Platform>Platforma</RDR_Platform>
+  <RDR_Present>obecny</RDR_Present>
+  <RDR_Previous>Poprzednia</RDR_Previous>
+  <RDR_Quantity>Liczba</RDR_Quantity>
+  <RDR_Results>Wyniki</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Przejdź do następnego filtra przedmiotów. Wyszukiwanie nadal obowiązuje.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Stosy</RDR_Stacks>
+  <RDR_StatusAssembly>Zestaw gry zmienił się lub wykryto kopię; mod wyłączono.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Nie można zidentyfikować załadowanego pliku DLL gry.</RDR_StatusGameFile>
+  <RDR_StatusHash>SHA-256 pliku DLL gry jest inny ({0}); sprawdź tę wersję.</RDR_StatusHash>
+  <RDR_StatusMvid>Identyfikator DLL gry jest inny; ta wersja wymaga sprawdzenia.</RDR_StatusMvid>
+  <RDR_StatusNative>Wymagany jest RimDroid Native na Androidzie. Sprawdź silnik instancji; box64 + native Mono to inny tryb.</RDR_StatusNative>
+  <RDR_StatusReady>Kontrola API/DLL zakończona pomyślnie. Testy urządzenia są jeszcze przed nami.</RDR_StatusReady>
+  <RDR_StatusVersion>Wymagany jest RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Oczekiwanie na kontrolę uruchamiania.</RDR_StatusWaiting>
+  <RDR_TargetGone>Cel nie jest już dostępny na tej mapie. Odświeżono wyniki.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Nie można wybrać celu</RDR_TargetNotSelected>
+</LanguageData>

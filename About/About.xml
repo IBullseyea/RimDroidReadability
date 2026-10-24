@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-  <name>RimDroid Readability 0.2.3</name>
+  <name>RimDroid Readability 0.2.4</name>
   <author>Erenalp</author>
   <packageId>erenalp.rimdroidreadability</packageId>
   <supportedVersions><li>1.6</li></supportedVersions>
   <loadAfter><li>Ludeon.RimWorld</li></loadAfter>
-  <description>RimDroid Native üzerinde doğrulanmış RimWorld 1.6 referansı için büyük göstergeler, eşya gruplama ve hedef bulucu. İlk kullanımda kapalıdır. Telefon uyumluluğu, dokunma ve performans henüz doğrulanmadı. RimDroid tarafından yüklenen mevcut Harmony kullanılır.</description>
+  <description>Large map indicators, item grouping and a target finder for the verified RimWorld 1.6 reference on RimDroid Native. Follows the selected game language with 29 included translations. Disabled by default. Full device and performance acceptance remains pending. Uses the Harmony already loaded by RimDroid.</description>
 </ModMetaData>

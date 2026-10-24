@@ -16,14 +16,7 @@ namespace RimDroid.Readability
         internal static readonly ItemFilter[] FilterOrder = { ItemFilter.Off, ItemFilter.All, ItemFilter.Medicine,
             ItemFilter.Wood, ItemFilter.Weapon, ItemFilter.Food, ItemFilter.Resource, ItemFilter.Apparel };
         internal static string FilterName(ItemFilter value)
-        {
-            switch (value) {
-                case ItemFilter.All: return "Tümü"; case ItemFilter.Medicine: return "İlaç";
-                case ItemFilter.Wood: return "Odun"; case ItemFilter.Weapon: return "Silah";
-                case ItemFilter.Food: return "Yiyecek"; case ItemFilter.Resource: return "Kaynak";
-                case ItemFilter.Apparel: return "Giysi"; default: return "Kapalı";
-            }
-        }
+        { return ModText.Get("Filter" + Filter(value)); }
         internal static ItemFilter NextFilter(ItemFilter value)
         { return FilterOrder[(Array.IndexOf(FilterOrder, value) + 1) % FilterOrder.Length]; }
     }
@@ -84,15 +77,16 @@ namespace RimDroid.Readability
 
     internal sealed class QueryClock
     {
-        private object map, game;
+        private object map, game, language;
         private string key;
         private float due;
-        internal void Clear() { map = null; game = null; key = null; due = 0; }
-        internal bool Refresh(object currentMap, object currentGame, string currentKey, float now)
+        internal void Clear() { map = null; game = null; language = null; key = null; due = 0; }
+        internal bool Refresh(object currentMap, object currentGame, string currentKey, float now, object currentLanguage = null)
         {
             if (currentMap == null || currentGame == null) { Clear(); return false; }
-            if (ReferenceEquals(map, currentMap) && ReferenceEquals(game, currentGame) && key == currentKey && now < due) return false;
-            map = currentMap; game = currentGame; key = currentKey; due = now + 0.25f;
+            if (ReferenceEquals(map, currentMap) && ReferenceEquals(game, currentGame) && ReferenceEquals(language, currentLanguage)
+                && key == currentKey && now < due) return false;
+            map = currentMap; game = currentGame; language = currentLanguage; key = currentKey; due = now + 0.25f;
             return true;
         }
     }
@@ -124,7 +118,9 @@ namespace RimDroid.Readability
             X += (target.X - X) / Members.Count; Y += (target.Y - Y) / Members.Count;
         }
         internal string Summary
-        { get { return Colonist ? "K · " + Name : "E · " + Name + " ×" + Amount + (Members.Count > 1 ? " / " + Members.Count + " yığın" : ""); } }
+        { get { return Colonist ? ModText.Get("ColonistLabel", ModText.Get("ColonistShort"), Name) : Members.Count > 1
+            ? ModText.Get("ItemGroupLabel", ModText.Get("ItemShort"), Name, Amount, ModText.Get("Stacks"), Members.Count)
+            : ModText.Get("ItemLabel", ModText.Get("ItemShort"), Name, Amount); } }
     }
 
     internal static class GroupRules
@@ -249,14 +245,14 @@ namespace RimDroid.Readability
             {
                 foreach (TargetGroup group in GroupRules.Types(targets))
                     rows.Add(new FinderRow { Group = true, TypeKey = group.TypeKey, Name = group.Name,
-                        Detail = group.Amount + " adet / " + group.Members.Count + " yığın" });
+                        Detail = ModText.Get("GroupTotal", ModText.Get("Quantity"), group.Amount, ModText.Get("Stacks"), group.Members.Count) });
             }
             else
             {
                 foreach (TargetData target in targets)
                     if (state.Items ? !target.Colonist && target.TypeKey == state.TypeKey : target.Colonist)
-                        rows.Add(new FinderRow { Id = target.Id, Name = target.Name, Detail = target.Colonist ? "Kolonist" :
-                            target.Amount + " adet · (" + target.CellX + ", " + target.CellZ + ") · #" + target.Id });
+                        rows.Add(new FinderRow { Id = target.Id, Name = target.Name, Detail = target.Colonist ? ModText.Get("Colonist") :
+                            ModText.Get("StackDetails", ModText.Get("Quantity"), target.Amount, target.CellX, target.CellZ, target.Id) });
                 rows.Sort(delegate(FinderRow a, FinderRow b) { return a.Id.CompareTo(b.Id); });
             }
             return rows;

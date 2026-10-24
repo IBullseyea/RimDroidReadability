@@ -10,6 +10,7 @@ import subprocess
 import sys
 import unittest
 import warnings
+import xml.etree.ElementTree as ET
 import zipfile
 
 sys.dont_write_bytecode = True
@@ -64,6 +65,43 @@ class ToolingTests(unittest.TestCase):
     def test_current_payload_passes(self):
         audit.audit_release(archive(self.payload), self.payload)
 
+    def test_all_builtin_languages_have_complete_keyed_resources(self):
+        self.assertEqual(len(build.LANGUAGES), 29)
+        self.assertEqual(audit.audit_translations(self.payload), 78)
+
+    def test_localization_missing_duplicate_and_blank_keys_rejected(self):
+        rel = '1.6/Languages/ChineseSimplified/Keyed/Readability.xml'
+        for mutation in ('missing', 'duplicate', 'blank'):
+            changed = dict(self.payload)
+            root = ET.fromstring(changed[rel])
+            if mutation == 'missing':
+                root.remove(root.find('RDR_Find'))
+            elif mutation == 'duplicate':
+                ET.SubElement(root, 'RDR_Find').text = 'duplicate'
+            else:
+                root.find('RDR_Find').text = '  '
+            changed[rel] = ET.tostring(root, encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'translation'):
+                audit.audit_release(archive(changed), changed)
+
+    def test_localization_bad_placeholders_rejected_even_with_matching_zip(self):
+        rel = '1.6/Languages/German/Keyed/Readability.xml'
+        for value in ('{0}: {99}', '{0', '{name}', '{0}: {0}'):
+            changed = dict(self.payload)
+            root = ET.fromstring(changed[rel])
+            root.find('RDR_NamedValue').text = value
+            changed[rel] = ET.tostring(root, encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'translation'):
+                audit.audit_release(archive(changed), changed)
+
+    def test_missing_language_and_extra_translation_file_rejected(self):
+        changed = dict(self.payload)
+        changed.pop('1.6/Languages/Turkish/Keyed/Readability.xml')
+        with self.assertRaisesRegex(RuntimeError, 'allowlist'):
+            audit.audit_release(archive(changed), self.payload)
+        with self.assertRaisesRegex(RuntimeError, 'allowlist'):
+            audit.audit_release(archive(self.payload, 'RimDroidReadability/1.6/Languages/English/Keyed/Unexpected.xml'), self.payload)
+
     def test_api_signature_requires_public_exact_overload(self):
         declarations = {owner: '\n'.join(signatures) for owner, signatures in audit.API_SIGNATURES.items()}
         self.assertTrue(audit.audit_api_declarations(declarations))
@@ -116,7 +154,7 @@ class ToolingTests(unittest.TestCase):
             audit.audit_release(archive(self.payload, 'RimDroidReadability/1.6/Assemblies/Assembly-CSharp.dll'), self.payload)
 
     def test_old_release_version_rejected_even_with_matching_archive(self):
-        for old_version in (b'0.1.0', b'0.2.0', b'0.2.1', b'0.2.2'):
+        for old_version in (b'0.1.0', b'0.2.0', b'0.2.1', b'0.2.2', b'0.2.3'):
             for rel in ('About/About.xml', 'README.md'):
                 changed = dict(self.payload)
                 changed[rel] = changed[rel].replace(build.VERSION.encode(), old_version)

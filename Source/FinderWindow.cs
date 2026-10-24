@@ -39,7 +39,7 @@ namespace RimDroid.Readability
                     if (!FinderController.ValidWindow || FinderController.HasForeground) return;
                     UpdatePosition(); base.WindowOnGUI();
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Bul kontrolü pencere hatası: " + error.Message, error); }
+                catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextFindButton", error), error); }
             }
         }
         public override void DoWindowContents(Rect inRect)
@@ -50,11 +50,11 @@ namespace RimDroid.Readability
                 {
                     if (!FinderController.ValidWindow || FinderController.HasForeground) return;
                     Text.Font = GameFont.Medium;
-                    string count = OverlayRenderer.OmittedGroups > 0 ? " (+" + OverlayRenderer.OmittedGroups + ")" : "";
-                    if (Widgets.ButtonText(inRect, "Bul" + count)) FinderController.Open();
-                    TooltipHandler.TipRegion(inRect, "Kolonist ve eşya bulucu. + sayı, etiketi gösterilemeyen görsel grup sayısıdır; yığın sayısı değildir.");
+                    string caption = OverlayRenderer.OmittedGroups > 0 ? ModText.Get("ButtonCount", ModText.Get("Find"), OverlayRenderer.OmittedGroups) : ModText.Get("Find");
+                    if (Widgets.ButtonText(inRect, caption)) FinderController.Open();
+                    TooltipHandler.TipRegion(inRect, ModText.Get("FindTip"));
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Bul kontrolü hatası: " + error.Message, error); }
+                catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextFindButton", error), error); }
             }
         }
     }
@@ -89,7 +89,7 @@ namespace RimDroid.Readability
                     }
                     base.WindowOnGUI();
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Bulucu pencere hatası: " + error.GetType().Name + ": " + error.Message, error); }
+                catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextFinder", error), error); }
             }
         }
 
@@ -98,7 +98,7 @@ namespace RimDroid.Readability
             using (new GuiState())
             {
                 try { Draw(inRect); }
-                catch (Exception error) { ReadabilityMod.Disable("Bulucu hatası: " + error.GetType().Name + ": " + error.Message, error); }
+                catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextFinder", error), error); }
             }
         }
 
@@ -107,7 +107,7 @@ namespace RimDroid.Readability
             if (!FinderController.ValidWindow) { Close(false); return; }
             Text.Font = GameFont.Small; Text.Anchor = TextAnchor.UpperLeft; Text.WordWrap = true;
             if (!FinderGeometry.FitsActions(inRect.width))
-            { Widgets.Label(inRect, "Arayüz alanı yetersiz. UI ölçeğini küçültün veya ekranı yatay kullanın."); return; }
+            { Widgets.Label(inRect, ModText.Get("InsufficientSpace")); return; }
             // Whole content scrolls, including controls: small screens never shrink action targets.
             int pageSize = FinderGeometry.Rows(inRect.height - (state.TypeKey != null ? 56 : 0), state.Items);
             float width = Math.Max(320, inRect.width - 20);
@@ -117,47 +117,50 @@ namespace RimDroid.Readability
             List<FinderRow> pageRows = PageRules.Slice(rows, ref state.Page, pageSize);
             float rowsHeight = 0;
             foreach (FinderRow row in pageRows) rowsHeight += RowHeight(row, width);
-            float height = Math.Max(inRect.height, header + Math.Max(64, rowsHeight) + 64);
+            string pageText = (state.Page + 1) + " / " + PageRules.Count(rows.Count, pageSize) + "\n"
+                + ModText.Get("NamedValue", ModText.Get("Results"), rows.Count);
+            float footerHeight = Math.Max(64, Text.CalcHeight(pageText, width - 208) + 16);
+            float height = Math.Max(inRect.height, header + Math.Max(64, rowsHeight) + footerHeight);
             bool scrolling = false;
             try
             {
                 Widgets.BeginScrollView(inRect, ref scroll, new Rect(0, 0, width, height)); scrolling = true;
                 float y = 0;
-                Widgets.Label(new Rect(0, y, width - 104, 48), "Hedef bulucu");
-                if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), "Kapat")) { Close(); return; }
+                Widgets.Label(new Rect(0, y, width - 104, 48), ModText.Get("FinderTitle"));
+                if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), ModText.Get("Close"))) { Close(); return; }
                 y += 56;
                 float half = (width - 8) / 2;
-                if (Widgets.ButtonText(new Rect(0, y, half, 48), state.Items ? "Kolonistler" : "• Kolonistler")) { state.SetTab(false); scroll = Vector2.zero; return; }
-                if (Widgets.ButtonText(new Rect(half + 8, y, half, 48), state.Items ? "• Eşyalar" : "Eşyalar")) { state.SetTab(true); scroll = Vector2.zero; return; }
+                if (Widgets.ButtonText(new Rect(0, y, half, 48), (state.Items ? "" : "• ") + ModText.Get("Colonists"))) { state.SetTab(false); scroll = Vector2.zero; return; }
+                if (Widgets.ButtonText(new Rect(half + 8, y, half, 48), (state.Items ? "• " : "") + ModText.Get("Items"))) { state.SetTab(true); scroll = Vector2.zero; return; }
                 y += 56;
                 if (state.Items)
                 {
-                    if (Widgets.ButtonText(new Rect(0, y, width, 48), "Kategori: " + SettingsRules.FilterName(ReadabilityMod.Settings.Filter)))
+                    if (Widgets.ButtonText(new Rect(0, y, width, 48), ModText.Get("NamedValue", ModText.Get("Category"), SettingsRules.FilterName(ReadabilityMod.Settings.Filter))))
                     {
                         ReadabilityMod.CycleItemFilter(); state.ResetNavigation(); return;
                     }
                     y += 56;
                     string search = Widgets.TextField(new Rect(0, y, width - 104, 48), TargetCatalog.Search);
                     if (search != TargetCatalog.Search) { TargetCatalog.Search = search; TargetCatalog.Clear(); state.ResetNavigation(); return; }
-                    if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), "Temizle"))
+                    if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), ModText.Get("Clear")))
                     { TargetCatalog.Search = ""; TargetCatalog.Clear(); state.ResetNavigation(); GUI.FocusControl(null); return; }
                     y += 56;
                 }
                 if (state.Items && state.TypeKey != null)
                 {
-                    if (Widgets.ButtonText(new Rect(0, y, 96, 48), "Geri")) { state.ResetNavigation(); return; }
-                    Widgets.Label(new Rect(104, y, width - 104, 48), rows.Count == 0 ? "Yığın kalmadı. Geri ile türlere dönün." : "Türün tüm uygun yığınları");
+                    if (Widgets.ButtonText(new Rect(0, y, 96, 48), ModText.Get("Back"))) { state.ResetNavigation(); return; }
+                    Widgets.Label(new Rect(104, y, width - 104, 48), ModText.Get(rows.Count == 0 ? "NoStacks" : "AllStacks"));
                     y += 56;
                 }
                 if (rows.Count == 0)
-                    Widgets.Label(new Rect(0, y, width, 56), state.Items ? "Uygun eşya bulunamadı. Kategoriyi veya aramayı değiştirin." : "Bu haritada uygun serbest kolonist yok.");
+                    Widgets.Label(new Rect(0, y, width, 56), ModText.Get(state.Items ? "NoItems" : "NoColonists"));
                 foreach (FinderRow row in pageRows)
                 {
                     float rowHeight = RowHeight(row, width);
                     Rect name = new Rect(0, y, width - 104, rowHeight - 8);
                     Widgets.Label(name, row.Name + "\n" + row.Detail);
                     TooltipHandler.TipRegion(name, row.Name + "\n" + row.Detail);
-                    if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), row.Group ? "Aç" : "Git"))
+                    if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), ModText.Get(row.Group ? "Open" : "Go")))
                     {
                         if (row.Group) { state.OpenGroup(row.TypeKey); scroll = Vector2.zero; }
                         else FinderController.Go(row.Id);
@@ -168,11 +171,11 @@ namespace RimDroid.Readability
                 y = Math.Max(y + 8, header + rowsHeight);
                 int pages = PageRules.Count(rows.Count, pageSize);
                 GUI.enabled = state.Page > 0;
-                if (Widgets.ButtonText(new Rect(0, y, 96, 48), "Önceki")) { state.Page--; scroll = Vector2.zero; }
+                if (Widgets.ButtonText(new Rect(0, y, 96, 48), ModText.Get("Previous"))) { state.Page--; scroll = Vector2.zero; }
                 GUI.enabled = true;
-                Widgets.Label(new Rect(104, y, width - 208, 48), (state.Page + 1) + " / " + pages + "\n" + rows.Count + " sonuç");
+                Widgets.Label(new Rect(104, y, width - 208, footerHeight - 16), pageText);
                 GUI.enabled = state.Page + 1 < pages;
-                if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), "Sonraki")) { state.Page++; scroll = Vector2.zero; }
+                if (Widgets.ButtonText(new Rect(width - 96, y, 96, 48), ModText.Get("Next"))) { state.Page++; scroll = Vector2.zero; }
             }
             finally { if (scrolling) Widgets.EndScrollView(); }
         }

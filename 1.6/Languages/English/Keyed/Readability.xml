@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>All valid stacks of this type</RDR_AllStacks>
+  <RDR_Back>Back</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Category</RDR_Category>
+  <RDR_Clear>Clear</RDR_Clear>
+  <RDR_Close>Close</RDR_Close>
+  <RDR_Colonist>Colonist</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>C</RDR_ColonistShort>
+  <RDR_Colonists>Colonists</RDR_Colonists>
+  <RDR_ColonistsToggle>Show colonists</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Drawing error</RDR_ContextDraw>
+  <RDR_ContextFindButton>Find button error</RDR_ContextFindButton>
+  <RDR_ContextFinder>Finder error</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Hook cleanup error</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Map UI error</RDR_ContextMap>
+  <RDR_ContextShortcut>Filter shortcut error</RDR_ContextShortcut>
+  <RDR_ContextStartup>Startup error</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Window cleanup error</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Phone compatibility and performance tests are pending.</RDR_DevicePending>
+  <RDR_Enabled>Enable indicators</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>All</RDR_FilterAll>
+  <RDR_FilterApparel>Apparel</RDR_FilterApparel>
+  <RDR_FilterFood>Food</RDR_FilterFood>
+  <RDR_FilterMedicine>Medicine</RDR_FilterMedicine>
+  <RDR_FilterOff>Off</RDR_FilterOff>
+  <RDR_FilterResource>Resources</RDR_FilterResource>
+  <RDR_FilterWeapon>Weapons</RDR_FilterWeapon>
+  <RDR_FilterWood>Wood</RDR_FilterWood>
+  <RDR_Find>Find</RDR_Find>
+  <RDR_FindTip>Find colonists and items. +N counts visual groups without a full label, not stacks.</RDR_FindTip>
+  <RDR_FinderTitle>Target finder</RDR_FinderTitle>
+  <RDR_FontSize>Text size</RDR_FontSize>
+  <RDR_Go>Go</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Group nearby stacks</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony is not loaded</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Multiple Harmony assemblies</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Unsupported Harmony version: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Not enough UI space. Lower the UI scale or use landscape.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Item filter</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>I</RDR_ItemShort>
+  <RDR_Items>Items</RDR_Items>
+  <RDR_Limits>One item filter; up to 40 labels and 120 markers. Use Find to jump without changing zoom. Turning the mod off removes its controls.</RDR_Limits>
+  <RDR_MarkerSize>Marker size</RDR_MarkerSize>
+  <RDR_Missing>missing</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native marker</RDR_NativeMarker>
+  <RDR_Next>Next</RDR_Next>
+  <RDR_NoColonists>No eligible free colonists on this map.</RDR_NoColonists>
+  <RDR_NoItems>No matching items. Change the category or search.</RDR_NoItems>
+  <RDR_NoStacks>No stacks remain. Go back to the groups.</RDR_NoStacks>
+  <RDR_Open>Open</RDR_Open>
+  <RDR_OperatingSystem>Operating system</RDR_OperatingSystem>
+  <RDR_Platform>Platform</RDR_Platform>
+  <RDR_Present>present</RDR_Present>
+  <RDR_Previous>Previous</RDR_Previous>
+  <RDR_Quantity>Count</RDR_Quantity>
+  <RDR_Results>Results</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Cycle item filters. Finder search still applies.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Stacks</RDR_Stacks>
+  <RDR_StatusAssembly>Game assembly changed or a duplicate was detected; mod disabled.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>The loaded game DLL file could not be identified.</RDR_StatusGameFile>
+  <RDR_StatusHash>Game DLL SHA-256 differs ({0}); verify this build.</RDR_StatusHash>
+  <RDR_StatusMvid>Game DLL ID differs; this build must be verified.</RDR_StatusMvid>
+  <RDR_StatusNative>Requires RimDroid Native on Android. Check the instance engine; box64 + native Mono is different.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL checks passed. Device tests pending.</RDR_StatusReady>
+  <RDR_StatusVersion>Requires RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Waiting for startup checks.</RDR_StatusWaiting>
+  <RDR_TargetGone>Target is no longer available on this map. Results refreshed.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Target could not be selected</RDR_TargetNotSelected>
+</LanguageData>

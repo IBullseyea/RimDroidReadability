@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Toate stivele valide de acest tip</RDR_AllStacks>
+  <RDR_Back>Înapoi</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Categorie</RDR_Category>
+  <RDR_Clear>Șterge</RDR_Clear>
+  <RDR_Close>Închide</RDR_Close>
+  <RDR_Colonist>Colonist</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>C</RDR_ColonistShort>
+  <RDR_Colonists>Coloniști</RDR_Colonists>
+  <RDR_ColonistsToggle>Arată coloniștii</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Eroare de desenare</RDR_ContextDraw>
+  <RDR_ContextFindButton>Eroare a butonului de căutare</RDR_ContextFindButton>
+  <RDR_ContextFinder>Eroare de căutare</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Eroare la eliminarea hook-urilor</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Eroare a interfeței hărții</RDR_ContextMap>
+  <RDR_ContextShortcut>Eroare a filtrului rapid</RDR_ContextShortcut>
+  <RDR_ContextStartup>Eroare de pornire</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Eroare la închiderea ferestrelor</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Testele de compatibilitate și performanță pe telefon sunt încă în așteptare.</RDR_DevicePending>
+  <RDR_Enabled>Activează marcajele</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Toate</RDR_FilterAll>
+  <RDR_FilterApparel>Îmbrăcăminte</RDR_FilterApparel>
+  <RDR_FilterFood>Hrană</RDR_FilterFood>
+  <RDR_FilterMedicine>Medicamente</RDR_FilterMedicine>
+  <RDR_FilterOff>Oprit</RDR_FilterOff>
+  <RDR_FilterResource>Resurse</RDR_FilterResource>
+  <RDR_FilterWeapon>Arme</RDR_FilterWeapon>
+  <RDR_FilterWood>Lemn</RDR_FilterWood>
+  <RDR_Find>Caută</RDR_Find>
+  <RDR_FindTip>Caută coloniști și obiecte. +N numără grupurile fără etichetă completă, nu stivele.</RDR_FindTip>
+  <RDR_FinderTitle>Căutare ținte</RDR_FinderTitle>
+  <RDR_FontSize>Mărimea textului</RDR_FontSize>
+  <RDR_Go>Mergi</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Grupează stivele apropiate</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony nu este încărcat</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Există mai multe ansambluri Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Versiune Harmony neacceptată: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Spațiu insuficient. Reduceți scara interfeței sau folosiți orientarea peisaj.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Filtru de obiecte</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>O</RDR_ItemShort>
+  <RDR_Items>Obiecte</RDR_Items>
+  <RDR_Limits>Un filtru de obiecte; cel mult 40 de etichete și 120 de marcaje. Caută permite deplasarea la țintă fără schimbarea zoomului. Dezactivarea modului elimină butoanele sale.</RDR_Limits>
+  <RDR_MarkerSize>Mărimea marcajelor</RDR_MarkerSize>
+  <RDR_Missing>lipsește</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Indicator Native</RDR_NativeMarker>
+  <RDR_Next>Următor</RDR_Next>
+  <RDR_NoColonists>Nu există coloniști liberi eligibili pe această hartă.</RDR_NoColonists>
+  <RDR_NoItems>Niciun obiect corespunzător. Schimbați categoria sau căutarea.</RDR_NoItems>
+  <RDR_NoStacks>Nu mai există stive. Reveniți la grupuri.</RDR_NoStacks>
+  <RDR_Open>Deschide</RDR_Open>
+  <RDR_OperatingSystem>Sistem de operare</RDR_OperatingSystem>
+  <RDR_Platform>Platformă</RDR_Platform>
+  <RDR_Present>prezent</RDR_Present>
+  <RDR_Previous>Anterior</RDR_Previous>
+  <RDR_Quantity>Cantitate</RDR_Quantity>
+  <RDR_Results>Rezultate</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Trece la următorul filtru de obiecte. Căutarea se aplică în continuare.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Stive</RDR_Stacks>
+  <RDR_StatusAssembly>Ansamblul jocului s-a schimbat sau s-a găsit un duplicat; modul a fost dezactivat.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Fișierul DLL al jocului încărcat nu a putut fi identificat.</RDR_StatusGameFile>
+  <RDR_StatusHash>SHA-256 al DLL-ului jocului diferă ({0}); verificați această versiune.</RDR_StatusHash>
+  <RDR_StatusMvid>Identificatorul DLL al jocului diferă; această versiune trebuie verificată.</RDR_StatusMvid>
+  <RDR_StatusNative>Este necesar RimDroid Native pe Android. Verificați motorul instanței; box64 + native Mono este un alt mod.</RDR_StatusNative>
+  <RDR_StatusReady>Verificările API/DLL au reușit. Testele pe dispozitiv sunt în așteptare.</RDR_StatusReady>
+  <RDR_StatusVersion>Este necesar RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Se așteaptă verificările de pornire.</RDR_StatusWaiting>
+  <RDR_TargetGone>Ținta nu mai este disponibilă pe această hartă. Rezultatele au fost actualizate.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Ținta nu a putut fi selectată</RDR_TargetNotSelected>
+</LanguageData>

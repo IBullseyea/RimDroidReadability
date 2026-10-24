@@ -1,6 +1,14 @@
-# 0.2.3 yayın hazırlığı
+# 0.2.4 yayın hazırlığı
 
 24 Ekim 2026. Bu paket yerel geliştirme çıktısıdır. **Gerçek telefon kabulü, lisans ve GitHub depo kararı beklemededir.** Kamuya yayın yapılmadı; yayına hazır olduğu iddia edilmez.
+
+## 0.2.4 oyun dili desteği
+
+Kullanıcı 0.2.3’ün istediği gibi çalıştığını bildirdi ve oyun dili İngilizce/Çince gibi değiştiğinde bütün oyun içi mod metinlerinin aynı dili izlemesini istedi. Yeni sürüm oyunun Keyed sistemini kullanır; ayrı dil ayarı yoktur. 29 dilde 78’er özgün anahtar; düğme/filtre/ayar/tooltip/sonuç/tür kısaltması ve mod durum/hata bağlamları için sağlandı. Desteklenmeyen topluluk dilinde standart İngilizce fallback’i kullanılır.
+
+Dil değişince durum mesajı güncel dilde çözülür, katalog ve etiket yazı stili yenilenir. Eşya türü ve kolonist özel adları oyun verisi olarak korunur. Teknik API/exception kimlikleri ve sabit paket belgeleri çevrilmez. Çeviri dosyaları izin listesine eklendi; oyun çeviri dosyaları veya görselleri kopyalanmadı. Native/DLL/Harmony kapıları ve mevcut ayarlar korunur.
+
+Eksik/tekrarlı/boş anahtar, bozuk format yer tutucusu ve eksik/ek dil payload’u denetimleri eklendi. Gerçek telefon fontu/uzun metin/dil değişimi kabulü için OpenSpec 8.2 açıktır; yerel test sonucu cihaz kabulü değildir.
 
 ## 0.2.3 eşya filtresi kısayolu
 
@@ -63,7 +71,7 @@ OpenSpec görevleri **6.3, 6.4, 6.5 açık** kalır. Telefon modeli S25 FE ve Ri
 
 ## Kurulum ve geri dönüş
 
-README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.3.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
+README’deki Native/DLL/Harmony kimlik kontrolünü tamamlayın. `dist/RimDroidReadability-0.2.4.zip` içindeki tek mod klasörünü ilgili instance’a kurup etkinleştirin; yeniden başlatınca Mod Ayarları’ndaki durumu okuyun. İlk kullanımda kapalıdır. İkinci Harmony veya oyun DLL’si eklemeyin.
 
 Kapatmak için **İşaretleri aç** seçeneğini kaldırın veya mod listesinden devre dışı bırakın. Göstergeler ve mod pencereleri kaldırılır; tercihler korunur. Gerekirse eski 0.1.0 paketine dönülebilir. Oyun dosyaları ve kayıtları dönüştürülmez.
 
@@ -77,4 +85,4 @@ Kapatmak için **İşaretleri aç** seçeneğini kaldırın veya mod listesinden
 - Lisans **seçilmedi**. Lisans dosyası eklenmedi ve açık kaynak lisansı iddiası yoktur.
 - GitHub depo adı/hesabı **seçilmedi**. Remote/push/yayın yapılmadı. Bunlar cihaz kanıtıyla birlikte son yayın kararlarıdır.
 
-Paket izin listesi yalnız özgün mod DLL’si, About/LoadFolders XML, README ve bu belgedir. Kaynak/test/OpenSpec planı Git deposundadır; oyun/Unity/Harmony DLL’leri, görseller, kimlik bilgileri, üretilmiş raporlar ve önbellekler dağıtılmaz.
+Paket izin listesi yalnız özgün mod DLL’si, About/LoadFolders XML, README, bu belge ve 29 özgün Keyed çeviri XML’idir. Kaynak/test/OpenSpec planı Git deposundadır; oyun/Unity/Harmony DLL’leri, görseller, kimlik bilgileri, üretilmiş raporlar ve önbellekler dağıtılmaz.

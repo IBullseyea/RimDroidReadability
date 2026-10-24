@@ -30,7 +30,7 @@ namespace RimDroid.Readability
                     if (!FinderController.ValidWindow || FinderController.HasForeground || !OverlayRenderer.FilterControlBounds.IsFinite) return;
                     UpdatePosition(); base.WindowOnGUI();
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Eşya kısayolu pencere hatası: " + error.Message, error); }
+                catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextShortcut", error), error); }
             }
         }
         public override void DoWindowContents(Rect inRect)
@@ -41,11 +41,14 @@ namespace RimDroid.Readability
                 {
                     if (!FinderController.ValidWindow || FinderController.HasForeground) return;
                     Text.Font = GameFont.Medium;
-                    if (Widgets.ButtonText(inRect, "Eşya: " + SettingsRules.FilterName(ReadabilityMod.Settings.Filter)))
+                    string caption = ModText.Get("NamedValue", ModText.Get("Items"), SettingsRules.FilterName(ReadabilityMod.Settings.Filter));
+                    if (Text.CalcSize(caption).x > inRect.width - 12) Text.Font = GameFont.Small;
+                    Text.WordWrap = true;
+                    if (Widgets.ButtonText(inRect, caption))
                         ReadabilityMod.CycleItemFilter();
-                    TooltipHandler.TipRegion(inRect, "Sonraki eşya filtresine geç. Kapalı → Tümü → İlaç → Odun → Silah → Yiyecek → Kaynak → Giysi. Bulucudaki arama da uygulanır.");
+                    TooltipHandler.TipRegion(inRect, ModText.Get("ShortcutTip"));
                 }
-                catch (Exception error) { ReadabilityMod.Disable("Eşya kısayolu hatası: " + error.Message, error); }
+                catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextShortcut", error), error); }
             }
         }
     }

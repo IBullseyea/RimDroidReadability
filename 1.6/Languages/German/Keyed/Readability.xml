@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Alle gültigen Stapel dieses Typs</RDR_AllStacks>
+  <RDR_Back>Zurück</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Kategorie</RDR_Category>
+  <RDR_Clear>Leeren</RDR_Clear>
+  <RDR_Close>Schließen</RDR_Close>
+  <RDR_Colonist>Kolonist</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>K</RDR_ColonistShort>
+  <RDR_Colonists>Kolonisten</RDR_Colonists>
+  <RDR_ColonistsToggle>Kolonisten anzeigen</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Zeichenfehler</RDR_ContextDraw>
+  <RDR_ContextFindButton>Suchschaltflächenfehler</RDR_ContextFindButton>
+  <RDR_ContextFinder>Suchfehler</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Fehler beim Entfernen der Hooks</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Kartenoberflächenfehler</RDR_ContextMap>
+  <RDR_ContextShortcut>Filterkurzbefehlfehler</RDR_ContextShortcut>
+  <RDR_ContextStartup>Startfehler</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Fehler beim Schließen der Fenster</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Handykompatibilität und Leistungstests stehen noch aus.</RDR_DevicePending>
+  <RDR_Enabled>Markierungen aktivieren</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Alle</RDR_FilterAll>
+  <RDR_FilterApparel>Kleidung</RDR_FilterApparel>
+  <RDR_FilterFood>Nahrung</RDR_FilterFood>
+  <RDR_FilterMedicine>Medizin</RDR_FilterMedicine>
+  <RDR_FilterOff>Aus</RDR_FilterOff>
+  <RDR_FilterResource>Rohstoffe</RDR_FilterResource>
+  <RDR_FilterWeapon>Waffen</RDR_FilterWeapon>
+  <RDR_FilterWood>Holz</RDR_FilterWood>
+  <RDR_Find>Suchen</RDR_Find>
+  <RDR_FindTip>Kolonisten und Gegenstände finden. +N zählt sichtbare Gruppen ohne vollständige Beschriftung, keine Stapel.</RDR_FindTip>
+  <RDR_FinderTitle>Zielsuche</RDR_FinderTitle>
+  <RDR_FontSize>Schriftgröße</RDR_FontSize>
+  <RDR_Go>Gehe zu</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Nahe Stapel gruppieren</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony ist nicht geladen</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Mehrere Harmony-Assemblies vorhanden</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Nicht unterstützte Harmony-Version: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Zu wenig Platz. UI-Skalierung verringern oder Querformat verwenden.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Gegenstandsfilter</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>G</RDR_ItemShort>
+  <RDR_Items>Gegenstände</RDR_Items>
+  <RDR_Limits>Ein Gegenstandsfilter; höchstens 40 Beschriftungen und 120 Markierungen. Mit Suchen zum Ziel springen, ohne den Zoom zu ändern. Ausschalten entfernt die Mod-Steuerelemente.</RDR_Limits>
+  <RDR_MarkerSize>Markierungsgröße</RDR_MarkerSize>
+  <RDR_Missing>fehlt</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native-Kennung</RDR_NativeMarker>
+  <RDR_Next>Weiter</RDR_Next>
+  <RDR_NoColonists>Keine geeigneten freien Kolonisten auf dieser Karte.</RDR_NoColonists>
+  <RDR_NoItems>Keine passenden Gegenstände. Kategorie oder Suche ändern.</RDR_NoItems>
+  <RDR_NoStacks>Keine Stapel mehr vorhanden. Zurück zu den Gruppen.</RDR_NoStacks>
+  <RDR_Open>Öffnen</RDR_Open>
+  <RDR_OperatingSystem>Betriebssystem</RDR_OperatingSystem>
+  <RDR_Platform>Plattform</RDR_Platform>
+  <RDR_Present>vorhanden</RDR_Present>
+  <RDR_Previous>Zurück</RDR_Previous>
+  <RDR_Quantity>Anzahl</RDR_Quantity>
+  <RDR_Results>Ergebnisse</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Zum nächsten Gegenstandsfilter wechseln. Die Suche bleibt wirksam.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Stapel</RDR_Stacks>
+  <RDR_StatusAssembly>Die Spiel-Assembly wurde geändert oder doppelt geladen. Mod deaktiviert.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Die geladene Spiel-DLL konnte nicht identifiziert werden.</RDR_StatusGameFile>
+  <RDR_StatusHash>Die Spiel-DLL hat einen anderen SHA-256-Wert ({0}). Build prüfen.</RDR_StatusHash>
+  <RDR_StatusMvid>Die Spiel-DLL-Kennung weicht ab. Dieser Build muss geprüft werden.</RDR_StatusMvid>
+  <RDR_StatusNative>RimDroid Native auf Android ist erforderlich. Instanz-Engine prüfen; box64 + native Mono ist ein anderer Modus.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL-Prüfungen bestanden. Gerätetests stehen aus.</RDR_StatusReady>
+  <RDR_StatusVersion>RimWorld 1.6 ist erforderlich.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Startprüfungen stehen aus.</RDR_StatusWaiting>
+  <RDR_TargetGone>Das Ziel ist auf dieser Karte nicht mehr verfügbar. Ergebnisse aktualisiert.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Das Ziel konnte nicht ausgewählt werden</RDR_TargetNotSelected>
+</LanguageData>

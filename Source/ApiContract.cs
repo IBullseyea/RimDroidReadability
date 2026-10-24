@@ -34,6 +34,9 @@ namespace RimDroid.Readability
 
         internal static void Verify()
         {
+            Method(typeof(Translator), "TranslateSimple", typeof(string), true, typeof(string));
+            FieldInfo language = typeof(LanguageDatabase).GetField("activeLanguage", BindingFlags.Public | BindingFlags.Static);
+            if (language == null || language.FieldType != typeof(LoadedLanguage)) throw new MissingMemberException("LanguageDatabase.activeLanguage");
             Method(typeof(ThingOverlays), "ThingOverlaysOnGUI", typeof(void), false);
             Method(typeof(MapInterface), "MapInterfaceOnGUI_AfterMainTabs", typeof(void), false);
             Method(typeof(CameraJumper), "TryJumpAndSelect", typeof(void), true, typeof(GlobalTargetInfo), typeof(CameraJumper.MovementMode));

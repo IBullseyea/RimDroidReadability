@@ -56,7 +56,8 @@ namespace RimDroid.Readability
         {
             if (!InMap) { Clear(); return; }
             Map map = Find.CurrentMap;
-            if (!clock.Refresh(map, Current.Game, (int)ReadabilityMod.Settings.Filter + ":" + Search, Time.realtimeSinceStartup)) return;
+            if (!clock.Refresh(map, Current.Game, (int)ReadabilityMod.Settings.Filter + ":" + Search,
+                Time.realtimeSinceStartup, ModText.CurrentLanguage)) return;
             entries.Clear(); byId.Clear();
             // MapPawns rebuilds and returns a shared scratch list. Eligible() queries it again,
             // so iterating the borrowed list itself invalidates its enumerator on the first pawn.

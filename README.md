@@ -1,6 +1,16 @@
-# RimDroid Readability — 0.2.3
+# RimDroid Readability — 0.2.4
 
 RimWorld 1.6’yı **RimDroid Native Unity** üzerinden telefonda oynamak için özgün, isteğe bağlı mod: kamera yakınlığından bağımsız büyük göstergeler, eşya gruplama ve dokunmatik hedef bulucu. **Gerçek telefon uyumluluğu, okunabilirlik, dokunma ve performans kabulü beklemededir.** Yerel derleme bu kabulün yerine geçmez.
+
+## 0.2.4 — Oyunun dilini izleme
+
+Modun oyun içi metinleri seçili oyun dilini otomatik izler; ayrı bir mod dil ayarı yoktur. Düğmeler, filtreler, ayarlar, tooltip’ler, boş durumlar, miktar/yığın bilgileri, tür kısaltmaları ve modun durum/hata bağlamları Keyed çeviri sistemine taşındı. İngilizcede **Items**, Türkçede **Eşya**, Basitleştirilmiş/Geleneksel Çincede **物品** görünür. Kolonistlerin özel adları ve eşya tür adları oyundan geldiği gibi korunur.
+
+Referanstaki **29 yerleşik dil** için her biri **78 anahtarlı** özgün XML dosyası pakettedir: İngilizce, Türkçe, Basitleştirilmiş/Geleneksel Çince, Japonca, Korece, Almanca, Fransızca, İspanyolca/Latin Amerika İspanyolcası, İtalyanca, Portekizce/Brezilya Portekizcesi, Felemenkçe, Danca, İsveççe, Norveççe, Fince, Estonca, Lehçe, Çekçe, Slovakça, Macarca, Rumence, Rusça, Ukraynaca, Yunanca, Katalanca ve Vietnamca. Diğer topluluk dillerinde oyunun İngilizce fallback’i kullanılır.
+
+Kaynaklar `1.6/Languages/<dil>/Keyed/Readability.xml` altındadır. Oyun desteklediği biçimde dil değiştirildiğinde veya yeni dilde yeniden başladığında metinler güncellenir; katalog ve etiket font stili eski dilde kalmaz. Uzun kısayol metninde font/kaydırma uyarlanır, dokunma alanı küçültülmez. Marka, sürüm, API adı, exception ayrıntısı, hash ve OS gibi teknik veriler aynen kalır. Paket metadata’sı/README/RELEASE sabit belgedir; oyun içi metin kaynağı değildir.
+
+Çeviri tamlığı ve format/paket testleri yereldir; telefon üzerinde her yazı tipinin görünümü ve dil değişimi kabulü ayrıca denenmelidir. Native motoru, DLL/API/Harmony kontrolleri, ayar anahtarları ve filtre sırası değişmez.
 
 ## 0.2.3 — Haritada eşya filtresi kısayolu
 
@@ -98,10 +108,10 @@ MSBuild’i Python başlatıcısıyla çalıştırın; CLI/runtime geçici dosya
 Çıktılar:
 
 - `1.6/Assemblies/RimDroidReadability.dll`
-- `dist/RimDroidReadability-0.2.3.zip`
+- `dist/RimDroidReadability-0.2.4.zip`
 - Yerel kanıt: `docs/validation.json`, `docs/static-validation.json` (Git’e alınmaz).
 
-ZIP izin listesi: yalnız `About/About.xml`, `LoadFolders.xml`, özgün mod DLL’si, `README.md`, `RELEASE.md`. Oyun, Unity, Harmony DLL’leri, oyun görselleri, kaynak referanslar, önbellekler ve raporlar pakete konmaz. Kaynak/test/OpenSpec belgeleri Git deposundadır. Lisans seçilmediğinden açık kaynak lisansı varmış gibi dağıtım yapılmaz.
+ZIP izin listesi: yalnız `About/About.xml`, `LoadFolders.xml`, özgün mod DLL’si, `README.md`, `RELEASE.md` ve 29 özgün Keyed çeviri XML’i. Oyun, Unity, Harmony DLL’leri, oyun görselleri, kaynak referanslar, önbellekler ve raporlar pakete konmaz. Kaynak/test/OpenSpec belgeleri Git deposundadır. Lisans seçilmediğinden açık kaynak lisansı varmış gibi dağıtım yapılmaz.
 
 ## Kurulum, kapatma ve kalan kabul
 

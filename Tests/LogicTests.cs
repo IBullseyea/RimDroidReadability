@@ -9,6 +9,7 @@ internal static class LogicTests
     { assertions++; if (!condition) throw new Exception("FAILED: " + name); }
     private static void Main()
     {
+        LocalizationTests.Run(Check);
         CatalogTests.Run(Check);
         Check((int)ItemFilter.Off == 0 && (int)ItemFilter.Medicine == 1 && (int)ItemFilter.Wood == 2, "legacy filter numeric values");
         ItemFilter cycling = ItemFilter.Off;
@@ -133,7 +134,7 @@ internal static class LogicTests
         finderState.OpenGroup("Wood"); finderRows = FinderRows.Build(stacks, finderState);
         Check(finderRows.Count == 2 && !finderRows[0].Group && finderRows[0].Id == 1 && finderRows[1].Id == 2,
             "type opens every concrete stack with stable identifiers");
-        Check(finderRows[0].Detail.Contains("20 adet") && finderRows[0].Detail.Contains("#1"), "stack amount/coordinate/id disambiguation");
+        Check(finderRows[0].Detail.Contains("Count: 20") && finderRows[0].Detail.Contains("#1"), "stack amount/coordinate/id disambiguation");
         finderState.Page = 4; finderState.ResetNavigation();
         Check(finderState.Page == 0 && finderState.TypeKey == null, "filter/search clear resets group and page");
         finderState.OpenGroup("deleted");

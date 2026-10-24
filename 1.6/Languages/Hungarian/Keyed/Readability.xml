@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>A típus összes érvényes halmaza</RDR_AllStacks>
+  <RDR_Back>Vissza</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Kategória</RDR_Category>
+  <RDR_Clear>Törlés</RDR_Clear>
+  <RDR_Close>Bezárás</RDR_Close>
+  <RDR_Colonist>Telepes</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>Te</RDR_ColonistShort>
+  <RDR_Colonists>Telepesek</RDR_Colonists>
+  <RDR_ColonistsToggle>Telepesek megjelenítése</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Rajzolási hiba</RDR_ContextDraw>
+  <RDR_ContextFindButton>Keresőgomb hibája</RDR_ContextFindButton>
+  <RDR_ContextFinder>Keresési hiba</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Hookeltávolítási hiba</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Térképfelületi hiba</RDR_ContextMap>
+  <RDR_ContextShortcut>Gyorsszűrő hibája</RDR_ContextShortcut>
+  <RDR_ContextStartup>Indítási hiba</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Ablakbezárási hiba</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>A telefonos kompatibilitás és teljesítmény tesztelése még hátravan.</RDR_DevicePending>
+  <RDR_Enabled>Jelölők bekapcsolása</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Mind</RDR_FilterAll>
+  <RDR_FilterApparel>Ruházat</RDR_FilterApparel>
+  <RDR_FilterFood>Étel</RDR_FilterFood>
+  <RDR_FilterMedicine>Gyógyszer</RDR_FilterMedicine>
+  <RDR_FilterOff>Ki</RDR_FilterOff>
+  <RDR_FilterResource>Nyersanyagok</RDR_FilterResource>
+  <RDR_FilterWeapon>Fegyverek</RDR_FilterWeapon>
+  <RDR_FilterWood>Fa</RDR_FilterWood>
+  <RDR_Find>Keresés</RDR_Find>
+  <RDR_FindTip>Telepesek és tárgyak keresése. A +N a teljes felirat nélküli csoportokat számolja, nem a halmazokat.</RDR_FindTip>
+  <RDR_FinderTitle>Célkereső</RDR_FinderTitle>
+  <RDR_FontSize>Betűméret</RDR_FontSize>
+  <RDR_Go>Oda</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Közeli halmazok csoportosítása</RDR_Grouping>
+  <RDR_HarmonyMissing>A RimDroid Native Harmony nincs betöltve</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Több Harmony assembly található</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Nem támogatott Harmony-verzió: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Nincs elég hely. Csökkentse a felület méretezését, vagy használjon fekvő nézetet.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Tárgyszűrő</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>Tá</RDR_ItemShort>
+  <RDR_Items>Tárgyak</RDR_Items>
+  <RDR_Limits>Egy tárgyszűrő; legfeljebb 40 felirat és 120 jelölő. A Keresés a nagyítás módosítása nélkül visz a célhoz. A mod kikapcsolása eltávolítja a gombjait.</RDR_Limits>
+  <RDR_MarkerSize>Jelölőméret</RDR_MarkerSize>
+  <RDR_Missing>nincs</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native jelölő</RDR_NativeMarker>
+  <RDR_Next>Következő</RDR_Next>
+  <RDR_NoColonists>Nincs megfelelő szabad telepes ezen a térképen.</RDR_NoColonists>
+  <RDR_NoItems>Nincs megfelelő tárgy. Módosítsa a kategóriát vagy a keresést.</RDR_NoItems>
+  <RDR_NoStacks>Nem maradt halmaz. Térjen vissza a csoportokhoz.</RDR_NoStacks>
+  <RDR_Open>Megnyitás</RDR_Open>
+  <RDR_OperatingSystem>Operációs rendszer</RDR_OperatingSystem>
+  <RDR_Platform>Platform</RDR_Platform>
+  <RDR_Present>van</RDR_Present>
+  <RDR_Previous>Előző</RDR_Previous>
+  <RDR_Quantity>Mennyiség</RDR_Quantity>
+  <RDR_Results>Találatok</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Váltás a következő tárgyszűrőre. A keresés továbbra is érvényes.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Halmazok</RDR_Stacks>
+  <RDR_StatusAssembly>A játék assemblyje módosult vagy többször töltődött be; a mod kikapcsolt.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>A betöltött játék-DLL fájl nem azonosítható.</RDR_StatusGameFile>
+  <RDR_StatusHash>A játék DLL SHA-256 értéke eltér ({0}); ellenőrizze ezt a verziót.</RDR_StatusHash>
+  <RDR_StatusMvid>A játék DLL-azonosítója eltér; ezt a verziót ellenőrizni kell.</RDR_StatusMvid>
+  <RDR_StatusNative>Androidos RimDroid Native szükséges. Ellenőrizze a példány motorját; a box64 + native Mono más üzemmód.</RDR_StatusNative>
+  <RDR_StatusReady>Az API/DLL ellenőrzése sikerült. Az eszköztesztek még hátravannak.</RDR_StatusReady>
+  <RDR_StatusVersion>RimWorld 1.6 szükséges.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Várakozás az indítási ellenőrzésekre.</RDR_StatusWaiting>
+  <RDR_TargetGone>A cél már nem érhető el ezen a térképen. A találatok frissültek.</RDR_TargetGone>
+  <RDR_TargetNotSelected>A cél nem jelölhető ki</RDR_TargetNotSelected>
+</LanguageData>

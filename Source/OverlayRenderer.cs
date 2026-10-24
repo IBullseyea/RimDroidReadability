@@ -10,6 +10,7 @@ namespace RimDroid.Readability
         private static readonly LabelLayout layout = new LabelLayout();
         private static GUIStyle labelStyle;
         private static int styleSize;
+        private static object styleLanguage;
         internal static int OmittedGroups { get; private set; }
         internal static LabelRect ControlBounds
         { get { return FinderGeometry.Control(UI.screenWidth, UI.screenHeight); } }
@@ -28,7 +29,7 @@ namespace RimDroid.Readability
                 || Event.current == null || Event.current.type != EventType.Repaint) return;
             Color oldColor = GUI.color;
             try { Render(); }
-            catch (Exception error) { ReadabilityMod.Disable("Çizim hatası: " + error.GetType().Name + ": " + error.Message, error); }
+            catch (Exception error) { ReadabilityMod.Disable(ModText.Error("ContextDraw", error), error); }
             finally { GUI.color = oldColor; }
         }
 
@@ -38,8 +39,9 @@ namespace RimDroid.Readability
             ReadabilitySettings settings = ReadabilityMod.Settings;
             LabelRect bounds = new LabelRect(8, 8, UI.screenWidth - 16, UI.screenHeight - 16);
             if (!bounds.IsFinite) return;
-            if (labelStyle == null || styleSize != settings.FontSize)
+            if (labelStyle == null || styleSize != settings.FontSize || !ReferenceEquals(styleLanguage, ModText.CurrentLanguage))
             {
+                styleLanguage = ModText.CurrentLanguage;
                 styleSize = settings.FontSize;
                 labelStyle = new GUIStyle(Text.CurFontStyle) {
                     fontSize = styleSize, alignment = TextAnchor.MiddleCenter, wordWrap = false,

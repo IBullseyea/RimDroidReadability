@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Усі придатні стеки цього типу</RDR_AllStacks>
+  <RDR_Back>Назад</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Категорія</RDR_Category>
+  <RDR_Clear>Очистити</RDR_Clear>
+  <RDR_Close>Закрити</RDR_Close>
+  <RDR_Colonist>Поселенець</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>П</RDR_ColonistShort>
+  <RDR_Colonists>Поселенці</RDR_Colonists>
+  <RDR_ColonistsToggle>Показувати поселенців</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Помилка малювання</RDR_ContextDraw>
+  <RDR_ContextFindButton>Помилка кнопки пошуку</RDR_ContextFindButton>
+  <RDR_ContextFinder>Помилка пошуку</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Помилка видалення хуків</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Помилка інтерфейсу мапи</RDR_ContextMap>
+  <RDR_ContextShortcut>Помилка швидкого фільтра</RDR_ContextShortcut>
+  <RDR_ContextStartup>Помилка запуску</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Помилка закриття вікон</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Перевірку сумісності й продуктивності на телефоні ще не завершено.</RDR_DevicePending>
+  <RDR_Enabled>Увімкнути позначки</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Усі</RDR_FilterAll>
+  <RDR_FilterApparel>Одяг</RDR_FilterApparel>
+  <RDR_FilterFood>Їжа</RDR_FilterFood>
+  <RDR_FilterMedicine>Ліки</RDR_FilterMedicine>
+  <RDR_FilterOff>Вимк.</RDR_FilterOff>
+  <RDR_FilterResource>Ресурси</RDR_FilterResource>
+  <RDR_FilterWeapon>Зброя</RDR_FilterWeapon>
+  <RDR_FilterWood>Деревина</RDR_FilterWood>
+  <RDR_Find>Знайти</RDR_Find>
+  <RDR_FindTip>Пошук поселенців і предметів. +N — кількість груп без повного підпису, а не кількість стеків.</RDR_FindTip>
+  <RDR_FinderTitle>Пошук цілей</RDR_FinderTitle>
+  <RDR_FontSize>Розмір тексту</RDR_FontSize>
+  <RDR_Go>Перейти</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Групувати близькі стеки</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony не завантажено</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Знайдено кілька збірок Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Непідтримувана версія Harmony: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Недостатньо місця. Зменште масштаб інтерфейсу або використайте альбомну орієнтацію.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Фільтр предметів</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>Р</RDR_ItemShort>
+  <RDR_Items>Предмети</RDR_Items>
+  <RDR_Limits>Один фільтр предметів; до 40 підписів і 120 позначок. Знайти дозволяє перейти до цілі без зміни масштабу. Вимкнення моду прибирає його кнопки.</RDR_Limits>
+  <RDR_MarkerSize>Розмір позначок</RDR_MarkerSize>
+  <RDR_Missing>немає</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Позначка Native</RDR_NativeMarker>
+  <RDR_Next>Наступна</RDR_Next>
+  <RDR_NoColonists>На цій мапі немає придатних вільних поселенців.</RDR_NoColonists>
+  <RDR_NoItems>Відповідних предметів немає. Змініть категорію або пошук.</RDR_NoItems>
+  <RDR_NoStacks>Стеків більше немає. Поверніться до груп.</RDR_NoStacks>
+  <RDR_Open>Відкрити</RDR_Open>
+  <RDR_OperatingSystem>Операційна система</RDR_OperatingSystem>
+  <RDR_Platform>Платформа</RDR_Platform>
+  <RDR_Present>є</RDR_Present>
+  <RDR_Previous>Попередня</RDR_Previous>
+  <RDR_Quantity>Кількість</RDR_Quantity>
+  <RDR_Results>Результати</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Перейти до наступного фільтра предметів. Умови пошуку зберігаються.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Стеки</RDR_Stacks>
+  <RDR_StatusAssembly>Збірка гри змінилася або виявлено її копію; мод вимкнено.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Не вдалося визначити завантажений файл DLL гри.</RDR_StatusGameFile>
+  <RDR_StatusHash>SHA-256 DLL гри відрізняється ({0}); перевірте цю збірку.</RDR_StatusHash>
+  <RDR_StatusMvid>Ідентифікатор DLL гри відрізняється; цю збірку слід перевірити.</RDR_StatusMvid>
+  <RDR_StatusNative>Потрібен RimDroid Native на Android. Перевірте рушій екземпляра; box64 + native Mono — інший режим.</RDR_StatusNative>
+  <RDR_StatusReady>Перевірки API/DLL пройдено. Тести на пристрої ще попереду.</RDR_StatusReady>
+  <RDR_StatusVersion>Потрібен RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Очікування початкових перевірок.</RDR_StatusWaiting>
+  <RDR_TargetGone>Ціль більше недоступна на цій мапі. Результати оновлено.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Не вдалося вибрати ціль</RDR_TargetNotSelected>
+</LanguageData>

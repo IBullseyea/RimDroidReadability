@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Totes les piles vàlides d’aquest tipus</RDR_AllStacks>
+  <RDR_Back>Enrere</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Categoria</RDR_Category>
+  <RDR_Clear>Neteja</RDR_Clear>
+  <RDR_Close>Tanca</RDR_Close>
+  <RDR_Colonist>Coló</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>C</RDR_ColonistShort>
+  <RDR_Colonists>Colons</RDR_Colonists>
+  <RDR_ColonistsToggle>Mostra els colons</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Error de dibuix</RDR_ContextDraw>
+  <RDR_ContextFindButton>Error del botó de cerca</RDR_ContextFindButton>
+  <RDR_ContextFinder>Error del cercador</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Error en retirar hooks</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Error de la interfície del mapa</RDR_ContextMap>
+  <RDR_ContextShortcut>Error de la drecera de filtre</RDR_ContextShortcut>
+  <RDR_ContextStartup>Error d’inici</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Error en tancar finestres</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Les proves de compatibilitat i rendiment al telèfon estan pendents.</RDR_DevicePending>
+  <RDR_Enabled>Activa els marcadors</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Tot</RDR_FilterAll>
+  <RDR_FilterApparel>Roba</RDR_FilterApparel>
+  <RDR_FilterFood>Menjar</RDR_FilterFood>
+  <RDR_FilterMedicine>Medicina</RDR_FilterMedicine>
+  <RDR_FilterOff>Desactivat</RDR_FilterOff>
+  <RDR_FilterResource>Recursos</RDR_FilterResource>
+  <RDR_FilterWeapon>Armes</RDR_FilterWeapon>
+  <RDR_FilterWood>Fusta</RDR_FilterWood>
+  <RDR_Find>Cerca</RDR_Find>
+  <RDR_FindTip>Cerca colons i objectes. +N compta els grups sense etiqueta completa, no les piles.</RDR_FindTip>
+  <RDR_FinderTitle>Cercador d’objectius</RDR_FinderTitle>
+  <RDR_FontSize>Mida del text</RDR_FontSize>
+  <RDR_Go>Ves-hi</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Agrupa piles properes</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony no està carregat</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Hi ha diversos assemblatges Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Versió de Harmony no compatible: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>No hi ha prou espai. Reduïu l’escala de la interfície o feu servir l’orientació horitzontal.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Filtre d’objectes</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>O</RDR_ItemShort>
+  <RDR_Items>Objectes</RDR_Items>
+  <RDR_Limits>Un filtre d’objectes; fins a 40 etiquetes i 120 marcadors. Cerca permet anar a l’objectiu sense canviar el zoom. Desactivar el mod elimina els seus controls.</RDR_Limits>
+  <RDR_MarkerSize>Mida dels marcadors</RDR_MarkerSize>
+  <RDR_Missing>absent</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Indicador Native</RDR_NativeMarker>
+  <RDR_Next>Següent</RDR_Next>
+  <RDR_NoColonists>No hi ha colons lliures aptes en aquest mapa.</RDR_NoColonists>
+  <RDR_NoItems>No hi ha objectes coincidents. Canvieu la categoria o la cerca.</RDR_NoItems>
+  <RDR_NoStacks>No queden piles. Torneu als grups.</RDR_NoStacks>
+  <RDR_Open>Obre</RDR_Open>
+  <RDR_OperatingSystem>Sistema operatiu</RDR_OperatingSystem>
+  <RDR_Platform>Plataforma</RDR_Platform>
+  <RDR_Present>present</RDR_Present>
+  <RDR_Previous>Anterior</RDR_Previous>
+  <RDR_Quantity>Quantitat</RDR_Quantity>
+  <RDR_Results>Resultats</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Passa al filtre d’objectes següent. La cerca continua aplicada.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Piles</RDR_Stacks>
+  <RDR_StatusAssembly>L’assemblatge del joc ha canviat o s’ha detectat un duplicat; mod desactivat.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>No s’ha pogut identificar el fitxer DLL del joc carregat.</RDR_StatusGameFile>
+  <RDR_StatusHash>El SHA-256 de la DLL del joc és diferent ({0}); verifiqueu aquesta versió.</RDR_StatusHash>
+  <RDR_StatusMvid>L’identificador de la DLL del joc és diferent; cal verificar aquesta versió.</RDR_StatusMvid>
+  <RDR_StatusNative>Cal RimDroid Native a Android. Comproveu el motor de la instància; box64 + native Mono és un altre mode.</RDR_StatusNative>
+  <RDR_StatusReady>Comprovacions d’API/DLL superades. Proves del dispositiu pendents.</RDR_StatusReady>
+  <RDR_StatusVersion>Cal RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Esperant les comprovacions d’inici.</RDR_StatusWaiting>
+  <RDR_TargetGone>L’objectiu ja no està disponible en aquest mapa. Resultats actualitzats.</RDR_TargetGone>
+  <RDR_TargetNotSelected>No s’ha pogut seleccionar l’objectiu</RDR_TargetNotSelected>
+</LanguageData>

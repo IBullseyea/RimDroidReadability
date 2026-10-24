@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Kõik selle tüübi sobivad virnad</RDR_AllStacks>
+  <RDR_Back>Tagasi</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Kategooria</RDR_Category>
+  <RDR_Clear>Tühjenda</RDR_Clear>
+  <RDR_Close>Sulge</RDR_Close>
+  <RDR_Colonist>Kolonist</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>K</RDR_ColonistShort>
+  <RDR_Colonists>Kolonistid</RDR_Colonists>
+  <RDR_ColonistsToggle>Näita koloniste</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Joonistamise viga</RDR_ContextDraw>
+  <RDR_ContextFindButton>Otsingunupu viga</RDR_ContextFindButton>
+  <RDR_ContextFinder>Otsingu viga</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Haakide eemaldamise viga</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Kaardivaate viga</RDR_ContextMap>
+  <RDR_ContextShortcut>Filtri otsetee viga</RDR_ContextShortcut>
+  <RDR_ContextStartup>Käivitamise viga</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Akende sulgemise viga</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Telefoni ühilduvus- ja jõudlustestid on veel tegemata.</RDR_DevicePending>
+  <RDR_Enabled>Luba märgised</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Kõik</RDR_FilterAll>
+  <RDR_FilterApparel>Riided</RDR_FilterApparel>
+  <RDR_FilterFood>Toit</RDR_FilterFood>
+  <RDR_FilterMedicine>Ravimid</RDR_FilterMedicine>
+  <RDR_FilterOff>Väljas</RDR_FilterOff>
+  <RDR_FilterResource>Ressursid</RDR_FilterResource>
+  <RDR_FilterWeapon>Relvad</RDR_FilterWeapon>
+  <RDR_FilterWood>Puit</RDR_FilterWood>
+  <RDR_Find>Otsi</RDR_Find>
+  <RDR_FindTip>Otsi koloniste ja esemeid. +N loendab täieliku sildita rühmi, mitte virnu.</RDR_FindTip>
+  <RDR_FinderTitle>Sihtmärkide otsing</RDR_FinderTitle>
+  <RDR_FontSize>Teksti suurus</RDR_FontSize>
+  <RDR_Go>Mine</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Rühmita lähedased virnad</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony pole laaditud</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Leiti mitu Harmony koostu</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Harmony versiooni ei toetata: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Ruumi pole piisavalt. Vähendage UI mõõtkava või kasutage rõhtpaigutust.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Esemete filter</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>E</RDR_ItemShort>
+  <RDR_Items>Esemed</RDR_Items>
+  <RDR_Limits>Üks esemefilter; kuni 40 silti ja 120 märgist. Otsi abil saab liikuda sihtmärgile suumi muutmata. Väljalülitamine eemaldab modi nupud.</RDR_Limits>
+  <RDR_MarkerSize>Märgise suurus</RDR_MarkerSize>
+  <RDR_Missing>puudub</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native-tunnus</RDR_NativeMarker>
+  <RDR_Next>Järgmine</RDR_Next>
+  <RDR_NoColonists>Sellel kaardil pole sobivaid vabu koloniste.</RDR_NoColonists>
+  <RDR_NoItems>Sobivaid esemeid pole. Muutke kategooriat või otsingut.</RDR_NoItems>
+  <RDR_NoStacks>Virnu pole alles. Minge tagasi rühmadesse.</RDR_NoStacks>
+  <RDR_Open>Ava</RDR_Open>
+  <RDR_OperatingSystem>Operatsioonisüsteem</RDR_OperatingSystem>
+  <RDR_Platform>Platvorm</RDR_Platform>
+  <RDR_Present>olemas</RDR_Present>
+  <RDR_Previous>Eelmine</RDR_Previous>
+  <RDR_Quantity>Kogus</RDR_Quantity>
+  <RDR_Results>Tulemused</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Liigu järgmise esemefiltri juurde. Otsing kehtib edasi.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Virnad</RDR_Stacks>
+  <RDR_StatusAssembly>Mängu koost muutus või leiti koopia; mod lülitati välja.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Laaditud mängu DLL-faili ei saanud tuvastada.</RDR_StatusGameFile>
+  <RDR_StatusHash>Mängu DLL-i SHA-256 erineb ({0}); kontrollige seda versiooni.</RDR_StatusHash>
+  <RDR_StatusMvid>Mängu DLL-i tunnus erineb; see versioon vajab kontrolli.</RDR_StatusMvid>
+  <RDR_StatusNative>Vajalik on RimDroid Native Androidis. Kontrollige instantsi mootorit; box64 + native Mono on teine režiim.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL kontrollid läbitud. Seadmetestid on veel ootel.</RDR_StatusReady>
+  <RDR_StatusVersion>Vajalik on RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Oodatakse käivituskontrolle.</RDR_StatusWaiting>
+  <RDR_TargetGone>Sihtmärk pole sellel kaardil enam saadaval. Tulemused uuendatud.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Sihtmärki ei saanud valida</RDR_TargetNotSelected>
+</LanguageData>

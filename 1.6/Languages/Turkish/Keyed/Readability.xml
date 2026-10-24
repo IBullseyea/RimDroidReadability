@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Bu türün tüm uygun yığınları</RDR_AllStacks>
+  <RDR_Back>Geri</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Kategori</RDR_Category>
+  <RDR_Clear>Temizle</RDR_Clear>
+  <RDR_Close>Kapat</RDR_Close>
+  <RDR_Colonist>Kolonist</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>K</RDR_ColonistShort>
+  <RDR_Colonists>Kolonistler</RDR_Colonists>
+  <RDR_ColonistsToggle>Kolonistleri göster</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Çizim hatası</RDR_ContextDraw>
+  <RDR_ContextFindButton>Bul düğmesi hatası</RDR_ContextFindButton>
+  <RDR_ContextFinder>Bulucu hatası</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Kanca temizliği hatası</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Harita arayüzü hatası</RDR_ContextMap>
+  <RDR_ContextShortcut>Filtre kısayolu hatası</RDR_ContextShortcut>
+  <RDR_ContextStartup>Başlatma hatası</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Pencere temizliği hatası</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Telefon uyumluluğu ve performans testleri bekleniyor.</RDR_DevicePending>
+  <RDR_Enabled>İşaretleri aç</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Tümü</RDR_FilterAll>
+  <RDR_FilterApparel>Giysi</RDR_FilterApparel>
+  <RDR_FilterFood>Yiyecek</RDR_FilterFood>
+  <RDR_FilterMedicine>İlaç</RDR_FilterMedicine>
+  <RDR_FilterOff>Kapalı</RDR_FilterOff>
+  <RDR_FilterResource>Kaynak</RDR_FilterResource>
+  <RDR_FilterWeapon>Silah</RDR_FilterWeapon>
+  <RDR_FilterWood>Odun</RDR_FilterWood>
+  <RDR_Find>Bul</RDR_Find>
+  <RDR_FindTip>Kolonist ve eşya bul. +N, tam etiketi gösterilemeyen görsel grupları sayar; yığın sayısı değildir.</RDR_FindTip>
+  <RDR_FinderTitle>Hedef bulucu</RDR_FinderTitle>
+  <RDR_FontSize>Yazı boyutu</RDR_FontSize>
+  <RDR_Go>Git</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Yakın yığınları grupla</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony yüklenmedi</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Birden fazla Harmony assembly’si var</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Desteklenmeyen Harmony sürümü: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Arayüz alanı yetersiz. UI ölçeğini küçültün veya ekranı yatay kullanın.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Eşya filtresi</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>E</RDR_ItemShort>
+  <RDR_Items>Eşya</RDR_Items>
+  <RDR_Limits>Tek eşya filtresi; en fazla 40 etiket ve 120 işaret. Bul ile yakınlığı değiştirmeden hedefe gidilir. Modu kapatmak kontrollerini kaldırır.</RDR_Limits>
+  <RDR_MarkerSize>İşaret boyutu</RDR_MarkerSize>
+  <RDR_Missing>yok</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native işareti</RDR_NativeMarker>
+  <RDR_Next>Sonraki</RDR_Next>
+  <RDR_NoColonists>Bu haritada uygun serbest kolonist yok.</RDR_NoColonists>
+  <RDR_NoItems>Uygun eşya bulunamadı. Kategoriyi veya aramayı değiştirin.</RDR_NoItems>
+  <RDR_NoStacks>Yığın kalmadı. Gruplara geri dönün.</RDR_NoStacks>
+  <RDR_Open>Aç</RDR_Open>
+  <RDR_OperatingSystem>İşletim sistemi</RDR_OperatingSystem>
+  <RDR_Platform>Platform</RDR_Platform>
+  <RDR_Present>var</RDR_Present>
+  <RDR_Previous>Önceki</RDR_Previous>
+  <RDR_Quantity>Adet</RDR_Quantity>
+  <RDR_Results>Sonuç</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Sıradaki eşya filtresine geç. Bulucudaki arama uygulanmaya devam eder.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Yığın</RDR_Stacks>
+  <RDR_StatusAssembly>Oyun assembly’si değişti veya kopyası bulundu; mod kapatıldı.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Yüklenen oyun DLL dosyasının kimliği okunamadı.</RDR_StatusGameFile>
+  <RDR_StatusHash>Oyun DLL SHA-256 farklı ({0}); bu build doğrulanmalı.</RDR_StatusHash>
+  <RDR_StatusMvid>Oyun DLL kimliği farklı; bu build doğrulanmalı.</RDR_StatusMvid>
+  <RDR_StatusNative>Android üzerinde RimDroid Native gerekir. Instance motorunu kontrol edin; box64 + native Mono farklıdır.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL kontrolü geçti. Cihaz testleri bekleniyor.</RDR_StatusReady>
+  <RDR_StatusVersion>RimWorld 1.6 gerekir.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Başlangıç kontrolleri bekleniyor.</RDR_StatusWaiting>
+  <RDR_TargetGone>Hedef artık bu haritada uygun değil. Sonuçlar yenilendi.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Hedef seçilemedi</RDR_TargetNotSelected>
+</LanguageData>

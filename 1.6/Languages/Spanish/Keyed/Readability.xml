@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Todas las pilas válidas de este tipo</RDR_AllStacks>
+  <RDR_Back>Volver</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Categoría</RDR_Category>
+  <RDR_Clear>Borrar</RDR_Clear>
+  <RDR_Close>Cerrar</RDR_Close>
+  <RDR_Colonist>Colono</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>C</RDR_ColonistShort>
+  <RDR_Colonists>Colonos</RDR_Colonists>
+  <RDR_ColonistsToggle>Mostrar colonos</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Error de dibujo</RDR_ContextDraw>
+  <RDR_ContextFindButton>Error del botón Buscar</RDR_ContextFindButton>
+  <RDR_ContextFinder>Error del buscador</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Error al retirar hooks</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Error de interfaz del mapa</RDR_ContextMap>
+  <RDR_ContextShortcut>Error del acceso al filtro</RDR_ContextShortcut>
+  <RDR_ContextStartup>Error de inicio</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Error al cerrar ventanas</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Las pruebas de compatibilidad y rendimiento en el teléfono están pendientes.</RDR_DevicePending>
+  <RDR_Enabled>Activar indicadores</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Todo</RDR_FilterAll>
+  <RDR_FilterApparel>Ropa</RDR_FilterApparel>
+  <RDR_FilterFood>Comida</RDR_FilterFood>
+  <RDR_FilterMedicine>Medicina</RDR_FilterMedicine>
+  <RDR_FilterOff>Desactivado</RDR_FilterOff>
+  <RDR_FilterResource>Recursos</RDR_FilterResource>
+  <RDR_FilterWeapon>Armas</RDR_FilterWeapon>
+  <RDR_FilterWood>Madera</RDR_FilterWood>
+  <RDR_Find>Buscar</RDR_Find>
+  <RDR_FindTip>Busca colonos y objetos. +N cuenta los grupos sin etiqueta completa, no las pilas.</RDR_FindTip>
+  <RDR_FinderTitle>Buscador de objetivos</RDR_FinderTitle>
+  <RDR_FontSize>Tamaño del texto</RDR_FontSize>
+  <RDR_Go>Ir</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Agrupar pilas cercanas</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony no está cargado</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Hay varios ensamblados de Harmony</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Versión de Harmony no compatible: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>No hay espacio suficiente. Reduce la escala de la interfaz o usa la orientación horizontal.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Filtro de objetos</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>O</RDR_ItemShort>
+  <RDR_Items>Objetos</RDR_Items>
+  <RDR_Limits>Un filtro de objetos; hasta 40 etiquetas y 120 marcadores. Buscar permite ir al objetivo sin cambiar el zoom. Desactivar el mod elimina sus controles.</RDR_Limits>
+  <RDR_MarkerSize>Tamaño del marcador</RDR_MarkerSize>
+  <RDR_Missing>ausente</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Indicador Native</RDR_NativeMarker>
+  <RDR_Next>Siguiente</RDR_Next>
+  <RDR_NoColonists>No hay colonos libres aptos en este mapa.</RDR_NoColonists>
+  <RDR_NoItems>No hay objetos coincidentes. Cambia la categoría o la búsqueda.</RDR_NoItems>
+  <RDR_NoStacks>No quedan pilas. Vuelve a los grupos.</RDR_NoStacks>
+  <RDR_Open>Abrir</RDR_Open>
+  <RDR_OperatingSystem>Sistema operativo</RDR_OperatingSystem>
+  <RDR_Platform>Plataforma</RDR_Platform>
+  <RDR_Present>presente</RDR_Present>
+  <RDR_Previous>Anterior</RDR_Previous>
+  <RDR_Quantity>Cantidad</RDR_Quantity>
+  <RDR_Results>Resultados</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Pasa al siguiente filtro de objetos. La búsqueda sigue aplicada.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Pilas</RDR_Stacks>
+  <RDR_StatusAssembly>El ensamblado del juego cambió o se detectó un duplicado; mod desactivado.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>No se pudo identificar el archivo DLL del juego cargado.</RDR_StatusGameFile>
+  <RDR_StatusHash>El SHA-256 de la DLL del juego es distinto ({0}); verifica esta versión.</RDR_StatusHash>
+  <RDR_StatusMvid>El identificador de la DLL del juego es distinto; hay que verificar esta versión.</RDR_StatusMvid>
+  <RDR_StatusNative>Se necesita RimDroid Native en Android. Revisa el motor de la instancia; box64 + native Mono es otro modo.</RDR_StatusNative>
+  <RDR_StatusReady>Comprobaciones de API/DLL superadas. Pruebas del dispositivo pendientes.</RDR_StatusReady>
+  <RDR_StatusVersion>Se necesita RimWorld 1.6.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Esperando las comprobaciones de inicio.</RDR_StatusWaiting>
+  <RDR_TargetGone>El objetivo ya no está disponible en este mapa. Resultados actualizados.</RDR_TargetGone>
+  <RDR_TargetNotSelected>No se pudo seleccionar el objetivo</RDR_TargetNotSelected>
+</LanguageData>

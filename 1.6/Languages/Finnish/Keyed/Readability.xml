@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <RDR_AllStacks>Kaikki tämän tyypin kelvolliset pinot</RDR_AllStacks>
+  <RDR_Back>Takaisin</RDR_Back>
+  <RDR_ButtonCount>{0} (+{1})</RDR_ButtonCount>
+  <RDR_Category>Luokka</RDR_Category>
+  <RDR_Clear>Tyhjennä</RDR_Clear>
+  <RDR_Close>Sulje</RDR_Close>
+  <RDR_Colonist>Siirtolainen</RDR_Colonist>
+  <RDR_ColonistLabel>{0} · {1}</RDR_ColonistLabel>
+  <RDR_ColonistShort>S</RDR_ColonistShort>
+  <RDR_Colonists>Siirtolaiset</RDR_Colonists>
+  <RDR_ColonistsToggle>Näytä siirtolaiset</RDR_ColonistsToggle>
+  <RDR_ContextDraw>Piirtovirhe</RDR_ContextDraw>
+  <RDR_ContextFindButton>Etsi-painikkeen virhe</RDR_ContextFindButton>
+  <RDR_ContextFinder>Hakuvirhe</RDR_ContextFinder>
+  <RDR_ContextHookCleanup>Koukkujen poistovirhe</RDR_ContextHookCleanup>
+  <RDR_ContextMap>Karttanäkymän virhe</RDR_ContextMap>
+  <RDR_ContextShortcut>Suodattimen pikavalinnan virhe</RDR_ContextShortcut>
+  <RDR_ContextStartup>Käynnistysvirhe</RDR_ContextStartup>
+  <RDR_ContextWindowCleanup>Ikkunoiden sulkemisvirhe</RDR_ContextWindowCleanup>
+  <RDR_DevicePending>Puhelinyhteensopivuus ja suorituskyky ovat vielä testaamatta.</RDR_DevicePending>
+  <RDR_Enabled>Näytä merkit</RDR_Enabled>
+  <RDR_ErrorAppend>{0}; {1}</RDR_ErrorAppend>
+  <RDR_ErrorFormat>{0}: {1}</RDR_ErrorFormat>
+  <RDR_FilterAll>Kaikki</RDR_FilterAll>
+  <RDR_FilterApparel>Vaatteet</RDR_FilterApparel>
+  <RDR_FilterFood>Ruoka</RDR_FilterFood>
+  <RDR_FilterMedicine>Lääkkeet</RDR_FilterMedicine>
+  <RDR_FilterOff>Pois</RDR_FilterOff>
+  <RDR_FilterResource>Resurssit</RDR_FilterResource>
+  <RDR_FilterWeapon>Aseet</RDR_FilterWeapon>
+  <RDR_FilterWood>Puu</RDR_FilterWood>
+  <RDR_Find>Etsi</RDR_Find>
+  <RDR_FindTip>Etsi siirtolaisia ja esineitä. +N laskee ryhmät, joiden nimike ei mahdu kokonaan, ei pinoja.</RDR_FindTip>
+  <RDR_FinderTitle>Kohdehaku</RDR_FinderTitle>
+  <RDR_FontSize>Tekstin koko</RDR_FontSize>
+  <RDR_Go>Siirry</RDR_Go>
+  <RDR_GroupTotal>{0}: {1} / {2}: {3}</RDR_GroupTotal>
+  <RDR_Grouping>Ryhmittele läheiset pinot</RDR_Grouping>
+  <RDR_HarmonyMissing>RimDroid Native Harmony ei ole ladattu</RDR_HarmonyMissing>
+  <RDR_HarmonyMultiple>Useita Harmony-kokoonpanoja</RDR_HarmonyMultiple>
+  <RDR_HarmonyVersion>Harmony-versiota ei tueta: {0}</RDR_HarmonyVersion>
+  <RDR_InsufficientSpace>Liian vähän tilaa. Pienennä käyttöliittymän skaalausta tai käytä vaakatilaa.</RDR_InsufficientSpace>
+  <RDR_ItemFilter>Esinesuodatin</RDR_ItemFilter>
+  <RDR_ItemGroupLabel>{0} · {1} ×{2} / {3}: {4}</RDR_ItemGroupLabel>
+  <RDR_ItemLabel>{0} · {1} ×{2}</RDR_ItemLabel>
+  <RDR_ItemShort>E</RDR_ItemShort>
+  <RDR_Items>Esineet</RDR_Items>
+  <RDR_Limits>Yksi esinesuodatin; enintään 40 nimikettä ja 120 merkkiä. Etsi-toiminnolla voi siirtyä kohteeseen muuttamatta zoomausta. Poistaminen käytöstä piilottaa modin painikkeet.</RDR_Limits>
+  <RDR_MarkerSize>Merkin koko</RDR_MarkerSize>
+  <RDR_Missing>puuttuu</RDR_Missing>
+  <RDR_NamedValue>{0}: {1}</RDR_NamedValue>
+  <RDR_NativeDetails>{0} {1}: {2}; {3}: {4}; {5}: {6}.</RDR_NativeDetails>
+  <RDR_NativeMarker>Native-tunniste</RDR_NativeMarker>
+  <RDR_Next>Seuraava</RDR_Next>
+  <RDR_NoColonists>Tällä kartalla ei ole sopivia vapaita siirtolaisia.</RDR_NoColonists>
+  <RDR_NoItems>Ei vastaavia esineitä. Vaihda luokkaa tai hakua.</RDR_NoItems>
+  <RDR_NoStacks>Pinoja ei ole jäljellä. Palaa ryhmiin.</RDR_NoStacks>
+  <RDR_Open>Avaa</RDR_Open>
+  <RDR_OperatingSystem>Käyttöjärjestelmä</RDR_OperatingSystem>
+  <RDR_Platform>Alusta</RDR_Platform>
+  <RDR_Present>löytyy</RDR_Present>
+  <RDR_Previous>Edellinen</RDR_Previous>
+  <RDR_Quantity>Määrä</RDR_Quantity>
+  <RDR_Results>Tulokset</RDR_Results>
+  <RDR_SettingsHeader>RimWorld 1.6 / RimDroid Native — {0}</RDR_SettingsHeader>
+  <RDR_ShortcutTip>Vaihda seuraavaan esinesuodattimeen. Haku pysyy voimassa.</RDR_ShortcutTip>
+  <RDR_StackDetails>{0}: {1} · ({2}, {3}) · #{4}</RDR_StackDetails>
+  <RDR_Stacks>Pinot</RDR_Stacks>
+  <RDR_StatusAssembly>Pelin kokoonpano muuttui tai löytyi kaksoiskappale; modi poistettiin käytöstä.</RDR_StatusAssembly>
+  <RDR_StatusGameFile>Ladattua pelin DLL-tiedostoa ei voitu tunnistaa.</RDR_StatusGameFile>
+  <RDR_StatusHash>Pelin DLL:n SHA-256 eroaa ({0}); tarkista tämä versio.</RDR_StatusHash>
+  <RDR_StatusMvid>Pelin DLL-tunniste eroaa; tämä versio on tarkistettava.</RDR_StatusMvid>
+  <RDR_StatusNative>Vaatii RimDroid Nativen Androidissa. Tarkista instanssin moottori; box64 + native Mono on eri tila.</RDR_StatusNative>
+  <RDR_StatusReady>API/DLL-tarkistukset läpäisty. Laitetestaus on kesken.</RDR_StatusReady>
+  <RDR_StatusVersion>Vaatii RimWorld 1.6:n.</RDR_StatusVersion>
+  <RDR_StatusWaiting>Odotetaan käynnistystarkistuksia.</RDR_StatusWaiting>
+  <RDR_TargetGone>Kohde ei ole enää käytettävissä tällä kartalla. Tulokset päivitettiin.</RDR_TargetGone>
+  <RDR_TargetNotSelected>Kohdetta ei voitu valita</RDR_TargetNotSelected>
+</LanguageData>
