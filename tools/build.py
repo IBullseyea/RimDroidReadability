@@ -202,7 +202,7 @@ def main():
               'build_mode': 'offline Roslyn; game/framework DLLs read-only; no Harmony compile reference',
               'device_tests': 'NOT RUN: APK/Native route, loaded DLL and Harmony identities, GUI/input/fog visuals and FPS pending',
               'release': str(archive.relative_to(ROOT))}
-    (ROOT / 'docs/validation.json').write_text(json.dumps(report, indent=2) + '\n')
+    (WORK / 'validation.json').write_text(json.dumps(report, indent=2) + '\n')
     print('Built:', output.relative_to(ROOT))
     print('Release:', archive.relative_to(ROOT))
     print('Read-only game/framework reference hashes and mtimes unchanged:', len(references))

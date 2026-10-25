@@ -213,7 +213,7 @@ def main():
               'assembly_references': [{'name': x['Name'], 'version': x['Version']} for x in refs],
               'cli_flags': flags, 'game_sha256': before,
               'device_runtime_and_visual_tests': 'NOT RUN'}
-    (ROOT / 'docs/static-validation.json').write_text(json.dumps(report, indent=2) + '\n')
+    (build.WORK / 'static-validation.json').write_text(json.dumps(report, indent=2) + '\n')
     print('PASS: static API/AnyCPU/reference/XML/release integrity audit; game code not executed')
 
 

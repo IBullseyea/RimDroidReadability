@@ -1,37 +1,46 @@
-# RimDroid Readability 0.2.4 — Game language support
+# RimDroid Readability 0.2.4
 
-Pre-release candidate · MIT License
+Pre-release · MIT License
 
-## What's included
+## Features
 
-- All in-game mod text follows the game language, with 29 original translations and English fallback for other languages.
-- Localized settings, item shortcut, finder, tooltips, quantities and mod status messages. Colonist names and item labels remain supplied by the game.
-- Retains the bottom-right item filter shortcut from 0.2.3, collection-enumeration fix from 0.2.2 and Native Android detection fix from 0.2.1.
-- English/Turkish installation documentation and the MIT license are included in the ZIP.
+- Large colonist/item indicators with independent text and marker sizes.
+- Item categories, grouped stack totals and a touch-friendly finder that preserves zoom.
+- Bottom-right item filter shortcut.
+- Automatically follows the game language, with 29 included translations.
+- English/Turkish installation instructions and a complete phone screenshot gallery.
 
-## Preview
+## Install
 
-Current English UI screenshot supplied by the player on Samsung S25 FE / RimDroid 0.3.0v2, showing grouped resource labels and the bottom-right item filter shortcut.
+Download **RimDroidReadability-0.2.4.zip** below. Extract/update the entire `RimDroidReadability` folder in the instance's `Mods` directory, enable the mod and fully restart the game. Enable indicators in **Options → Mod Settings → RimDroid Readability**; they are off by default.
 
-![Large map indicators and grouped stacks](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/docs/images/resource-filter.jpg)
+The `.sha256` file contains the ZIP checksum. GitHub's automatic Source code archives do not contain the compiled mod DLL.
 
-## Install or update
+## Screenshots
 
-Download **RimDroidReadability-0.2.4.zip** from the release assets. Extract/update the entire `RimDroidReadability` folder, including `1.6/Languages`, in the instance's `Mods` directory. Enable it in the mod list and fully restart the game. Enable indicators in **Options → Mod Settings → RimDroid Readability**; the mod is off by default. See README.md / README.tr.md for details.
+Current English UI screenshots supplied by the player on Samsung S25 FE / RimDroid 0.3.0v2: the filter shortcut, large labels and stack totals.
 
-GitHub's automatic Source code archives contain source only and cannot be installed directly as the compiled mod.
+![Resources filter and grouped stack totals](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/resource-filter.jpg)
+
+<details>
+<summary>Full gallery — 10 more screenshots</summary>
+
+| | |
+| --- | --- |
+| **Colonists / Items off**<br>![Colonists / Items off](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/colonist-indicators.jpg) | **Pause tooltip and colonists**<br>![Pause tooltip and colonists](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/pause-tooltip.jpg) |
+| **All items**<br>![All items](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/all-items.jpg) | **Medicine shortcut tooltip**<br>![Medicine shortcut tooltip](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/medicine-tooltip.jpg) |
+| **Medicine filter**<br>![Medicine filter](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/medicine-filter.jpg) | **Wood filter**<br>![Wood filter](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/wood-filter.jpg) |
+| **Weapons filter**<br>![Weapons filter](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/weapon-filter.jpg) | **Food filter**<br>![Food filter](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/food-filter.jpg) |
+| **Apparel filter**<br>![Apparel filter](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/apparel-filter.jpg) | **Return to Items off**<br>![Return to Items off](https://raw.githubusercontent.com/IBullseyea/RimDroidReadability/main/assets/images/items-off-return.jpg) |
+
+</details>
 
 ## Compatibility and validation
 
-Requires RimDroid Native Unity on Android, the audited RimWorld 1.6.4633 rev1254 DLL identity documented in README.md, and a single already loaded Harmony 2.x. Other DLL builds and non-Native routes are not supported by this package.
+Requires RimDroid Native Unity on Android, the audited RimWorld 1.6.4633 rev1254 DLL identity in README.md, and a single already loaded Harmony 2.x. Other builds and non-Native routes are outside this package's supported scope.
 
-Local compilation, standalone logic/translation/tooling tests, exact API signatures and ZIP contents passed. A user reported 0.2.2 and 0.2.3 working on Samsung S25 FE / RimDroid 0.3.0v2. Version 0.2.4 language/font behavior and comprehensive device/performance checks remain pending.
+The player supplied English UI examples on Samsung S25 FE / RimDroid 0.3.0v2. Local compilation, standalone logic/translation/tooling tests, exact API signatures and ZIP integrity checks passed. Comprehensive device/performance checks and font coverage for all languages remain pending.
 
-## Known limits
+At most 120 markers and 40 labels are drawn; the finder still lists all eligible targets. Item scans refresh every 250 ms and their cost depends on item count. Search uses OrdinalIgnoreCase; Turkish dotted İ and i differ.
 
-- At most 120 markers and 40 labels are drawn; the finder still lists all eligible targets.
-- Item scan cost depends on map item count, with a 250 ms refresh interval.
-- Search uses OrdinalIgnoreCase; Turkish dotted İ and i differ.
-- Font coverage, long translations, touch behavior and performance need validation on the target device.
-
-Original mod code, translations and documentation are MIT licensed. Game, Unity and Harmony binaries are not included. Detailed development and device acceptance records are in `docs/device-validation.tr.md` in the source repository.
+Original mod code, translations and text documentation are MIT licensed. Third-party game artwork in screenshots remains with its respective owners. Game, Unity and Harmony binaries are not included.
